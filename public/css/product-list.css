@@ -8,28 +8,28 @@ padding:20px;
 width:300px;
 margin:20px;
 padding:10px;
-border:1pxsolid#ddd;
+border:1px solid #ddd;
 background-color:#fff;
 text-align:center;
 border-radius:10px;
-box-shadow:0010pxrgba(0,0,0,0.2);
-transition:transform0.2s;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+transition: transform 0.2s;
 }
 
 .product:hover{
 transform:translateY(-5px);
-box-shadow:0020pxrgba(0,0,0,0.4);
+box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
 
-.productimg{
+.product img{
 width:100%;
 border-top-left-radius:10px;
 border-top-right-radius:10px;
 }
 
-.producth3{
+.product h3{
 font-size:1.5em;
-margin:10px0;
+margin:10px 0;
 }
 
 .price{
@@ -41,11 +41,11 @@ font-weight:bold;
 background-color:#0056b3;
 color:#fff;
 border:none;
-padding:10px20px;
+padding:10px 20px;
 font-size:1.2em;
 border-radius:5px;
 cursor:pointer;
-transition:background-color0.3s;
+transition:background-color 0.3s;
 }
 
 .add-to-cart-button:hover{

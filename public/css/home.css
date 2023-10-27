@@ -4,14 +4,14 @@ text-align:center;
 background-size:cover;
 background-position:center;
 color:#fff;
-padding:100px0;
+padding:100px 0;
 }
 
 .hero-content{
 background:rgba(0,0,0,0.5);
 border-radius:10px;
 padding:20px;
-margin:20pxauto;
+margin:20px auto;
 max-width:600px;
 }
 
@@ -28,11 +28,11 @@ margin-bottom:20px;
 .shop-now-button{
 background-color:#0056b3;
 color:#fff;
-padding:10px20px;
+padding:10px 20px;
 text-decoration:none;
 border-radius:5px;
 font-weight:bold;
-transition:background-color0.3s;
+transition:background-color 0.3s;
 }
 
 .shop-now-button:hover{
