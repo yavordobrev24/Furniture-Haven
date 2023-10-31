@@ -11,9 +11,9 @@ import ProductList from "./components/ProductList";
 
 function App() {
   return (
-    <div className="site-container">
-      <Header />
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="site-container">
+        <Header />
         <Routes>
           <Route index element={<Home />} />
           <Route path="/products" element={<ProductList />} />
@@ -21,9 +21,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

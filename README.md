@@ -1,4 +1,4 @@
-# Furniture-Haven - Your Ultimate Furniture Shopping Destination 🪑
+# Furniture Heaven - Your Ultimate Furniture Shopping Destination 🪑
 
 Welcome to Furniture-Haven, your one-stop online furniture store, designed with a sleek and intuitive user interface. This Single Page Application (SPA) is built using React.js and powered by Vite.js for an efficient build toolchain. With Furniture-Haven, you can browse, register, log in, explore furniture details, make purchases, and keep track of your selected items in your shopping cart.
 
