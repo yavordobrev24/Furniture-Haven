@@ -1,4 +1,5 @@
-import "../../public/css/home.css";
+import "./Home.css";
+import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <>
@@ -6,9 +7,9 @@ export default function Home() {
         <div className="hero-content">
           <h1>Welcome to Your Online Store</h1>
           <p>Shop the best products at amazing prices.</p>
-          <a href="/products" className="shop-now-button">
+          <Link to="/products" className="shop-now-button">
             Shop Now
-          </a>
+          </Link>
         </div>
       </section>
     </>

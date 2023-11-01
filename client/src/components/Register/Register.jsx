@@ -1,10 +1,10 @@
-import "../../public/css/register.css";
+import "./Register.css";
 export default function Register(props) {
   function onRegister(e) {
     console.log("Registered");
   }
   return (
-    <div className="auth-container">
+    <div className="register-container">
       <div className="register-form">
         <h2>Register</h2>
         <form>

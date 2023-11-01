@@ -1,11 +1,11 @@
-import "../../public/css/login.css";
+import "./Login.css";
 
 export default function Login(props) {
   function onLogin(e) {
     console.log("Logged in");
   }
   return (
-    <div className="auth-container">
+    <div className="login-container">
       <div className="login-form">
         <h2>Login</h2>
         <form>
