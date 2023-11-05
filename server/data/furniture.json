@@ -1,0 +1,23 @@
+{
+  "2fde31d9-bff2-43bb-9da4-c27cd678b9b3": {
+    "_id": "2fde31d9-bff2-43bb-9da4-c27cd678b9b3",
+    "name": "Modern Bed",
+    "url": "https://cb2.scene7.com/is/image/CB2/DondraQueenBedSHS21_1x1",
+    "description": "Comfortable bed for all your needs!",
+    "price": 109.99
+  },
+  "11b5bb5c-7994-11ee-b962-0242ac120002": {
+    "_id": "11b5bb5c-7994-11ee-b962-0242ac120002",
+    "name": "Modern Table",
+    "url": "https://www.diotti.com/media/catalog/product/cache/3/small_image/370x/163b81649b7ef7bc8a00b0066e59ae0a/t/a/tavolo-bon-bon-00t.jpg",
+    "description": "Sturdy table to hold your dinner plates",
+    "price": 76.99
+  },
+  "15f49c24-7994-11ee-b962-0242ac120002": {
+    "_id": "15f49c24-7994-11ee-b962-0242ac120002",
+    "name": "Modern Stove",
+    "url": "https://bonfire.co.uk/wp-content/uploads/2019/10/stuv_16_cube.jpg",
+    "description": "Fast and effective stove to cook your food!",
+    "price": 89.99
+  }
+}

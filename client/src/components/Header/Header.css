@@ -6,6 +6,13 @@ padding:20px 0;
 height : 10%;
 }
 
+.logo {
+    font-size: 1.5em;
+    color: #fff; 
+    font-weight: bold; 
+    text-transform: uppercase;
+  }
+
 nav{
 display:flex;
 justify-content:space-between;

@@ -5,10 +5,12 @@ footer {
     right: 0; 
     background: none; 
     text-align: center;
+    background-color: 	#363636;
+    padding:0.2rem;
   }
   
   .footer-logo {
-    font-size: 1em; 
+    font-size: .4; 
     font-weight: bold;
-    color:black;
+    color:#fff;
 }

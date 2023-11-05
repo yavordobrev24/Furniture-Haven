@@ -4,9 +4,7 @@ export default function Header(props) {
   return (
     <header>
       <nav>
-        <div className="logo">
-          <strong>Furniture Heaven</strong>
-        </div>
+        <div className="logo">Furniture Heaven</div>
         <ul className="nav-links">
           <li>
             <Link to="/">Home</Link>
@@ -18,7 +16,7 @@ export default function Header(props) {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link to="/shopping-cart">Shopping Cart</Link>
           </li>
           <li>
             <Link to="/register">Register</Link>

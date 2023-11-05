@@ -3,12 +3,14 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'TrebuchetMS','LucidaSansUnicode','LucidaGrande','LucidaSans',Arial,sans-serif;
+font-family: 'Segoe UI', sans-serif;
  }
 
 body {
 background-color:#f7f7f7;
 }
-html,body,.root,.site-container{
-    height:100%;
+.container{
+    height:100vh;
+    display: flex;
+    flex-direction: column;
 }

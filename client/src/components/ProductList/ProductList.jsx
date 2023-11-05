@@ -5,7 +5,7 @@ import SearchBar from "../SearchBar/SearchBar.jsx";
 export default function ProductList(props) {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3030/jsonstore/data")
+    fetch("http://localhost:3030/jsonstore/furniture")
       .then((res) => res.json())
       .then((data) => {
         setProducts([]);

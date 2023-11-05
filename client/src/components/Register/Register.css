@@ -1,9 +1,11 @@
 .register-container{
+flex-grow: 1;
 display:flex;
 justify-content:center;
 align-items:center;
 margin:20px auto;
 padding:70px;
+
 }
 
 .register-form{
