@@ -12,7 +12,7 @@ input::-webkit-inner-spin-button {
 }
 .search-bar input[type="Number"]{
   width: 100%;
-  max-width:90px;
+  max-width:100px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -29,18 +29,23 @@ input::-webkit-inner-spin-button {
   font-size: 16px;
   margin-right: 10px;
 }
+.search-bar input:focus{
+  outline-style: solid;
+  outline-color: #a87e47;
+}
 
 .search-bar button {
-  background-color: #007bff;
+  background-color: #D2B48C;
   color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 18px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .search-bar button:hover {
-  background-color: #0056b3;
+  background-color: #a87e47;
 }
 

@@ -1,6 +1,6 @@
 
 header{
-background-color:#007bff;
+background-color:	#D2B48C;/*007bff  #1a7332   */
 color:#fff;
 padding:20px 0;
 height : 10%;
@@ -34,7 +34,7 @@ transition:color 0.3s;
 }
 
 .nav-links a:hover{
-color:#0056b3;
+color:#956629;
 }
 .cart{
 display:flex;
@@ -54,5 +54,5 @@ transition:color 0.3s;
 }
 
 .cart a:hover{
-color:#0056b3;
+color:#956629;
 }

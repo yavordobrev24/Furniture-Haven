@@ -3,8 +3,11 @@
 display:flex;
 justify-content:center;
 align-items:center;
-margin:20px auto;
 padding:70px;
+background-image: url(https://hips.hearstapps.com/hmg-prod/images/posters-in-cozy-apartment-interior-royalty-free-image-943910360-1534189931.jpg);/*https://hips.hearstapps.com/hmg-prod/images/posters-in-cozy-apartment-interior-royalty-free-image-943910360-1534189931.jpg*/
+width: 100%;
+background-size: cover;
+background-position: center;
 }
 .login-form{
 display:flex;
@@ -27,9 +30,15 @@ font-size:20px;
 height:25px;
 }
 .login-form form button{
-padding:14px;
+padding:10px;
 border:none;
 border-radius:5px;
+font-size: 20px;
 color:white;
-background-color:#007bff;
+background-color:#D2B48C;
+transition: background-color 0.3s;
+cursor: pointer;
 }
+.login-form form button:hover {
+    background-color: #956629;
+  }
