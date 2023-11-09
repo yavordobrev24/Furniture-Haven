@@ -36,8 +36,6 @@ Follow these steps to set up Furniture-Haven on your local machine:
 
    ```bash
    cd furniture-haven
-
-   cd client
    ```
 
 3. Install the required dependencies:
