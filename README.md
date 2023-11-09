@@ -36,18 +36,25 @@ Follow these steps to set up Furniture-Haven on your local machine:
 
    ```bash
    cd furniture-haven
+
+   cd client
    ```
 
 3. Install the required dependencies:
 
    ```bash
+   cd client
    npm install
    ```
 
-4. Start the application:
+4. Start the application and the server (should be in two separate terminals):
 
    ```bash
+   cd client
    npm run dev
+
+   cd server
+   node server.js
    ```
 
 5. Open your web browser and access `http://localhost:5173` to begin shopping at Furniture-Haven.
