@@ -1,40 +1,17 @@
+import { useParams } from "react-router-dom";
 import "./Details.css";
-export default function Details() {
-  // Dummy furniture item for demonstration
-  const furnitureItem = {
-    id: 1,
-    name: "Elegant Sofa",
-    price: 599,
-    description: "A comfortable and stylish sofa for your living room.",
-    imageUrl: "sofa.jpg",
-  };
+import { useEffect, useState } from "react";
+export default function Details(props) {
+  const { id } = useParams();
+  const [furnitureData, setFurnitureData] = useState({});
+  useEffect(() => {
+    fetch(`http://localhost:3030/jsonstore/furniture/${id}`)
+      .then((res) => res.json())
+      .then((data) => setFurnitureData(data));
+  }, [id]);
 
   // Dummy reviews for the furniture item
   const reviews = [
-    {
-      id: 1,
-      rating: 4,
-      text: "Great sofa, very comfortable!",
-      user: "John Doe",
-    },
-    {
-      id: 2,
-      rating: 5,
-      text: "Excellent quality and design.",
-      user: "Jane Smith",
-    },
-    {
-      id: 1,
-      rating: 4,
-      text: "Great sofa, very comfortable!",
-      user: "John Doe",
-    },
-    {
-      id: 2,
-      rating: 5,
-      text: "Excellent quality and design.",
-      user: "Jane Smith",
-    },
     {
       id: 1,
       rating: 4,
@@ -58,12 +35,12 @@ export default function Details() {
     <div className="furniture-details-page">
       <div className="details-info">
         <div className="furniture-image">
-          <img src={furnitureItem.imageUrl} alt={furnitureItem.name} />
+          <img src={furnitureData.imageUrl} alt={furnitureData.name} />
         </div>
         <div className="furniture-details">
-          <h1>{furnitureItem.name}</h1>
-          <p className="price">${furnitureItem.price}</p>
-          <p className="description">{furnitureItem.description}</p>
+          <h1>{furnitureData.name}</h1>
+          <p className="price">${furnitureData.price}</p>
+          <p className="description">{furnitureData.description}</p>
           <div className="furniture-buttons">
             <button className="add-to-cart-button">Add to Cart</button>
             <button className="add-review-button" onClick={handleAddReview}>

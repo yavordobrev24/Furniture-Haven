@@ -1,14 +1,12 @@
 import "./Product.css";
+import { Link } from "react-router-dom";
 export default function Product(props) {
   const addToCart = (e) => {
     console.log(props._id);
   };
-  const showDetails = (e) => {
-    console.log("works");
-  };
   return (
     <div className="product">
-      <img src={props.url} alt={props.name} />
+      <img src={props.imageUrl} alt={props.name} />
       <h3>{props.name}</h3>
       <p className="description">{props.description}</p>
       <p className="price">${props.price}</p>
@@ -16,9 +14,9 @@ export default function Product(props) {
         <button className="add-to-cart-button" onClick={addToCart}>
           Add to Cart
         </button>
-        <button className="details-button" onClick={showDetails}>
+        <Link to={`/details/${props._id}`} className="details-button">
           Details
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -11,7 +11,6 @@ export default function ProductList(props) {
         setProducts([]);
         Object.values(data).forEach((x) => {
           setProducts((y) => [...y, x]);
-          console.log(x);
         });
       })
       .catch((e) => console.log(e));
