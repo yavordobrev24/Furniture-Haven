@@ -1,44 +1,68 @@
 .login-container{
-    flex-grow:1;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:70px;
-background-image: url(https://hips.hearstapps.com/hmg-prod/images/posters-in-cozy-apartment-interior-royalty-free-image-943910360-1534189931.jpg);/*https://hips.hearstapps.com/hmg-prod/images/posters-in-cozy-apartment-interior-royalty-free-image-943910360-1534189931.jpg*/
-width: 100%;
-background-size: cover;
-background-position: center;
-}
-.login-form{
-display:flex;
-flex-direction:column;
-gap:20px;
-background-color:#fff;
-padding:20px;
-border:1px solid #ddd;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-width:250px;
-}
-.login-form form{
-display:flex;
-flex-direction:column;
-gap:15px;
-font-size:20px;
-}
-.login-form form input{
-height:25px;
-}
-.login-form form button{
-padding:10px;
-border:none;
-border-radius:5px;
-font-size: 20px;
-color:white;
-background-color:#D2B48C;
-transition: background-color 0.3s;
-cursor: pointer;
-}
-.login-form form button:hover {
-    background-color: #956629;
-  }
+    flex-grow: 1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:70px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.5)) , url(https://hips.hearstapps.com/hmg-prod/images/posters-in-cozy-apartment-interior-royalty-free-image-943910360-1534189931.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .login-form{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    background-color:#fff;
+    color:#000000;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    width:250px;
+    }
+    .login-form form{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+    font-size:20px;
+    }
+    .login-form form div{
+      margin-top:15px;
+    }
+    .login-form h2{
+      align-self: center;
+      margin-bottom: -10px;
+      }
+    
+    .login-form form .form-inputs div{
+      display:flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .login-form form input{
+    height:25px;
+    width:200px;
+    padding:10px;
+    height:2rem;
+    border-radius: 4px;
+    outline: none;
+    border: 3px solid #ddd;
+    transition: 0.5s;
+    }
+    .login-form form input:focus{
+      border: 3px solid #000000;
+    }
+    .login-form form button{
+    padding:10px;
+    border:none;
+    border-radius:5px;
+    color:white;
+    font-size: 20px;
+    background-color:#c8a373;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    width:100%;
+    }
+    .login-form form button:hover {
+        background-color: #956629;
+      }

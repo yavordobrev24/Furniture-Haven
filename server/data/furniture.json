@@ -2,15 +2,17 @@
   "2fde31d9-bff2-43bb-9da4-c27cd678b9b3": {
     "_id": "2fde31d9-bff2-43bb-9da4-c27cd678b9b3",
     "name": "Modern Bed",
-    "imageUrl": "https://cb2.scene7.com/is/image/CB2/DondraQueenBedSHS21_1x1",
+    "imageUrl": "https://t4.ftcdn.net/jpg/04/97/02/61/360_F_497026116_0faq77nXSZMr0QdYTCv55y5EqgT9vRMT.jpg",
     "description": "Comfortable bed for all your needs!",
+    "category": "bedroom",
     "price": 109.99
   },
   "11b5bb5c-7994-11ee-b962-0242ac120002": {
     "_id": "11b5bb5c-7994-11ee-b962-0242ac120002",
     "name": "Modern Table",
-    "imageUrl": "https://www.diotti.com/media/catalog/product/cache/3/small_image/370x/163b81649b7ef7bc8a00b0066e59ae0a/t/a/tavolo-bon-bon-00t.jpg",
+    "imageUrl": "https://media.istockphoto.com/id/1250026682/photo/coffee-table-isolated-on-white-background-with-clipping-path-included-3d-render.jpg?s=612x612&w=0&k=20&c=IpOkTq4QvJOf--WNfOer7n7p4IFEx-bPdoRjV4q8OQ4=",
     "description": "Sturdy table to hold your dinner plates",
+    "category": "livingRoom",
     "price": 76.99
   },
   "15f49c24-7994-11ee-b962-0242ac120002": {
@@ -18,6 +20,7 @@
     "name": "Modern Stove",
     "imageUrl": "https://bonfire.co.uk/wp-content/uploads/2019/10/stuv_16_cube.jpg",
     "description": "Fast and effective stove to cook your food!",
+    "category": "kitchen",
     "price": 89.99
   }
 }

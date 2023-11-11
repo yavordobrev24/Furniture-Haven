@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-image: url(https://hips.hearstapps.com/hmg-prod/images/posters-in-cozy-apartment-interior-royalty-free-image-943910360-1534189931.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.5)) , url(https://hips.hearstapps.com/hmg-prod/images/posters-in-cozy-apartment-interior-royalty-free-image-943910360-1534189931.jpg);
     background-size: cover;
     background-position: center;
     color: #fff;
@@ -13,10 +13,11 @@
   }
   
   .hero-content {
-    background: rgba(210,180,140, 0.8);
+    background: rgba(210,180,140, 0.9);
     padding: 20px;
     max-width: 600px;
     height:280px;
+    border-radius: 10px;
   }
   
  .hero h1 {

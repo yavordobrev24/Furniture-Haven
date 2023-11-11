@@ -16,9 +16,6 @@ export default function Header(props) {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/shopping-cart">Shopping Cart</Link>
-          </li>
-          <li>
             <Link to="/register">Register</Link>
           </li>
           <li>
@@ -29,9 +26,9 @@ export default function Header(props) {
           </li>
         </ul>
         <div className="cart">
-          <a href="#">
+          <Link to="/shopping-cart">
             <i className="fas fa-shopping-cart"></i> (0)
-          </a>
+          </Link>
         </div>
       </nav>
     </header>

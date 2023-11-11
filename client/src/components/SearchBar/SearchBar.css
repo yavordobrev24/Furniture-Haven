@@ -6,9 +6,12 @@ input::-webkit-inner-spin-button {
 
 .search-bar {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 10px;
+  margin-left:20px;
+  gap:10px;
 }
 .search-bar input[type="Number"]{
   width: 100%;
@@ -20,7 +23,7 @@ input::-webkit-inner-spin-button {
   margin-right: 10px;
 }
 
-.search-bar input {
+.search-bar input,select {
   width: 100%;
   max-width: 200px;
   padding: 10px;
@@ -49,3 +52,10 @@ input::-webkit-inner-spin-button {
   background-color: #a87e47;
 }
 
+.search-bar .price-div{
+  display:flex;
+  flex-direction: column;
+}
+.search-bar .price-div>h2,.search-bar .category-div>h2,.search-bar .search-div>h2{
+  font-size: 15px;
+}

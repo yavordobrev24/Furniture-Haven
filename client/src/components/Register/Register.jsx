@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import * as userServices from "../../services/userServices.js";
+import { register } from "../../services/userServices";
 
 import "./Register.css";
+import { Navigate } from "react-router-dom";
 const initialFormValues = {
   username: "",
   email: "",
   password: "",
-  repeatPassword: "",
+  confirmPassword: "",
 };
 export default function Register(props) {
   const [formValues, setFormValues] = useState(initialFormValues);
+  const [registered, setRegistered] = useState(false);
 
   const changeHandler = (e) => {
     setFormValues((state) => ({
@@ -20,9 +22,12 @@ export default function Register(props) {
 
   const onRegister = async (e) => {
     e.preventDefault();
-    await userServices.register(formValues);
+    await register(formValues);
+    setRegistered(true);
   };
-
+  if (registered) {
+    return <Navigate to="/" />;
+  }
   return (
     <div className="register-container">
       <div className="register-form">
@@ -64,12 +69,12 @@ export default function Register(props) {
               />
             </div>
             <div>
-              <label htmlFor="password">Repeat Password</label>
+              <label htmlFor="password">Confirm Password</label>
               <input
                 type="password"
-                id="repeatPassword"
-                name="repeatPassword"
-                value={formValues.repeatPassword}
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formValues.confirmPassword}
                 onChange={changeHandler}
                 required
               />

@@ -1,9 +1,19 @@
 
 .product-list {
-    flex-grow:1;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
     padding: 20px;
-    margin: 20px  100px;
+    margin: 20px;
+  }
+  .product-page{
+    flex-grow:1;
+    display:flex;
+  }
+  .product-list>h2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px ;
   }
