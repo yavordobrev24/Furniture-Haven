@@ -22,7 +22,8 @@ export default function ProductList(props) {
 
   useEffect(() => {
     loadProducts();
-  }, []);
+    setCategory(props.category);
+  }, [props.category]);
 
   const filteredProducts = useMemo(() => {
     let result = products;
@@ -46,7 +47,7 @@ export default function ProductList(props) {
     }
 
     if (category !== "") {
-      result = result.filter((p) => p.category === category);
+      result = result.filter((p) => p.category == category);
     }
 
     return result;

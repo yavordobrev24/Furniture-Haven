@@ -1,63 +1,114 @@
-
-header{
-background-color:	#D2B48C;/*007bff  #1a7332   */
-color:#fff;
-padding:20px 0;
-height : 10%;
+header {
+  background-color: transparent;
+  padding: 20px 0;
+  height: 10%;
 }
 
 .logo {
-    font-size: 1.5em;
-    color: #fff; 
-    font-weight: bold; 
-    text-transform: uppercase;
-    transition: color 0.3s;
-    cursor: default;
-  }
-  .logo:hover{
-    color:#a87e47;
-  }
-
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  cursor: default;
+  color:#000000;
 }
 
-.nav-links li{
-display:inline;
-margin-right:20px;
-list-style:none;
+.logo:hover {
+  color: #049372;
 }
 
-.nav-links a{
-text-decoration:none;
-color:#fff;
-font-weight:bold;
-transition:color 0.3s;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 
-.nav-links a:hover{
-color:#a87e47;
-}
-.cart{
-display:flex;
-align-items:center;
-}
-
-.cart i{
-font-size:24px;
-margin-right:5px;
+.nav-links {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.cart a{
-text-decoration:none;
-color:#fff;
-font-weight:bold;
-transition:color 0.3s;
+.nav-links li {
+  display: inline;
+  margin-right: 20px;
 }
 
-.cart a:hover{
-color:#a87e47;
+.nav-links a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #049372;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  margin-left: 10px; /* Adjust as needed */
+}
+
+.cart i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.cart a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.cart a:hover {
+  color: #049372;
+}
+
+.profile-dropdown {
+  position: relative;
+  margin-right: 10px; /* Adjust as needed */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #000000;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0; 
+}
+
+
+.profile-dropdown i {
+  font-size: 24px;
+  cursor: pointer;
+}
+.profile-dropdown:hover{
+  color:#049372;
+}
+
+
+.profile-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #049372;
 }

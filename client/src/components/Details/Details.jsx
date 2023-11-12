@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./Details.css";
 import { useEffect, useState } from "react";
+
 export default function Details(props) {
   const { id } = useParams();
   const [furnitureData, setFurnitureData] = useState({});
@@ -42,10 +43,14 @@ export default function Details(props) {
           <p className="price">${furnitureData.price}</p>
           <p className="description">{furnitureData.description}</p>
           <div className="furniture-buttons">
-            <button className="add-to-cart-button">Add to Cart</button>
-            <button className="add-review-button" onClick={handleAddReview}>
-              Add Review
+            <button className="buy-button">
+              <i className="fas fa-shopping-bag"></i> Buy
             </button>
+            <Link to={`/details/${id}/add-review`}>
+              <button className="add-review-button" onClick={handleAddReview}>
+                Add Review
+              </button>
+            </Link>
           </div>
         </div>
       </div>

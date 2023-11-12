@@ -1,6 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
 
 export default function SearchBar(props) {
+  const navigate = useNavigate();
+  const onSelect = (e) => {
+    props.setCategory(e.target.value);
+    if (e.target.value === "") {
+      navigate("/products");
+    } else {
+      navigate(`/products/${e.target.value}`);
+    }
+  };
   return (
     <div className="search-bar">
       <div className="search-div">
@@ -20,12 +30,12 @@ export default function SearchBar(props) {
           id="category"
           name="category"
           value={props.category}
-          onChange={(e) => props.setCategory(e.target.value)}
+          onChange={onSelect}
         >
-          <option value="">All Categories</option>
+          <option value="">All</option>
           <option value="kitchen">Kitchen</option>
           <option value="bedroom">Bedroom</option>
-          <option value="livingRoom">Living room</option>
+          <option value="living-room">Living room</option>
         </select>
       </div>
       <div className="price-div">

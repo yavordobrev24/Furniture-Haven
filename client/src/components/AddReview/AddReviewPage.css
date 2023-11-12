@@ -37,16 +37,17 @@
   }
   
   .submit-review-button {
-    background-color: #D2B48C;
+    background-color: #049372;
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 18px;
     cursor: pointer;
+    transition: background-color 0.3s;
   }
   
   .submit-review-button:hover {
-    background-color: #956629;
+    background-color: #006442;
   }
   

@@ -5,22 +5,47 @@
     "imageUrl": "https://t4.ftcdn.net/jpg/04/97/02/61/360_F_497026116_0faq77nXSZMr0QdYTCv55y5EqgT9vRMT.jpg",
     "description": "Comfortable bed for all your needs!",
     "category": "bedroom",
-    "price": 109.99
+    "price": 109.99,
+    "reviews": [
+      {
+        "_id": "78854e62-7b13-11ee-b962-0242ac120002",
+        "rating": "5",
+        "text": "A great bed to lie on!",
+        "username": "Yavor Dobrev",
+        "email": "yavordobrev24@gmail.com"
+      }
+    ]
   },
   "11b5bb5c-7994-11ee-b962-0242ac120002": {
     "_id": "11b5bb5c-7994-11ee-b962-0242ac120002",
     "name": "Modern Table",
     "imageUrl": "https://media.istockphoto.com/id/1250026682/photo/coffee-table-isolated-on-white-background-with-clipping-path-included-3d-render.jpg?s=612x612&w=0&k=20&c=IpOkTq4QvJOf--WNfOer7n7p4IFEx-bPdoRjV4q8OQ4=",
     "description": "Sturdy table to hold your dinner plates",
-    "category": "livingRoom",
+    "category": "living-room",
     "price": 76.99
   },
   "15f49c24-7994-11ee-b962-0242ac120002": {
     "_id": "15f49c24-7994-11ee-b962-0242ac120002",
-    "name": "Modern Stove",
-    "imageUrl": "https://bonfire.co.uk/wp-content/uploads/2019/10/stuv_16_cube.jpg",
-    "description": "Fast and effective stove to cook your food!",
+    "name": "Modern Shelves",
+    "imageUrl": "https://artiss.com.au/cdn/shop/products/FURNI-WALL-SHELF-WH-00_1200x1200.jpg?v=1599641323",
+    "description": "Useful shelves to hold your kitchen belongings!",
     "category": "kitchen",
-    "price": 89.99
+    "price": 29.99
+  },
+  "8ea216d2-817e-11ee-b962-0242ac120002": {
+    "_id": "8ea216d2-817e-11ee-b962-0242ac120002",
+    "name": "Modern Picture",
+    "imageUrl": "https://heroarts.com/cdn/shop/products/CG882_500x500.jpg?v=1651001181",
+    "description": "Beautiful picture to motivate you when cooking!",
+    "category": "kitchen",
+    "price": 39.99
+  },
+  "3c920928-817f-11ee-b962-0242ac120002": {
+    "_id": "3c920928-817f-11ee-b962-0242ac120002",
+    "name": "Wooden Kitchen Table",
+    "imageUrl": "https://media.istockphoto.com/id/1214818861/photo/wooden-modern-table-isolated-on-white-background-folding-kitchen-table-front-view.jpg?s=612x612&w=0&k=20&c=BdFnRq9jJJNqw3DC7fcYKxYkazyA0-m7rqR_8dNA1II=",
+    "description": "Steady wooden table to eat on!",
+    "category": "kitchen",
+    "price": 79.99
   }
 }

@@ -1,19 +1,22 @@
 import { useState } from "react";
 import "./AddReviewPage.css";
+import { useParams } from "react-router-dom";
 export default function AddReviewPage(props) {
+  const { id } = useParams();
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
 
-  const handleRatingChange = (event) => {
-    setRating(Number(event.target.value));
+  const handleRatingChange = (e) => {
+    setRating(Number(e.target.value));
   };
 
-  const handleReviewTextChange = (event) => {
-    setReviewText(event.target.value);
+  const handleReviewTextChange = (e) => {
+    setReviewText(e.target.value);
   };
 
-  const handleSubmitReview = (event) => {
-    event.preventDefault();
+  const handleSubmitReview = (e) => {
+    e.preventDefault();
+    console.log(id);
     console.log("Rating:", rating);
     console.log("Review Text:", reviewText);
   };

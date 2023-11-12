@@ -3,12 +3,9 @@ flex-grow: 1;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:70px;
-background-image: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.5)) , url(https://hips.hearstapps.com/hmg-prod/images/posters-in-cozy-apartment-interior-royalty-free-image-943910360-1534189931.jpg);
-    background-size: cover;
-    background-position: center;
-}
+padding:60px;
 
+}
 .register-form{
 display:flex;
 flex-direction:column;
@@ -18,7 +15,8 @@ color:#000000;
 padding:20px;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
-width:250px;
+width:400px;
+height:470px;
 }
 .register-form form{
 display:flex;
@@ -27,13 +25,11 @@ gap:30px;
 font-size:20px;
 }
 .register-form form div{
-  margin-top:15px;
-  
+  margin-top:10px;
 }
 
 .register-form h2{
   align-self: center;
-  margin-bottom: -10px;
   }
 
 .register-form form .form-inputs div{
@@ -43,7 +39,7 @@ font-size:20px;
 }
 .register-form form input{
 height:25px;
-width:200px;
+width:250px;
 padding:10px;
 height:2rem;
 border-radius: 4px;
@@ -60,10 +56,10 @@ border:none;
 border-radius:5px;
 color:white;
 font-size: 20px;
-background-color:#c8a373;
+background-color:#049372;
 transition: background-color 0.3s;
 cursor: pointer;
 }
 .register-form form button:hover {
-    background-color: #956629;
+    background-color: #000000;
   }

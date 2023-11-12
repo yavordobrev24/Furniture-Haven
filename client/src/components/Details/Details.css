@@ -4,7 +4,6 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
   }
@@ -23,8 +22,7 @@
   
   .furniture-image img {
     max-width: 100%;
-    height: 100%;
-    border: 3px solid #D2B48C;
+    max-height: 300px;
 
   }
   
@@ -32,16 +30,39 @@
     flex: 1;
     padding: 20px;
   }
-  
+
+.furniture-details-page .buy-button {
+  background-color: #049372;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.furniture-details-page .buy-button:hover {
+  background-color: #006442;
+}
+
+.furniture-details-page .buy-button i {
+  margin-right: 5px;
+}
+
   .furniture-details-page h1 {
     font-size: 28px;
     margin-bottom: 10px;
+    color:#000000;
   }
   
   .furniture-details-page .price {
     font-size: 24px;
     font-weight: bold;
-    color: #a87e47;
+    color: #000000;
   }
   
   .furniture-details-page .description {
@@ -50,7 +71,7 @@
   }
   
   .furniture-details-page .add-to-cart-button,.furniture-details-page .add-review-button{
-    background-color: #D2B48C;
+    background-color: #049372;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -62,7 +83,7 @@
   }
   
   .furniture-details-page .add-to-cart-button:hover,.furniture-details-page .add-review-button:hover {
-    background-color: #956629;
+    background-color: #006442;
   }
   /*reviews*/
 .reviews {
@@ -85,7 +106,7 @@
   
   .rating {
     font-weight: bold;
-    color: #D2B48C;
+    color: #049372;
   }
   
   .text {
@@ -111,14 +132,15 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
-  color: #956629;
+  color: #049372;
   display: flex;
   align-items: center;
 }
 
 .edit-button:hover,
 .delete-button:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color:#006442;
 }
 
 .edit-button i,

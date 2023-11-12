@@ -4,34 +4,32 @@
     justify-content:center;
     align-items:center;
     padding:70px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.5)) , url(https://hips.hearstapps.com/hmg-prod/images/posters-in-cozy-apartment-interior-royalty-free-image-943910360-1534189931.jpg);
-        background-size: cover;
-        background-position: center;
     }
     
     .login-form{
     display:flex;
     flex-direction:column;
     align-items: center;
+    justify-content: space-evenly;
     background-color:#fff;
     color:#000000;
     padding:20px;
     border-radius:10px;
     box-shadow:0 0 10px rgba(0,0,0,0.1);
-    width:250px;
+    width:400px;
+    height:400px;
     }
     .login-form form{
     display:flex;
     flex-direction:column;
+    justify-content: space-between;
+    align-items: space-between;
     gap:30px;
     font-size:20px;
     }
-    .login-form form div{
-      margin-top:15px;
-    }
     .login-form h2{
       align-self: center;
-      margin-bottom: -10px;
+      margin-bottom: -20px;
       }
     
     .login-form form .form-inputs div{
@@ -41,13 +39,18 @@
     }
     .login-form form input{
     height:25px;
-    width:200px;
+    width:250px;
     padding:10px;
     height:2rem;
     border-radius: 4px;
     outline: none;
     border: 3px solid #ddd;
     transition: 0.5s;
+    }
+    .login-form .form-inputs{
+      display:flex;
+      flex-direction: column;
+      gap:15px;
     }
     .login-form form input:focus{
       border: 3px solid #000000;
@@ -56,13 +59,13 @@
     padding:10px;
     border:none;
     border-radius:5px;
-    color:white;
+    color:#fff;
     font-size: 20px;
-    background-color:#c8a373;
+    background-color:#049372;
     transition: background-color 0.3s;
     cursor: pointer;
     width:100%;
     }
     .login-form form button:hover {
-        background-color: #956629;
+        background-color: #000000;
       }

@@ -8,21 +8,21 @@ input::-webkit-inner-spin-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 10px;
   margin-left:20px;
   gap:10px;
+  width:20%;
 }
 .search-bar input[type="Number"]{
   width: 100%;
-  max-width:100px;
+  width:100px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
   margin-right: 10px;
 }
-
 .search-bar input,select {
   width: 100%;
   max-width: 200px;
@@ -34,11 +34,11 @@ input::-webkit-inner-spin-button {
 }
 .search-bar input:focus{
   outline-style: solid;
-  outline-color: #a87e47;
+  outline-color: #049372;
 }
 
 .search-bar button {
-  background-color: #D2B48C;
+  background-color: #049372;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -49,7 +49,7 @@ input::-webkit-inner-spin-button {
 }
 
 .search-bar button:hover {
-  background-color: #a87e47;
+  background-color: #049372;
 }
 
 .search-bar .price-div{
@@ -58,4 +58,7 @@ input::-webkit-inner-spin-button {
 }
 .search-bar .price-div>h2,.search-bar .category-div>h2,.search-bar .search-div>h2{
   font-size: 15px;
+}
+.search-bar .price-div div{
+  gap:10px;
 }

@@ -19,10 +19,22 @@ function App() {
       <Header />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/products" element={<ProductList />} />
+        <Route path="/products" element={<ProductList category="" />} />
         <Route path="/about" element={<About />} />
+        <Route
+          path="/products/kitchen"
+          element={<ProductList category="kitchen" />}
+        />
+        <Route
+          path="/products/bedroom"
+          element={<ProductList category="bedroom" />}
+        />
+        <Route
+          path="/products/living-room"
+          element={<ProductList category="living-room" />}
+        />
         <Route path="/details/:id" element={<Details />} />
-        <Route path="/add-review" element={<AddReviewPage />} />
+        <Route path="/details/:id/add-review" element={<AddReviewPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/register" element={<Register />} />

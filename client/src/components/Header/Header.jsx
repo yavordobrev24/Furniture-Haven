@@ -1,5 +1,6 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
+
 export default function Header(props) {
   return (
     <header>
@@ -15,16 +16,16 @@ export default function Header(props) {
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/logout">Logout</Link>
-          </li>
         </ul>
+        <div className="profile-dropdown">
+          <i className="fas fa-user"></i>
+          <div className="dropdown-content">
+            <Link to="/register">Register</Link>
+            <Link to="/login">Login</Link>
+            <Link to="/logout">Logout</Link>
+            <Link to="/profile">Profile</Link>
+          </div>
+        </div>
         <div className="cart">
           <Link to="/shopping-cart">
             <i className="fas fa-shopping-cart"></i> (0)

@@ -1,46 +1,71 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
 
-.hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.5)) , url(https://hips.hearstapps.com/hmg-prod/images/posters-in-cozy-apartment-interior-royalty-free-image-943910360-1534189931.jpg);
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    padding:20vh;
-    flex-grow:1;
+.home-page {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.card {
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.card:hover .card-content {
+  opacity: 1;
+  animation: shining 1s infinite alternate;
+}
+
+@keyframes shining {
+  to {
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.6);
   }
-  
-  .hero-content {
-    background: rgba(210,180,140, 0.9);
-    padding: 20px;
-    max-width: 600px;
-    height:280px;
-    border-radius: 10px;
-  }
-  
- .hero h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    color:#fff;
-  }
-  
- .hero p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-  }
-  
-  .shop-now-button {
-    background-color: #c8a373;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-  
-  .shop-now-button:hover {
-    background-color: #956629;
-  }
+}
+
+.intro {
+  text-align: center;
+  margin-top: 20px;
+  color: #555;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
