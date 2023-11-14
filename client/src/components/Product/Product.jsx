@@ -11,7 +11,7 @@ export default function Product(props) {
 
   return (
     <Link
-      to={`/details/${props._id}`}
+      to={`/products/${props._id}`}
       className="product-link"
       style={{ textDecoration: "none" }}
     >

@@ -2,6 +2,7 @@ import "./ProductList.css";
 import Product from "../Product/Product.jsx";
 import { useEffect, useMemo, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar.jsx";
+import { getAllProducts } from "../../services/furnitureService.js";
 
 export default function ProductList(props) {
   const [products, setProducts] = useState([]);
@@ -10,18 +11,12 @@ export default function ProductList(props) {
   const [maxPrice, setMaxPrice] = useState("");
   const [category, setCategory] = useState("");
 
-  const loadProducts = () => {
-    fetch("http://localhost:3030/jsonstore/furniture")
-      .then((res) => res.json())
-      .then((data) => {
-        const productsArray = Object.values(data);
-        setProducts(productsArray);
-      })
-      .catch((e) => console.log(e));
-  };
-
+  async function fetchProducts() {
+    const data = await getAllProducts();
+    setProducts(data);
+  }
   useEffect(() => {
-    loadProducts();
+    fetchProducts();
     setCategory(props.category);
   }, [props.category]);
 

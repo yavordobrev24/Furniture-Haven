@@ -1,0 +1,50 @@
+.review {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .rating {
+    font-weight: bold;
+    color: #049372;
+  }
+  
+  .text {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  .user {
+    margin-top: 5px;
+    font-style: italic;
+  }
+
+.review-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.edit-button,
+.delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #049372;
+  display: flex;
+  align-items: center;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  text-decoration: none;
+  color:#006442;
+}
+
+.edit-button i,
+.delete-button i {
+  margin-right: 5px;
+}

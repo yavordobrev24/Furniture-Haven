@@ -5,16 +5,7 @@
     "imageUrl": "https://t4.ftcdn.net/jpg/04/97/02/61/360_F_497026116_0faq77nXSZMr0QdYTCv55y5EqgT9vRMT.jpg",
     "description": "Comfortable bed for all your needs!",
     "category": "bedroom",
-    "price": 109.99,
-    "reviews": [
-      {
-        "_id": "78854e62-7b13-11ee-b962-0242ac120002",
-        "rating": "5",
-        "text": "A great bed to lie on!",
-        "username": "Yavor Dobrev",
-        "email": "yavordobrev24@gmail.com"
-      }
-    ]
+    "price": 109.99
   },
   "11b5bb5c-7994-11ee-b962-0242ac120002": {
     "_id": "11b5bb5c-7994-11ee-b962-0242ac120002",

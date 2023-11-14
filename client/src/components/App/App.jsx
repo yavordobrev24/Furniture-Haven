@@ -33,8 +33,8 @@ function App() {
           path="/products/living-room"
           element={<ProductList category="living-room" />}
         />
-        <Route path="/details/:id" element={<Details />} />
-        <Route path="/details/:id/add-review" element={<AddReviewPage />} />
+        <Route path="/products/:id" element={<Details />} />
+        <Route path="/products/:id/add-review" element={<AddReviewPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/register" element={<Register />} />
