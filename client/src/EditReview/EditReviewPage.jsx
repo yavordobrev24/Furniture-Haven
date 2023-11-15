@@ -1,9 +1,10 @@
-import { useState } from "react";
-import "./AddReviewPage.css";
+import { useEffect, useState } from "react";
+import "./EditReviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { createReview } from "../../services/reviewService";
-export default function AddReviewPage(props) {
-  const { id } = useParams();
+import { editReview, getSingleReview } from "../services/reviewService";
+
+export default function EditReviewPage(props) {
+  const { id, reviewId } = useParams();
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
   const navigate = useNavigate();
@@ -14,23 +15,32 @@ export default function AddReviewPage(props) {
   const handleReviewTextChange = (e) => {
     setReviewText(e.target.value);
   };
+  const getReview = async (reviewId) => {
+    const result = await getSingleReview(reviewId);
+    setRating(result.rating);
+    setReviewText(result.text);
+  };
+  useEffect(() => {
+    getReview(reviewId);
+  }, []);
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();
     const data = {
       productId: id,
-      reviewerId: "12345-random-id",
+      reviewerId: "reviewerId",
       rating: rating,
       text: reviewText,
       username: "Username",
+      _id: reviewId,
     };
-    await createReview(data);
+    await editReview(reviewId, data);
     navigate(`/products/${id}`);
   };
 
   return (
-    <div className="add-review-page">
-      <h1>Add Your Review</h1>
+    <div className="edit-review-page">
+      <h1>Edit Your Review</h1>
       <form onSubmit={handleSubmitReview}>
         <label htmlFor="rating">Rating:</label>
         <select id="rating" value={rating} onChange={handleRatingChange}>

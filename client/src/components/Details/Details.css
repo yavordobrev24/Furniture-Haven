@@ -85,14 +85,3 @@
   .furniture-details-page .add-to-cart-button:hover,.furniture-details-page .add-review-button:hover {
     background-color: #006442;
   }
-  .reviews {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-  }
-.review-list{
-    align-self: flex-start;
-    display: flex;
-    flex-wrap: wrap;
-    gap:10px;
-  }

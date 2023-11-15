@@ -13,6 +13,7 @@ import ShoppingCart from "../ShoppingCart/ShoppingCart.jsx";
 import Details from "../Details/Details.jsx";
 import AddReviewPage from "../AddReview/AddReviewPage.jsx";
 import Profile from "../Profile/Profile.jsx";
+import EditReviewPage from "../../EditReview/EditReviewPage.jsx";
 function App() {
   return (
     <div className="container">
@@ -35,6 +36,10 @@ function App() {
         />
         <Route path="/products/:id" element={<Details />} />
         <Route path="/products/:id/add-review" element={<AddReviewPage />} />
+        <Route
+          path="/products/:id/edit-review/:reviewId"
+          element={<EditReviewPage />}
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/register" element={<Register />} />
