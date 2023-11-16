@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import ReviewCard from "../components/ReviewCard/ReviewCard";
+import ReviewCard from "../ReviewCard/ReviewCard";
 import { useParams } from "react-router-dom";
 import "./ReviewList.css";
-import { getProductReviews } from "../services/reviewService";
-import { deleteReview } from "../services/reviewService";
+import { getProductReviews } from "../../services/reviewService";
+import { deleteReview } from "../../services/reviewService";
 export default function ReviewList(props) {
   const { id } = useParams();
   const [reviews, setReviews] = useState({});

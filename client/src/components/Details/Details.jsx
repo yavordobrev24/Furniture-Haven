@@ -2,8 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import "./Details.css";
 import { useEffect, useState } from "react";
 import { getSingleProduct } from "../../services/furnitureService";
-import { getProductReviews } from "../../services/reviewService";
-import ReviewList from "../../ReviewList/ReviewList";
+import ReviewList from "../ReviewList/ReviewList";
 
 export default function Details(props) {
   const { id } = useParams();

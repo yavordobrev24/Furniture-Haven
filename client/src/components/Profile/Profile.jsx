@@ -3,9 +3,8 @@ import "./Profile.css";
 export default function Profile(props) {
   // Dummy user data for demonstration
   const user = {
-    name: "John Doe",
-    username: "johndoe123",
-    email: "johndoe@example.com",
+    username: "Username",
+    email: "username@email.com",
     profilePicture:
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
   };

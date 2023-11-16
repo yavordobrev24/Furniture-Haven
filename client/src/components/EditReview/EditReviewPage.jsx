@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./EditReviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { editReview, getSingleReview } from "../services/reviewService";
+import { editReview, getSingleReview } from "../../services/reviewService";
 
 export default function EditReviewPage(props) {
   const { id, reviewId } = useParams();

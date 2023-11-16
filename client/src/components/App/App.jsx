@@ -13,7 +13,7 @@ import ShoppingCart from "../ShoppingCart/ShoppingCart.jsx";
 import Details from "../Details/Details.jsx";
 import AddReviewPage from "../AddReview/AddReviewPage.jsx";
 import Profile from "../Profile/Profile.jsx";
-import EditReviewPage from "../../EditReview/EditReviewPage.jsx";
+import EditReviewPage from "../EditReview/EditReviewPage.jsx";
 function App() {
   return (
     <div className="container">
