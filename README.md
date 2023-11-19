@@ -1,6 +1,6 @@
 # Furniture Heaven - Your Ultimate Furniture Shopping Destination 🪑
 
-Welcome to Furniture-Haven, your one-stop online furniture store, designed with a sleek and intuitive user interface. This Single Page Application (SPA) is built using React.js and powered by Vite.js for an efficient build toolchain. With Furniture-Haven, you can browse, register, log in, explore furniture details, make purchases, and keep track of your selected items in your shopping cart.
+Welcome to Furniture Heaven, your one-stop online furniture store, designed with a sleek and intuitive user interface. This Single Page Application (SPA) is built using React.js and powered by Vite.js for an efficient build toolchain. With Furniture Heaven, you can browse, register, log in, explore furniture details, make purchases, and keep track of your selected items in your shopping cart.
 
 ## Features
 
@@ -18,7 +18,7 @@ Welcome to Furniture-Haven, your one-stop online furniture store, designed with 
 
 ## Getting Started
 
-Follow these steps to set up Furniture-Haven on your local machine:
+Follow these steps to set up Furniture Heaven on your local machine:
 
 ### Prerequisites
 
@@ -35,7 +35,7 @@ Follow these steps to set up Furniture-Haven on your local machine:
 2. Navigate to the project directory:
 
    ```bash
-   cd furniture-haven
+   cd furniture-heaven
    ```
 
 3. Install the required dependencies:
@@ -99,4 +99,4 @@ Follow these steps to set up Furniture-Haven on your local machine:
 
 - Furniture icons and images used in this app are sourced from various artists on [Flaticon](https://www.flaticon.com/).
 
-Enjoy shopping at Furniture-Haven and bring your dream furniture pieces home! 🪑🛍️
+Enjoy shopping at Furniture Heaven and bring your dream furniture pieces home! 🪑🛍️
