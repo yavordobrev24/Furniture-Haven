@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
+import AuthContext from "../../contexts/authContext";
 
 export default function Header(props) {
+  const { isAuthenticated } = useContext(AuthContext);
   return (
     <header>
       <nav>
@@ -20,10 +23,18 @@ export default function Header(props) {
         <div className="profile-dropdown">
           <i className="fas fa-user"></i>
           <div className="dropdown-content">
-            <Link to="/register">Register</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/logout">Logout</Link>
-            <Link to="/profile">Profile</Link>
+            {!isAuthenticated && (
+              <>
+                <Link to="/register">Register</Link>
+                <Link to="/login">Login</Link>
+              </>
+            )}
+            {isAuthenticated && (
+              <>
+                <Link to="/logout">Logout</Link>
+                <Link to="/profile">Profile</Link>
+              </>
+            )}
           </div>
         </div>
         <div className="cart">

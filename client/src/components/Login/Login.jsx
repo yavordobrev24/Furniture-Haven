@@ -1,43 +1,31 @@
-import { useState } from "react";
 import "./Login.css";
-import { login } from "../../services/userServices";
-import { Navigate } from "react-router-dom";
-const initialFormValues = {
-  email: "",
-  password: "",
+import useForm from "../../hooks/useForm";
+import { useContext } from "react";
+import AuthContext from "../../contexts/authContext";
+const LoginFormKeys = {
+  Email: "email",
+  Password: "password",
 };
-export default function Login(props) {
-  const [formValues, setFormValues] = useState(initialFormValues);
-  const [logged, setLogged] = useState(false);
-  const changeHandler = (e) => {
-    setFormValues((state) => ({
-      ...state,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const onLogin = async (e) => {
-    e.preventDefault();
-    await login(formValues);
-    setLogged(true);
-  };
-  if (logged) {
-    return <Navigate to="/" />;
-  }
+export default function Login() {
+  const { loginSubmitHandler } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+    [LoginFormKeys.Email]: "",
+    [LoginFormKeys.Password]: "",
+  });
   return (
     <div className="login-container">
       <div className="login-form">
         <h2>Login</h2>
-        <form onSubmit={onLogin}>
+        <form onSubmit={onSubmit}>
           <div className="form-inputs">
             <div>
               <label htmlFor="email">Email</label>
               <input
                 type="text"
                 id="email"
-                name="email"
-                value={formValues.email}
-                onChange={changeHandler}
+                name={LoginFormKeys.Email}
+                value={values[LoginFormKeys.Email]}
+                onChange={onChange}
                 required
               />
             </div>
@@ -46,9 +34,9 @@ export default function Login(props) {
               <input
                 type="password"
                 id="password"
-                name="password"
-                value={formValues.password}
-                onChange={changeHandler}
+                name={LoginFormKeys.Password}
+                value={values[LoginFormKeys.Password]}
+                onChange={onChange}
                 required
               />
             </div>

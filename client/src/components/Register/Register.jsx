@@ -1,47 +1,35 @@
-import { useEffect, useState } from "react";
-import { register } from "../../services/userServices";
-
 import "./Register.css";
-import { Navigate } from "react-router-dom";
-const initialFormValues = {
-  username: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
+import useForm from "../../hooks/useForm";
+import { useContext } from "react";
+import AuthContext from "../../contexts/authContext";
+const RegisterFormKeys = {
+  Username: "username",
+  Email: "email",
+  Password: "password",
+  ConfirmPassword: "confirmPassword",
 };
 export default function Register(props) {
-  const [formValues, setFormValues] = useState(initialFormValues);
-  const [registered, setRegistered] = useState(false);
-
-  const changeHandler = (e) => {
-    setFormValues((state) => ({
-      ...state,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const onRegister = async (e) => {
-    e.preventDefault();
-    await register(formValues);
-    setRegistered(true);
-  };
-  if (registered) {
-    return <Navigate to="/" />;
-  }
+  const { registerSubmitHandler } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+    [RegisterFormKeys.Username]: "",
+    [RegisterFormKeys.Email]: "",
+    [RegisterFormKeys.Password]: "",
+    [RegisterFormKeys.ConfirmPassword]: "",
+  });
   return (
     <div className="register-container">
       <div className="register-form">
         <h2>Register</h2>
-        <form onSubmit={onRegister}>
+        <form onSubmit={onSubmit}>
           <div className="form-inputs">
             <div>
               <label htmlFor="username">Username</label>
               <input
                 type="text"
                 id="username"
-                name="username"
-                value={formValues.username}
-                onChange={changeHandler}
+                name={RegisterFormKeys.Username}
+                value={values[RegisterFormKeys.Username]}
+                onChange={onChange}
                 /*onBlur={validateHandler}*/
                 required
               />
@@ -51,9 +39,9 @@ export default function Register(props) {
               <input
                 type="text"
                 id="email"
-                name="email"
-                value={formValues.email}
-                onChange={changeHandler}
+                name={RegisterFormKeys.Email}
+                value={values[RegisterFormKeys.Email]}
+                onChange={onChange}
                 required
               />
             </div>
@@ -62,9 +50,9 @@ export default function Register(props) {
               <input
                 type="password"
                 id="password"
-                name="password"
-                value={formValues.password}
-                onChange={changeHandler}
+                name={RegisterFormKeys.Password}
+                value={values[RegisterFormKeys.Password]}
+                onChange={onChange}
                 required
               />
             </div>
@@ -73,9 +61,9 @@ export default function Register(props) {
               <input
                 type="password"
                 id="confirmPassword"
-                name="confirmPassword"
-                value={formValues.confirmPassword}
-                onChange={changeHandler}
+                name={RegisterFormKeys.ConfirmPassword}
+                value={values[RegisterFormKeys.ConfirmPassword]}
+                onChange={onChange}
                 required
               />
             </div>
