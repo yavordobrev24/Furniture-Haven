@@ -1,9 +1,10 @@
 import { get } from "../lib/request";
-const baseUrl = "http://localhost:3030/jsonstore/furniture";
+const baseUrl = "http://localhost:3030/data/furniture";
 
 export const getAllProducts = async () => {
   const result = await get(baseUrl);
-  return Object.values(result);
+  console.log(result);
+  return result;
 };
 
 export const getSingleProduct = async (furnitureId) => {
