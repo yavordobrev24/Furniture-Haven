@@ -1442,6 +1442,20 @@
         hashedPassword:
           "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
       },
+      /*"78854e62-7b13-11ee-b962-0242ac120002": {
+        email: "yavordobrev24@gmail.com",
+        username: "Yavor Dobrev",
+        password: "123456",
+        cart: [
+          {
+            _id: "2fde31d9-bff2-43bb-9da4-c27cd678b9b3",
+            name: "Modern Bed",
+            url: "https://cb2.scene7.com/is/image/CB2/DondraQueenBedSHS21_1x1",
+            description: "Comfortable bed for all your needs!",
+            price: 109.99,
+          },
+        ],
+      },*/
     },
     sessions: {},
   };
@@ -1554,6 +1568,16 @@
         description: "Chair to rock in!",
         category: "living-room",
         price: 59.99,
+      },
+    },
+    reviews: {
+      "78854e62-7b13-11ee-b962-0242ac120002": {
+        productId: "2fde31d9-bff2-43bb-9da4-c27cd678b9b3",
+        rating: 4,
+        text: "A great bed to lie on!",
+        username: "Yavor Dobrev",
+        _ownerId: "78854e62-7b13-11ee-b962-0242ac120002",
+        _id: "78854e62-7b13-11ee-b962-0242ac120002",
       },
     },
   };

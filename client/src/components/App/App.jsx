@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 import * as authService from "../../services/authService.js";
@@ -27,14 +27,15 @@ function App() {
     localStorage.removeItem("accessToken");
     return {};
   });
+  useEffect(() => {
+    navigate(Path.Home);
+  }, [auth]);
 
   const loginSubmitHandler = async (values) => {
     const result = await authService.login(values.email, values.password);
     console.log(result);
     localStorage.setItem("accessToken", result.accessToken);
     setAuth(result);
-
-    navigate(Path.Home);
   };
 
   const registerSubmitHandler = async (values) => {
@@ -46,7 +47,6 @@ function App() {
     console.log(result);
     localStorage.setItem("accessToken", result.accessToken);
     setAuth(result);
-    navigate(Path.Home);
   };
   const logoutHandler = () => {
     localStorage.removeItem("accessToken");
@@ -56,6 +56,7 @@ function App() {
     loginSubmitHandler,
     registerSubmitHandler,
     logoutHandler,
+    _userId: auth._id,
     username: auth.username,
     email: auth.email,
     isAuthenticated: !!auth.email,

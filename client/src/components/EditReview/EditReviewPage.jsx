@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./EditReviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { editReview, getSingleReview } from "../../services/reviewService";
+import AuthContext from "../../contexts/authContext";
 
 export default function EditReviewPage(props) {
+  const { _userId, username } = useContext(AuthContext);
   const { id, reviewId } = useParams();
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
@@ -28,12 +30,13 @@ export default function EditReviewPage(props) {
     e.preventDefault();
     const data = {
       productId: id,
-      reviewerId: "reviewerId",
+      reviewerId: _userId,
       rating: rating,
       text: reviewText,
-      username: "Username",
+      username: username,
       _id: reviewId,
     };
+    console.log("HERE", data);
     await editReview(reviewId, data);
     navigate(`/products/${id}`);
   };

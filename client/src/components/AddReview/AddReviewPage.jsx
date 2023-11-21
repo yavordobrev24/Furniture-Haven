@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./AddReviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { createReview } from "../../services/reviewService";
+import AuthContext from "../../contexts/authContext";
 export default function AddReviewPage(props) {
+  const { _userId, username } = useContext(AuthContext);
   const { id } = useParams();
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
   const navigate = useNavigate();
+
   const handleRatingChange = (e) => {
     setRating(Number(e.target.value));
   };
@@ -19,11 +22,12 @@ export default function AddReviewPage(props) {
     e.preventDefault();
     const data = {
       productId: id,
-      reviewerId: "12345-random-id",
+      reviewerId: _userId,
       rating: rating,
       text: reviewText,
-      username: "Username",
+      username: username,
     };
+    console.log(data);
     await createReview(data);
     navigate(`/products/${id}`);
   };
