@@ -85,19 +85,6 @@
   text-align: center;
 }
 
-.item-interaction>input{
-  all:unset;
-  border: none;
-  width:40px;
-  margin:5px;
-  padding:8px;
-  border-radius: 5px;
-  height:10px;
-}
-.item-interaction>input:focus{
-  border: 2px solid #049372;
-}
-
 .close-button {
   margin-top: 10px;
   padding: 8px 16px;

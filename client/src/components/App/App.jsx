@@ -1,9 +1,7 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 import "./App.css";
-import * as authService from "../../services/authService.js";
-import AuthContext from "../../contexts/authContext.js";
+import { AuthProvider } from "../../contexts/authContext.jsx";
 
 import Logout from "../Logout/Logout.jsx";
 import Login from "../Login/Login.jsx";
@@ -19,51 +17,10 @@ import Details from "../Details/Details.jsx";
 import AddReviewPage from "../AddReview/AddReviewPage.jsx";
 import Profile from "../Profile/Profile.jsx";
 import EditReviewPage from "../EditReview/EditReviewPage.jsx";
-import Path from "../../path.js";
 
 function App() {
-  const navigate = useNavigate();
-  const [auth, setAuth] = useState(() => {
-    localStorage.removeItem("accessToken");
-    return {};
-  });
-  useEffect(() => {
-    navigate(Path.Home);
-  }, [auth]);
-
-  const loginSubmitHandler = async (values) => {
-    const result = await authService.login(values.email, values.password);
-    console.log(result);
-    localStorage.setItem("accessToken", result.accessToken);
-    setAuth(result);
-  };
-
-  const registerSubmitHandler = async (values) => {
-    const result = await authService.register(
-      values.username,
-      values.email,
-      values.password
-    );
-    console.log(result);
-    localStorage.setItem("accessToken", result.accessToken);
-    setAuth(result);
-  };
-  const logoutHandler = () => {
-    localStorage.removeItem("accessToken");
-    setAuth({});
-  };
-  const values = {
-    loginSubmitHandler,
-    registerSubmitHandler,
-    logoutHandler,
-    _userId: auth._id,
-    username: auth.username,
-    email: auth.email,
-    isAuthenticated: !!auth.email,
-  };
-
   return (
-    <AuthContext.Provider value={values}>
+    <AuthProvider>
       <div className="container">
         <Header />
         <Routes>
@@ -97,7 +54,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/authContext";
 
 export default function Header(props) {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, cart } = useContext(AuthContext);
   return (
     <header>
       <nav>
@@ -20,6 +20,14 @@ export default function Header(props) {
             <Link to="/about">About</Link>
           </li>
         </ul>
+        {isAuthenticated && (
+          <div className="cart">
+            <Link to="/shopping-cart">
+              {cart?.cartItems ? cart.cartItems.length : 0}
+              <i className="fas fa-shopping-cart"></i>
+            </Link>
+          </div>
+        )}
         <div className="profile-dropdown">
           <i className="fas fa-user"></i>
           <div className="dropdown-content">
@@ -36,11 +44,6 @@ export default function Header(props) {
               </>
             )}
           </div>
-        </div>
-        <div className="cart">
-          <Link to="/shopping-cart">
-            <i className="fas fa-shopping-cart"></i> (0)
-          </Link>
         </div>
       </nav>
     </header>

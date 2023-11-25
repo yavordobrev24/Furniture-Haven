@@ -3,7 +3,6 @@ const baseUrl = "http://localhost:3030/data/furniture";
 
 export const getAllProducts = async () => {
   const result = await get(baseUrl);
-  console.log(result);
   return result;
 };
 

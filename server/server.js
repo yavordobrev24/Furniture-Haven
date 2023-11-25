@@ -103,7 +103,8 @@
       // NOTE: the OPTIONS method results in undefined result and also it never processes plugins - keep this in mind
       if (method == "OPTIONS") {
         Object.assign(headers, {
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Methods":
+            "GET, POST, PUT, DELETE, OPTIONS, PATCH",
           "Access-Control-Allow-Credentials": false,
           "Access-Control-Max-Age": "86400",
           "Access-Control-Allow-Headers":
@@ -1208,6 +1209,8 @@
             const session = saveSession(result._id);
             result.accessToken = session.accessToken;
 
+            console.log(result);
+
             return result;
           } else {
             throw new CredentialError$1("Login or password don't match");
@@ -1424,38 +1427,18 @@
   var identity = "email";
   var protectedData = {
     users: {
-      "35c62d76-8152-4626-8712-eeb96381bea8": {
-        email: "peter@abv.bg",
+      "78854e62-7b13-11ee-b962-0242ac120002": {
+        email: "yavor@gmail.com",
+        username: "Yavor",
+        hashedPassword:
+          "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+      },
+      "55554e62-7b13-11ee-b962-0242ac120002": {
+        email: "peter@gmail.com",
         username: "Peter",
         hashedPassword:
           "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
       },
-      "847ec027-f659-4086-8032-5173e2f9c93a": {
-        email: "george@abv.bg",
-        username: "George",
-        hashedPassword:
-          "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
-      },
-      "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
-        email: "admin@abv.bg",
-        username: "Admin",
-        hashedPassword:
-          "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
-      },
-      /*"78854e62-7b13-11ee-b962-0242ac120002": {
-        email: "yavordobrev24@gmail.com",
-        username: "Yavor Dobrev",
-        password: "123456",
-        cart: [
-          {
-            _id: "2fde31d9-bff2-43bb-9da4-c27cd678b9b3",
-            name: "Modern Bed",
-            url: "https://cb2.scene7.com/is/image/CB2/DondraQueenBedSHS21_1x1",
-            description: "Comfortable bed for all your needs!",
-            price: 109.99,
-          },
-        ],
-      },*/
     },
     sessions: {},
   };
@@ -1571,13 +1554,42 @@
       },
     },
     reviews: {
-      "78854e62-7b13-11ee-b962-0242ac120002": {
+      "23434e62-7b13-11ee-b962-0242ac12004": {
         productId: "2fde31d9-bff2-43bb-9da4-c27cd678b9b3",
         rating: 4,
-        text: "A great bed to lie on!",
-        username: "Yavor Dobrev",
+        text: "A great bed to relax in!",
+        username: "Yavor",
         _ownerId: "78854e62-7b13-11ee-b962-0242ac120002",
-        _id: "78854e62-7b13-11ee-b962-0242ac120002",
+        _id: "23434e62-7b13-11ee-b962-0242ac12004",
+      },
+    },
+    carts: {
+      "654b13-11ee-b962-0242ac120002": {
+        _ownerId: "78854e62-7b13-11ee-b962-0242ac120002",
+        cartItems: [
+          {
+            _id: "433340928-812341ee-b962-0242ac120043",
+            name: "Velvet Armchair",
+            imageUrl:
+              "https://media.4rgos.it/i/Argos/8878595_R_Z001A?w=750&h=440&qlt=70",
+            description: "Armchair to relax in!",
+            category: "living-room",
+            price: 69.99,
+          },
+          {
+            _id: "433330528-812341ee-b962-0242ac120043",
+            name: "Concrete Bookshelf",
+            imageUrl:
+              "https://deskelly.ie/wp-content/uploads/2021/07/staten_tall_bookshelf_3.jpeg",
+            description: "Bookshelf to put all your favourite items on!",
+            category: "living-room",
+            price: 79.99,
+          },
+        ],
+      },
+      "654b13-11ee-b962-0242ac1-20002": {
+        _ownerId: "55554e62-7b13-11ee-b962-0242ac120002",
+        cartItems: [],
       },
     },
   };

@@ -9,18 +9,21 @@ import { deleteReview } from "../../services/reviewService";
 
 export default function Details(props) {
   const { id } = useParams();
-  const { isAuthenticated, _userId } = useContext(AuthContext);
+  const { isAuthenticated, userId, onBuy, cart } = useContext(AuthContext);
   const [furnitureData, setFurnitureData] = useState({});
   const [hasReviewed, setHasReviewed] = useState(true);
   const [reviews, setReviews] = useState({});
+  const [hasBought, setHasBought] = useState(false);
   const fetchProduct = async (id) => {
     const data = await getSingleProduct(id);
     setFurnitureData(data);
+    const isBought = cart?.cartItems.find((i) => i._id == id);
+    setHasBought(isBought);
   };
   const fetchReviews = async (id) => {
     const data = await getProductReviews(id);
     if (isAuthenticated) {
-      if (data.find((r) => r._ownerId === _userId)) {
+      if (data.find((r) => r._ownerId === userId)) {
         setHasReviewed(false);
       } else {
         setHasReviewed(true);
@@ -49,8 +52,14 @@ export default function Details(props) {
           <p className="price">${furnitureData.price}</p>
           <p className="description">{furnitureData.description}</p>
           <div className="furniture-buttons">
-            {isAuthenticated && (
-              <button className="buy-button">
+            {isAuthenticated && !hasBought && (
+              <button
+                className="buy-button"
+                onClick={() => {
+                  setHasBought(true);
+                  return onBuy(furnitureData._id);
+                }}
+              >
                 <i className="fas fa-shopping-bag"></i> Buy
               </button>
             )}

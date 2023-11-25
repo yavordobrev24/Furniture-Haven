@@ -4,13 +4,13 @@ import { useContext } from "react";
 import AuthContext from "../../contexts/authContext";
 export default function ReviewCard(props) {
   const { id } = useParams();
-  const { _userId } = useContext(AuthContext);
+  const { userId } = useContext(AuthContext);
   return (
     <div className="review">
       <div className="rating">Rating: {props.rating}</div>
       <p className="text">{props.text}</p>
       <p className="user">By: {props.username}</p>
-      {_userId === props._ownerId && (
+      {userId === props._ownerId && (
         <div className="review-buttons">
           <Link to={`/products/${id}/edit-review/${props._id}`}>
             <button className="edit-button">

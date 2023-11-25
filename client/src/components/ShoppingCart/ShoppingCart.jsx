@@ -1,41 +1,32 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./ShoppingCart.css";
+import AuthContext from "../../contexts/authContext";
 
-export default function ShoppingCart(props) {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: "Sofa", price: 499, quantity: 1 },
-    { id: 2, name: "Coffee Table", price: 199, quantity: 2 },
-    { id: 3, name: "Bookshelf", price: 299, quantity: 1 },
-  ]);
+export default function ShoppingCart() {
+  const { cart, handleCheckout, handleRemoveItem } = useContext(AuthContext);
+  const [cartItems, setCartItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [hasCartItems, setHasCartItems] = useState(false);
+  useEffect(() => {
+    if (cart?.cartItems.length > 0) {
+      setCartItems(cart.cartItems);
+      setHasCartItems(true);
+    } else {
+      setCartItems([]);
+      setHasCartItems(false);
+    }
+  }, [cart]);
 
   const calculateTotal = () => {
-    return cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
+    return cart?.cartItems.reduce((total, item) => {
+      return total + Number(item.price);
+    }, 0);
   };
-
+  /*
   const handleRemoveItem = (itemId) => {
     const updatedCart = cartItems.filter((item) => item.id !== itemId);
     setCartItems(updatedCart);
-  };
-
-  const handleQuantityChange = (itemId, newQuantity) => {
-    const updatedCart = cartItems.map((item) => {
-      if (item.id === itemId) {
-        return { ...item, quantity: newQuantity > 0 ? newQuantity : "" };
-      }
-      return item;
-    });
-    setCartItems(updatedCart);
-  };
-
-  const handleCheckout = () => {
-    setShowModal(true);
-    setCartItems([]);
-  };
-
+  };*/
   const closeModal = () => {
     setShowModal(false);
   };
@@ -44,39 +35,39 @@ export default function ShoppingCart(props) {
     <div className="cart-page">
       <h1>Your Shopping Cart</h1>
       <div className="cart-items">
-        {cartItems.map((item) => (
-          <div key={item.id} className="cart-item">
-            <div className="item-info">
-              <div className="top-info">
-                <p className="item-name">{item.name}</p>
-                <button
-                  onClick={() => handleRemoveItem(item.id)}
-                  className="remove-button"
-                >
-                  <span className="remove-icon">X</span>
-                </button>
+        {cartItems?.length > 0
+          ? cartItems.map((item) => (
+              <div key={item._id} className="cart-item">
+                <div className="item-info">
+                  <div className="top-info">
+                    <p className="item-name">{item.name}</p>
+                    <button
+                      onClick={() => handleRemoveItem(cart._id, cart, item._id)}
+                      className="remove-button"
+                    >
+                      <span className="remove-icon">X</span>
+                    </button>
+                  </div>
+                  <p className="item-price">${item.price}</p>
+                </div>
               </div>
-              <p className="item-price">${item.price}</p>
-              <div className="item-interaction">
-                <input
-                  type="number"
-                  min="1"
-                  value={item.quantity}
-                  onChange={(e) =>
-                    handleQuantityChange(item.id, parseInt(e.target.value))
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        ))}
+            ))
+          : "No items in the cart"}
       </div>
       <div className="cart-total">
-        <p>Total: ${calculateTotal()}</p>
+        <p>Total: ${hasCartItems ? calculateTotal().toFixed(2) : 0}</p>
       </div>
-      <button className="checkout-button" onClick={handleCheckout}>
-        Checkout
-      </button>
+      {hasCartItems ? (
+        <button
+          className="checkout-button"
+          onClick={() => {
+            setShowModal(true);
+            handleCheckout(cart._id, cart);
+          }}
+        >
+          Checkout
+        </button>
+      ) : null}
 
       {showModal && (
         <div className="modal">

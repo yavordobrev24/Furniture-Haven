@@ -5,7 +5,7 @@ import { editReview, getSingleReview } from "../../services/reviewService";
 import AuthContext from "../../contexts/authContext";
 
 export default function EditReviewPage(props) {
-  const { _userId, username } = useContext(AuthContext);
+  const { userId, username } = useContext(AuthContext);
   const { id, reviewId } = useParams();
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
@@ -30,13 +30,13 @@ export default function EditReviewPage(props) {
     e.preventDefault();
     const data = {
       productId: id,
-      reviewerId: _userId,
+      reviewerId: userId,
       rating: rating,
       text: reviewText,
       username: username,
       _id: reviewId,
     };
-    console.log("HERE", data);
+
     await editReview(reviewId, data);
     navigate(`/products/${id}`);
   };

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { createReview } from "../../services/reviewService";
 import AuthContext from "../../contexts/authContext";
 export default function AddReviewPage(props) {
-  const { _userId, username } = useContext(AuthContext);
+  const { userId, username } = useContext(AuthContext);
   const { id } = useParams();
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
@@ -22,12 +22,12 @@ export default function AddReviewPage(props) {
     e.preventDefault();
     const data = {
       productId: id,
-      reviewerId: _userId,
+      reviewerId: userId,
       rating: rating,
       text: reviewText,
       username: username,
     };
-    console.log(data);
+
     await createReview(data);
     navigate(`/products/${id}`);
   };
