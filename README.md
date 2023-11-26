@@ -55,12 +55,6 @@ Follow these steps to set up Furniture Heaven on your local machine:
 
 ## Usage
 
-Absolutely, here's the updated section including the test profiles for Furniture Heaven:
-
----
-
-## Usage
-
 ### Test Profiles
 
 For testing purposes, two pre-existing profiles are available:
