@@ -1,7 +1,8 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import { AuthProvider } from "../../contexts/authContext.jsx";
+import Path from "../../path.js";
 
 import Logout from "../Logout/Logout.jsx";
 import Login from "../Login/Login.jsx";
@@ -17,6 +18,7 @@ import Details from "../Details/Details.jsx";
 import AddReviewPage from "../AddReview/AddReviewPage.jsx";
 import Profile from "../Profile/Profile.jsx";
 import EditReviewPage from "../EditReview/EditReviewPage.jsx";
+import AuthGuard from "../guards/AuthGuard.jsx";
 
 function App() {
   return (
@@ -25,31 +27,38 @@ function App() {
         <Header />
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/products" element={<ProductList category="" />} />
-          <Route path="/about" element={<About />} />
+          <Route path={Path.Products} element={<ProductList category="" />} />
+          <Route path={Path.About} element={<About />} />
           <Route
-            path="/products/kitchen"
+            path={`${Path.Products}/kitchen`}
             element={<ProductList category="kitchen" />}
           />
           <Route
-            path="/products/bedroom"
+            path={`${Path.Products}/bedroom`}
             element={<ProductList category="bedroom" />}
           />
           <Route
-            path="/products/living-room"
+            path={`${Path.Products}/living-room`}
             element={<ProductList category="living-room" />}
           />
-          <Route path="/products/:id" element={<Details />} />
-          <Route path="/products/:id/add-review" element={<AddReviewPage />} />
-          <Route
-            path="/products/:id/edit-review/:reviewId"
-            element={<EditReviewPage />}
-          />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/shopping-cart" element={<ShoppingCart />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path={`${Path.Products}/:id`} element={<Details />} />
+
+          <Route path={Path.Register} element={<Register />} />
+          <Route path={Path.Login} element={<Login />} />
+
+          <Route element={<AuthGuard />}>
+            <Route
+              path={`${Path.Products}/:id/add-review`}
+              element={<AddReviewPage />}
+            />
+            <Route
+              path={`${Path.Products}/:id/edit-review/:reviewId`}
+              element={<EditReviewPage />}
+            />
+            <Route path={Path.Profile} element={<Profile />} />
+            <Route path={Path.ShoppingCart} element={<ShoppingCart />} />
+            <Route path={Path.Logout} element={<Logout />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

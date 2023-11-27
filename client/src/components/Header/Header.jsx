@@ -8,7 +8,9 @@ export default function Header(props) {
   return (
     <header>
       <nav>
-        <div className="logo">Furniture Heaven</div>
+        <div className="logo">
+          <Link to="/">Furniture Heaven</Link>
+        </div>
         <ul className="nav-links">
           <li>
             <Link to="/">Home</Link>
