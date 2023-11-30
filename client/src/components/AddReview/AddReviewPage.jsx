@@ -20,16 +20,19 @@ export default function AddReviewPage(props) {
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();
-    const data = {
-      productId: id,
-      reviewerId: userId,
-      rating: rating,
-      text: reviewText,
-      username: username,
-    };
+    if (reviewText.trim()) {
+      const data = {
+        productId: id,
+        reviewerId: userId,
+        rating: rating,
+        text: reviewText.trim(),
+        username: username,
+      };
 
-    await createReview(data);
-    navigate(`/products/${id}`);
+      await createReview(data);
+
+      navigate(`/products/${id}`);
+    }
   };
 
   return (

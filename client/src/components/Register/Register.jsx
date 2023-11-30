@@ -1,6 +1,6 @@
 import "./Register.css";
 import useForm from "../../hooks/useForm";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../../contexts/authContext";
 const RegisterFormKeys = {
   Username: "username",
@@ -16,11 +16,54 @@ export default function Register(props) {
     [RegisterFormKeys.Password]: "",
     [RegisterFormKeys.ConfirmPassword]: "",
   });
+  const [errors, setErrors] = useState({});
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const validationErrors = validate(values);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      try {
+        await onSubmit(values);
+        setErrors({});
+      } catch (e) {
+        setErrors({ request: e.message });
+      }
+    }
+  };
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.username.trim()) {
+      errors.username = "Username is required";
+    }
+
+    if (!values.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = "Invalid email address";
+    }
+
+    if (!values.password) {
+      errors.password = "Password is required";
+    } else if (values.password.length < 6) {
+      errors.password = "Password must be at least 6 characters";
+    }
+
+    if (values.password !== values.confirmPassword) {
+      errors.confirmPassword = "Passwords do not match";
+    }
+
+    return errors;
+  };
+
   return (
     <div className="register-container">
       <div className="register-form">
         <h2>Register</h2>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="form-inputs">
             <div>
               <label htmlFor="username">Username</label>
@@ -30,8 +73,6 @@ export default function Register(props) {
                 name={RegisterFormKeys.Username}
                 value={values[RegisterFormKeys.Username]}
                 onChange={onChange}
-                /*onBlur={validateHandler}*/
-                required
               />
             </div>
             <div>
@@ -42,7 +83,6 @@ export default function Register(props) {
                 name={RegisterFormKeys.Email}
                 value={values[RegisterFormKeys.Email]}
                 onChange={onChange}
-                required
               />
             </div>
             <div>
@@ -53,7 +93,6 @@ export default function Register(props) {
                 name={RegisterFormKeys.Password}
                 value={values[RegisterFormKeys.Password]}
                 onChange={onChange}
-                required
               />
             </div>
             <div>
@@ -64,12 +103,18 @@ export default function Register(props) {
                 name={RegisterFormKeys.ConfirmPassword}
                 value={values[RegisterFormKeys.ConfirmPassword]}
                 onChange={onChange}
-                required
               />
             </div>
           </div>
           <button type="submit">Register</button>
         </form>
+      </div>
+      <div className="error-container">
+        {Object.keys(errors).map((key) => (
+          <span key={key} className="error-bubble">
+            {errors[key]}
+          </span>
+        ))}
       </div>
     </div>
   );

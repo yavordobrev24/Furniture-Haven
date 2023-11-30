@@ -17,11 +17,13 @@ export const AuthProvider = ({ children }) => {
 
     setAuth((state) => ({ ...state, result }));
   };
+
   const handleCheckout = async (cartId, cartData) => {
     const result = await cartService.clearUserCart(cartId, cartData);
 
     setAuth((state) => ({ ...state, cart: result }));
   };
+
   const handleRemoveItem = async (cartId, cartData, itemId) => {
     const result = await cartService.removeCartItem(cartId, cartData, itemId);
 
@@ -29,28 +31,35 @@ export const AuthProvider = ({ children }) => {
   };
 
   const loginSubmitHandler = async (values) => {
-    const result = await authService.login(values.email, values.password);
+    try {
+      const result = await authService.login(values.email, values.password);
+      if (result) localStorage.setItem("accessToken", result.accessToken);
+      const cart = await cartService.getUserCart(result._id);
+      result.cart = cart;
 
-    localStorage.setItem("accessToken", result.accessToken);
-    const cart = await cartService.getUserCart(result._id);
-    result.cart = cart;
-
-    setAuth(result);
-    navigate(Path.Home);
+      setAuth(result);
+      navigate(Path.Home);
+    } catch (e) {
+      throw e;
+    }
   };
 
   const registerSubmitHandler = async (values) => {
-    const result = await authService.register(
-      values.username,
-      values.email,
-      values.password
-    );
+    try {
+      const result = await authService.register(
+        values.username,
+        values.email,
+        values.password
+      );
 
-    localStorage.setItem("accessToken", result.accessToken);
-    const cart = await cartService.createUserCart(result._id);
-    result.cart = cart;
-    setAuth(result);
-    navigate(Path.Home);
+      localStorage.setItem("accessToken", result.accessToken);
+      const cart = await cartService.createUserCart(result._id);
+      result.cart = cart;
+      setAuth(result);
+      navigate(Path.Home);
+    } catch (e) {
+      throw e;
+    }
   };
   const logoutHandler = () => {
     localStorage.removeItem("accessToken");

@@ -40,6 +40,7 @@ export default function ShoppingCart() {
               <div key={item._id} className="cart-item">
                 <div className="item-info">
                   <div className="top-info">
+                    <img src={item.imageUrl} alt={item.name} />
                     <p className="item-name">{item.name}</p>
                     <button
                       onClick={() => handleRemoveItem(cart._id, cart, item._id)}
@@ -52,7 +53,7 @@ export default function ShoppingCart() {
                 </div>
               </div>
             ))
-          : "No items in the cart"}
+          : "No items in your shopping cart"}
       </div>
       <div className="cart-total">
         <p>Total: ${hasCartItems ? calculateTotal().toFixed(2) : 0}</p>

@@ -9,8 +9,11 @@ export default function useForm(submitHandler, initialValues) {
     }));
   };
   const onSubmit = async (e) => {
-    e.preventDefault();
-    await submitHandler(values);
+    try {
+      await submitHandler(values);
+    } catch (e) {
+      throw e;
+    }
   };
   return {
     values,

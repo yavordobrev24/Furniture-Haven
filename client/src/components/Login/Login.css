@@ -66,6 +66,22 @@
     cursor: pointer;
     width:100%;
     }
-    .login-form form button:hover {
-        background-color: #006442;
-      }
+  .login-form form button:hover {
+  background-color: #006442;
+  }
+
+  .error-container {
+    position: absolute;
+    top:auto;
+    right:300px;
+  }
+  
+  .error-bubble {
+    display: block;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width:150px;
+  }

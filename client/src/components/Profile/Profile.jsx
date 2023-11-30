@@ -3,7 +3,6 @@ import "./Profile.css";
 import AuthContext from "../../contexts/authContext";
 
 export default function Profile(props) {
-  // Dummy user data for demonstration
   const { email, username } = useContext(AuthContext);
 
   return (
@@ -14,11 +13,11 @@ export default function Profile(props) {
           alt="profile picture"
           className="profile-picture"
         />
-        <h1>{username}</h1>
+        <h2>{username}</h2>
       </div>
       <div className="profile-info">
-        <h2>Contact Information</h2>
-        <p>Email: {email}</p>
+        <h2>Contact information</h2>
+        <h3>{email}</h3>
       </div>
     </div>
   );

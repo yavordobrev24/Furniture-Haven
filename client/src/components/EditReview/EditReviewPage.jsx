@@ -28,17 +28,19 @@ export default function EditReviewPage(props) {
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();
-    const data = {
-      productId: id,
-      reviewerId: userId,
-      rating: rating,
-      text: reviewText,
-      username: username,
-      _id: reviewId,
-    };
+    if (reviewText.trim()) {
+      const data = {
+        productId: id,
+        reviewerId: userId,
+        rating: rating,
+        text: reviewText.trim(),
+        username: username,
+        _id: reviewId,
+      };
 
-    await editReview(reviewId, data);
-    navigate(`/products/${id}`);
+      await editReview(reviewId, data);
+      navigate(`/products/${id}`);
+    }
   };
 
   return (
