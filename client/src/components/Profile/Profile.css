@@ -31,6 +31,9 @@
   
   .profile-info {
     margin-top: 20px;
+    display:flex;
+    justify-content: space-around;
+    align-items: space-around;
   }
   
  .profile-page h2 {

@@ -41,17 +41,21 @@ Follow these steps to set up Furniture Heaven on your local machine:
    npm install
    ```
 
-4. Initiate the application and the server (use two separate terminals):
+4. Start the app:
 
    ```bash
    cd client
    npm run dev
+   ```
 
+5. Start the server:
+
+   ```bash
    cd server
    node server.js
    ```
 
-5. Open your web browser and access `http://localhost:5173` to begin your Furniture Heaven shopping experience.
+6. Open your web browser and access `http://localhost:5173` to begin your Furniture Heaven shopping experience.
 
 ## Usage
 

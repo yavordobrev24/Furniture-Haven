@@ -9,15 +9,16 @@ export default function Profile(props) {
     <div className="profile-page">
       <div className="profile-header">
         <img
-          src="./images/pfp.webp"
+          src="./images/pfp.jpg"
           alt="profile picture"
           className="profile-picture"
         />
         <h2>{username}</h2>
       </div>
       <div className="profile-info">
-        <h2>Contact information</h2>
-        <h3>{email}</h3>
+        <p>
+          <b>Email:</b> {email}
+        </p>
       </div>
     </div>
   );
