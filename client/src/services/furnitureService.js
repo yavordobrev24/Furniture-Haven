@@ -1,12 +1,11 @@
 import { get } from "../lib/request";
-const baseUrl = "http://localhost:3030/data/furniture";
 
 export const getAllProducts = async () => {
-  const result = await get(baseUrl);
+  const result = await get("/data/furniture");
   return result;
 };
 
 export const getSingleProduct = async (furnitureId) => {
-  const result = await get(`${baseUrl}/${furnitureId}`);
+  const result = await get(`/data/furniture/${furnitureId}`);
   return result;
 };

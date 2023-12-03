@@ -1,12 +1,11 @@
 import * as request from "../lib/request.js";
-const baseUrl = "http://localhost:3030/users";
 
 export const login = async (email, password) => {
-  const result = await request.post(`${baseUrl}/login`, { email, password });
+  const result = await request.post("/users/login", { email, password });
   return result;
 };
 export const register = async (username, email, password) => {
-  let result = await request.post(`${baseUrl}/register`, {
+  let result = await request.post("/users/register", {
     username,
     email,
     password,
@@ -14,4 +13,4 @@ export const register = async (username, email, password) => {
 
   return result;
 };
-export const logout = async () => await request.get(`${baseUrl}/logout`);
+export const logout = async () => await request.get("/users/logout");

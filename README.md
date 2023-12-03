@@ -25,7 +25,7 @@ Follow these steps to set up Furniture Heaven on your local machine:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/yavordobrev24/Furniture-Haven.git
+   git clone https://github.com/yavordobrev24/furniture-heaven.git
    ```
 
 2. Navigate to the project directory:
@@ -34,28 +34,43 @@ Follow these steps to set up Furniture Heaven on your local machine:
    cd furniture-heaven
    ```
 
-3. Install the necessary dependencies:
+3. Create a .env file and configure it so it runs on your environment:
+
+   ```bash
+   VITE_REST_API_KEY=your_api_key
+   ```
+
+4. Install the necessary dependencies:
 
    ```bash
    cd client
+   ```
+
+   ```bash
    npm install
    ```
 
-4. Start the app:
+5. Start the app:
 
    ```bash
    cd client
+   ```
+
+   ```bash
    npm run dev
    ```
 
-5. Start the server:
+6. Start the server:
 
    ```bash
    cd server
+   ```
+
+   ```bash
    node server.js
    ```
 
-6. Open your web browser and access `http://localhost:5173` to begin your Furniture Heaven shopping experience.
+7. Open your web browser and access `http://localhost:5173` to begin your Furniture Heaven shopping experience.
 
 ## Usage
 
