@@ -25,7 +25,7 @@ Follow these steps to set up Furniture Heaven on your local machine:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/yavordobrev24/Furniture-Haven.git
+   git clone https://github.com/yavordobrev24/furniture-heaven.git
    ```
 
 2. Navigate to the project directory:
@@ -38,6 +38,9 @@ Follow these steps to set up Furniture Heaven on your local machine:
 
    ```bash
    cd client
+   ```
+
+   ```bash
    npm install
    ```
 
@@ -45,6 +48,9 @@ Follow these steps to set up Furniture Heaven on your local machine:
 
    ```bash
    cd client
+   ```
+
+   ```bash
    npm run dev
    ```
 
@@ -52,6 +58,9 @@ Follow these steps to set up Furniture Heaven on your local machine:
 
    ```bash
    cd server
+   ```
+
+   ```bash
    node server.js
    ```
 
