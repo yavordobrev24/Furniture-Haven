@@ -1555,7 +1555,7 @@
     },
     reviews: {
       "23434e62-7b13-11ee-b962-0242ac12004": {
-        productId: "11b5bb5c-7994-11ee-b962-0242ac120002",
+        productId: "2fde31d9-bff2-43bb-9da4-c27cd678b9b3",
         rating: 4,
         text: "A great bed to relax in!",
         username: "Yavor",
@@ -1563,7 +1563,7 @@
         _id: "23434e62-7b13-11ee-b962-0242ac12004",
       },
       "6544311111111ee-b962-0242ac12004": {
-        productId: "2fde31d9-bff2-43bb-9da4-c27cd678b9b3",
+        productId: "11b5bb5c-7994-11ee-b962-0242ac120002",
         rating: 5,
         text: "Every morning I drink my coffee on this table!",
         username: "Yavor",
@@ -1571,7 +1571,7 @@
         _id: "6544311111111ee-b962-0242ac12004",
       },
       "2345678911111ee-b962-0242ac12004": {
-        productId: "2fde31d9-bff2-43bb-9da4-c27cd678b9b3",
+        productId: "11b5bb5c-7994-11ee-b962-0242ac120002",
         rating: 5,
         text: "Sturdy coffee table, endured a lot of poured out coffee!",
         username: "Peter",
