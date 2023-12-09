@@ -7,9 +7,9 @@ export default function ReviewCard(props) {
   const { userId } = useContext(AuthContext);
   return (
     <div className="review">
-      <div className="rating">Rating: {props.rating}</div>
+      <div className="rating">{"⭐".repeat(props.rating)}</div>
       <p className="text">{props.text}</p>
-      <p className="user">By: {props.username}</p>
+      <p className="user">{props.username}</p>
       {userId === props._ownerId && (
         <div className="review-buttons">
           <Link to={`/products/${id}/edit-review/${props._id}`}>
