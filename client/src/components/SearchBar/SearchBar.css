@@ -13,6 +13,9 @@ input::-webkit-inner-spin-button {
   margin-left:20px;
   gap:10px;
   width:20%;
+  gap:50px;
+  margin-top: 100px;
+
 }
 .search-bar input[type="Number"]{
   width: 100%;
