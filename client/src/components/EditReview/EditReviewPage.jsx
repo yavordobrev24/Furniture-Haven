@@ -19,6 +19,9 @@ export default function EditReviewPage(props) {
   };
   const getReview = async (reviewId) => {
     const result = await getSingleReview(reviewId);
+    if (result._ownerId != userId) {
+      return navigate("/");
+    }
     setRating(result.rating);
     setReviewText(result.text);
   };

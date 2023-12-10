@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./AddReviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { createReview } from "../../services/reviewService";
+import { createReview, getProductReviews } from "../../services/reviewService";
 import AuthContext from "../../contexts/authContext";
 export default function AddReviewPage(props) {
   const { userId, username } = useContext(AuthContext);
@@ -9,7 +9,15 @@ export default function AddReviewPage(props) {
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
   const navigate = useNavigate();
-
+  const checkCorrectUser = async () => {
+    const productReviews = await getProductReviews(id);
+    if (productReviews.find((x) => x._ownerId === userId)) {
+      return navigate("/");
+    }
+  };
+  useEffect(() => {
+    checkCorrectUser();
+  });
   const handleRatingChange = (e) => {
     setRating(Number(e.target.value));
   };
