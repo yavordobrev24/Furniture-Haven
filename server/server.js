@@ -1439,6 +1439,12 @@
         hashedPassword:
           "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
       },
+      "11ee342-b962-0242ac12000262-0242ac120002": {
+        email: "admin@admin.com",
+        username: "Admin",
+        hashedPassword:
+          "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+      },
     },
     sessions: {},
   };

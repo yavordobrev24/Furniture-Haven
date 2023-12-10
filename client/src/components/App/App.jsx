@@ -20,6 +20,7 @@ import Profile from "../Profile/Profile.jsx";
 import EditReviewPage from "../EditReview/EditReviewPage.jsx";
 import AuthGuard from "../guards/AuthGuard.jsx";
 import GuestOnlyGuard from "../guards/GuestOnlyGuard.jsx";
+import AdmintOnlyGuard from "../guards/AdminOnlyGuard.jsx";
 
 function App() {
   return (
@@ -43,11 +44,12 @@ function App() {
             element={<ProductList category="living-room" />}
           />
           <Route path={`${Path.Products}/:id`} element={<Details />} />
+
           <Route element={<GuestOnlyGuard />}>
             <Route path={Path.Register} element={<Register />} />
             <Route path={Path.Login} element={<Login />} />
           </Route>
-
+          <Route element={<AdmintOnlyGuard />}></Route>
           <Route element={<AuthGuard />}>
             <Route
               path={`${Path.Products}/:id/add-review`}
