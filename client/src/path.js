@@ -7,5 +7,6 @@ const Path = {
   Profile: "/profile",
   Logout: "/logout",
   ShoppingCart: "/shopping-cart",
+  AddProduct: "/add-product",
 };
 export default Path;

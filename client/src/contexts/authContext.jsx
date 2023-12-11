@@ -36,10 +36,9 @@ export const AuthProvider = ({ children }) => {
       if (result) localStorage.setItem("accessToken", result.accessToken);
       if (result.email === "admin@admin.com") {
         result.isAdmin = true;
-      } else {
-        const cart = await cartService.getUserCart(result._id);
-        result.cart = cart;
       }
+      const cart = await cartService.getUserCart(result._id);
+      result.cart = cart;
 
       setAuth(result);
       navigate(Path.Home);

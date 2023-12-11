@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/authContext";
 
 export default function Header(props) {
-  const { isAuthenticated, cart } = useContext(AuthContext);
+  const { isAuthenticated, cart, isAdmin } = useContext(AuthContext);
   return (
     <header>
       <nav>
@@ -20,6 +20,11 @@ export default function Header(props) {
           </li>
           <li>
             <Link to="/about">About</Link>
+          </li>
+          <li>
+            {isAuthenticated && isAdmin && (
+              <Link to="/add-product">Add Product</Link>
+            )}
           </li>
         </ul>
         {isAuthenticated && (

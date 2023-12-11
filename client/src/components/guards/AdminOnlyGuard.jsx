@@ -4,7 +4,6 @@ import { Navigate, Outlet } from "react-router-dom";
 
 export default function AdmintOnlyGuard(props) {
   const { isAuthenticated, isAdmin } = useContext(AuthContext);
-
   if (!isAuthenticated || !isAdmin) {
     return <Navigate to="/" />;
   }
