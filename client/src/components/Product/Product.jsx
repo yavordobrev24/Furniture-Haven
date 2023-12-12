@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import "./Product.css";
 import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/authContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function Product(props) {
   const { onBuy, isAuthenticated, cart, isAdmin } = useContext(AuthContext);
@@ -30,7 +32,7 @@ export default function Product(props) {
                 console.log("Edit");
               }}
             >
-              🖋️
+              <FontAwesomeIcon icon={faPen} />
             </span>
             <span
               className="delete-icon"
@@ -42,7 +44,7 @@ export default function Product(props) {
                 console.log("Delete");
               }}
             >
-              🗑️
+              <FontAwesomeIcon icon={faTrash} />
             </span>
           </div>
         )}
