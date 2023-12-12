@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/authContext";
 
 export default function Product(props) {
-  const { onBuy, isAuthenticated, cart } = useContext(AuthContext);
+  const { onBuy, isAuthenticated, cart, isAdmin } = useContext(AuthContext);
   const [hasBought, setHasBought] = useState(false);
   useEffect(() => {
-    const isBought = cart?.cartItems.find((i) => i._id == props._id);
+    const isBought = cart?.cartItems.find((i) => i._id === props._id);
     setHasBought(isBought);
   }, [props]);
 
@@ -18,6 +18,34 @@ export default function Product(props) {
       style={{ textDecoration: "none" }}
     >
       <div className="product">
+        {isAuthenticated && isAdmin && (
+          <div className="product-icons">
+            <span
+              className="edit-icon"
+              role="img"
+              aria-label="Edit"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("Edit");
+              }}
+            >
+              🖋️
+            </span>
+            <span
+              className="delete-icon"
+              role="img"
+              aria-label="Delete"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("Delete");
+              }}
+            >
+              🗑️
+            </span>
+          </div>
+        )}
         <img src={props.imageUrl} alt={props.name} />
         <div className="info">
           <h3>{props.name}</h3>

@@ -1,4 +1,6 @@
-
+.add-product-page{
+  flex-grow: 1;
+}
 .add-product-form {
     max-width: 400px;
     margin: 0 auto;

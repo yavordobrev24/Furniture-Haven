@@ -6,8 +6,10 @@
   text-align: center;
   max-height: 400px;
   transition: transform 0.2s;
-  text-decoration: none; /* Remove underlines from the Link */
+  text-decoration: none; 
+  overflow: hidden;
 }
+
 
 .product:hover {
   transform: translateY(-5px);
@@ -68,3 +70,16 @@
 .description {
   font-size: 1rem;
 }
+.product-icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.product-icons span {
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+

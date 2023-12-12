@@ -1,4 +1,4 @@
-import { del, get, put } from "../lib/request";
+import { del, get, put, post } from "../lib/request";
 const baseUrl = "http://localhost:3030/data/furniture";
 
 export const getAllProducts = async () => {
