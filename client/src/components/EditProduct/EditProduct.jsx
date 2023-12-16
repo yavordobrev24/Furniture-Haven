@@ -1,10 +1,14 @@
-import { useState } from "react";
-import "./AddProduct.css";
-import { createProduct } from "../../services/furnitureService";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import "./EditProduct.css";
+import {
+  getSingleProduct,
+  updateProduct,
+} from "../../services/furnitureService";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function AddProduct(props) {
+export default function EditProduct(props) {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [productData, setProductData] = useState({
     name: "",
     imageUrl: "",
@@ -12,6 +16,13 @@ export default function AddProduct(props) {
     category: "kitchen",
     price: "",
   });
+  const getProduct = async (id) => {
+    const result = await getSingleProduct(id);
+    setProductData(result);
+  };
+  useEffect(() => {
+    getProduct(id);
+  }, []);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -23,23 +34,14 @@ export default function AddProduct(props) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("Product Data:", productData);
-
-    await createProduct(productData);
-    navigate("/products");
-    setProductData({
-      name: "",
-      imageUrl: "",
-      description: "",
-      category: "kitchen",
-      price: "",
-    });
+    await updateProduct(id, productData);
+    navigate(`/products`);
   };
 
   return (
-    <div className="add-product-page">
-      <div className="add-product-form">
-        <h2>Add a New Product</h2>
+    <div className="edit-product-page">
+      <div className="edit-product-form">
+        <h2>Edit a Product</h2>
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="productName">Product Name:</label>
@@ -50,6 +52,7 @@ export default function AddProduct(props) {
               value={productData.name}
               onChange={onChangeHandler}
               required
+              disabled
             />
           </div>
           <div className="form-group">
@@ -61,6 +64,7 @@ export default function AddProduct(props) {
               value={productData.imageUrl}
               onChange={onChangeHandler}
               required
+              disabled
             />
           </div>
           <div className="form-group">
@@ -83,6 +87,7 @@ export default function AddProduct(props) {
               value={productData.category}
               onChange={onChangeHandler}
               required
+              disabled
             >
               <option value="kitchen">Kitchen</option>
               <option value="living-room">Living Room</option>
@@ -101,7 +106,7 @@ export default function AddProduct(props) {
               required
             />
           </div>
-          <button type="submit">Add Product</button>
+          <button type="submit">Edit Product</button>
         </form>
       </div>
     </div>

@@ -2,7 +2,10 @@ import "./ProductList.css";
 import Product from "../Product/Product.jsx";
 import { useEffect, useMemo, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar.jsx";
-import { getAllProducts } from "../../services/furnitureService.js";
+import {
+  deleteProduct,
+  getAllProducts,
+} from "../../services/furnitureService.js";
 
 export default function ProductList(props) {
   const [products, setProducts] = useState([]);
@@ -10,6 +13,16 @@ export default function ProductList(props) {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [category, setCategory] = useState("");
+
+  const deleteProductHandler = async (e) => {
+    console.log(e.target.parentNode.parentNode.parentNode.id);
+    await deleteProduct(e.target.parentNode.parentNode.parentNode.id);
+    setProducts((oldState) =>
+      oldState.filter(
+        (x) => x._id !== e.target.parentNode.parentNode.parentNode.id
+      )
+    );
+  };
 
   async function fetchProducts() {
     const data = await getAllProducts();
@@ -64,7 +77,13 @@ export default function ProductList(props) {
         {filteredProducts.length === 0 ? (
           <h2>No products matching the criteria.</h2>
         ) : (
-          filteredProducts.map((x) => <Product key={x._id} {...x} />)
+          filteredProducts.map((x) => (
+            <Product
+              key={x._id}
+              deleteProductHandler={deleteProductHandler}
+              {...x}
+            />
+          ))
         )}
       </section>
     </div>

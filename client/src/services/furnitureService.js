@@ -10,8 +10,8 @@ export const getSingleProduct = async (furnitureId) => {
   const result = await get(`${baseUrl}/${furnitureId}`);
   return result;
 };
-export const updateProduct = async (data, furnitureId) => {
-  const result = await put(`${baseUrl}/${furnitureId}`, data);
+export const updateProduct = async (productId, data) => {
+  const result = await put(`${baseUrl}/${productId}`, data);
   return result;
 };
 export const createProduct = async (data) => {

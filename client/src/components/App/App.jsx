@@ -22,6 +22,7 @@ import AuthGuard from "../guards/AuthGuard.jsx";
 import GuestOnlyGuard from "../guards/GuestOnlyGuard.jsx";
 import AdminOnlyGuard from "../guards/AdminOnlyGuard.jsx";
 import AddProduct from "../AddProduct/AddProduct.jsx";
+import EditProduct from "../EditProduct/EditProduct.jsx";
 
 function App() {
   return (
@@ -52,6 +53,10 @@ function App() {
           </Route>
           <Route element={<AdminOnlyGuard />}>
             <Route path={`${Path.AddProduct}`} element={<AddProduct />}></Route>
+            <Route
+              path={`${Path.EditProduct}/:id`}
+              element={<EditProduct />}
+            ></Route>
           </Route>
           <Route element={<AuthGuard />}>
             <Route

@@ -1458,6 +1458,7 @@
         description: "Comfortable bed to lie and sleep in",
         category: "bedroom",
         price: 109.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
       "11b5bb5c-7994-11ee-b962-0242ac120002": {
         _id: "11b5bb5c-7994-11ee-b962-0242ac120002",
@@ -1467,6 +1468,7 @@
         description: "Sturdy table to hold your coffee",
         category: "living-room",
         price: 76.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
       "15f49c24-7994-11ee-b962-0242ac120002": {
         _id: "15f49c24-7994-11ee-b962-0242ac120002",
@@ -1476,6 +1478,7 @@
         description: "Useful shelves to hold your kitchen belongings",
         category: "kitchen",
         price: 29.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
       "8ea216d2-817e-11ee-b962-0242ac120002": {
         _id: "8ea216d2-817e-11ee-b962-0242ac120002",
@@ -1485,6 +1488,7 @@
         description: "Beautiful picture to motivate you when cooking",
         category: "kitchen",
         price: 39.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
       "3c920928-817f-11ee-b962-0242ac120002": {
         _id: "3c920928-817f-11ee-b962-0242ac120002",
@@ -1494,6 +1498,7 @@
         description: "Steady wooden table to eat on",
         category: "kitchen",
         price: 79.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
       "3c920928-817f-11ee-b962-0242ac120043": {
         _id: "3c920928-817f-11ee-b962-0242ac120043",
@@ -1503,6 +1508,7 @@
         description: "Keep your favourite ingredients inside",
         category: "kitchen",
         price: 79.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
       "44420928-817f-11ee-b962-0242ac120043": {
         _id: "44420928-817f-11ee-b962-0242ac120043",
@@ -1512,6 +1518,7 @@
         description: "Comfortable table lamp for your happy dreams",
         category: "bedroom",
         price: 49.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
       "44420928-812341ee-b962-0242ac120043": {
         _id: "44420928-812341ee-b962-0242ac120043",
@@ -1521,6 +1528,7 @@
         description: "Nightstand to keep your items close",
         category: "bedroom",
         price: 99.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
       "433330928-812341ee-b962-0242ac120043": {
         _id: "433330928-812341ee-b962-0242ac120043",
@@ -1530,6 +1538,7 @@
         description: "Mirror to look at your greatness",
         category: "bedroom",
         price: 59.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
       "433340928-812341ee-b962-0242ac120043": {
         _id: "433340928-812341ee-b962-0242ac120043",
@@ -1539,6 +1548,7 @@
         description: "Armchair to relax in",
         category: "living-room",
         price: 69.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
       "433330528-812341ee-b962-0242ac120043": {
         _id: "433330528-812341ee-b962-0242ac120043",
@@ -1548,6 +1558,7 @@
         description: "Bookshelf to put all your favourite items on",
         category: "living-room",
         price: 79.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
       "433330928-862341ee-b962-0242ac120043": {
         _id: "433330928-862341ee-b962-0242ac120043",
@@ -1557,6 +1568,7 @@
         description: "Chair to rock in",
         category: "living-room",
         price: 59.99,
+        _ownerId: "11ee342-b962-0242ac12000262-0242ac120002",
       },
     },
     reviews: {

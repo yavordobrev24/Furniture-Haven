@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import "./Product.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../contexts/authContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +8,7 @@ import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 export default function Product(props) {
   const { onBuy, isAuthenticated, cart, isAdmin } = useContext(AuthContext);
   const [hasBought, setHasBought] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     const isBought = cart?.cartItems.find((i) => i._id === props._id);
     setHasBought(isBought);
@@ -21,7 +22,7 @@ export default function Product(props) {
     >
       <div className="product">
         {isAuthenticated && isAdmin && (
-          <div className="product-icons">
+          <div className="product-icons" id={props._id}>
             <span
               className="edit-icon"
               role="img"
@@ -29,7 +30,7 @@ export default function Product(props) {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log("Edit");
+                navigate(`/edit-product/${props._id}`);
               }}
             >
               <FontAwesomeIcon icon={faPen} />
@@ -40,8 +41,7 @@ export default function Product(props) {
               aria-label="Delete"
               onClick={(e) => {
                 e.preventDefault();
-                e.stopPropagation();
-                console.log("Delete");
+                props.deleteProductHandler(e);
               }}
             >
               <FontAwesomeIcon icon={faTrash} />
