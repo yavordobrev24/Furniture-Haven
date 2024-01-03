@@ -4,7 +4,7 @@
   padding: 20px;
   background-color: #fff;
   text-align: center;
-  max-height: 400px;
+  height: 400px;
   transition: transform 0.2s;
   text-decoration: none; 
   overflow: hidden;

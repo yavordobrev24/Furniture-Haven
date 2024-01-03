@@ -1,119 +1,75 @@
 # Furniture Heaven - Elevating Your Furniture Shopping Experience 🪑
 
-Welcome to Furniture Heaven, the ultimate online destination for exquisite furniture shopping. Our platform offers a seamless and sophisticated user experience through a Single Page Application (SPA) crafted with React.js and empowered by Vite.js for an efficient build toolchain. Explore, register, log in, delve into furniture details, make purchases, and effortlessly manage your selections in your shopping cart—all in one place.
+Welcome to Furniture Heaven, the ultimate online destination for exquisite furniture shopping. Our platform offers a seamless and sophisticated user experience through a Single Page Application (SPA) crafted with React.js and empowered by Vite.js for an efficient build toolchain. Explore a diverse collection, manage your selections in the shopping cart, and benefit from a user-centric interface.
+Try the app on [Furniture Heaven](https://furniture-heaven-68c76.web.app).
 
 ## Features
 
-🛋 **Explore and Discover:** Delve into a diverse collection of exquisite furniture items with comprehensive descriptions.
+🛋 **Explore:** Discover a diverse collection of exquisite furniture items with comprehensive descriptions.
 
-🛒 **Shopping Cart Management:** Add your preferred items to the cart, remove unwanted items or smoothly proceed to checkout.
+🛒 **Shopping Cart:** Manage your selections, add or remove items, and proceed smoothly to checkout.
 
-🔐 **User Authentication:** Register and log in to access personalized shopping features securely.
+🔐 **User Authentication:** Securely register and log in to access personalized shopping features.
 
-🧹 **User-Centric Interface:** Enjoy a clean and contemporary user interface for a delightful shopping experience.
+👑 **Admin Privileges:** Admins can create, update, and remove furniture items to manage the inventory efficiently.
 
 ## Getting Started
-
-Follow these steps to set up Furniture Heaven on your local machine:
 
 ### Prerequisites
 
 - Ensure [Node.js](https://nodejs.org/) is installed on your system.
 
-### Installation
+### Installation and Starting
 
-1. Clone the repository to your local machine:
+1. Clone the repository:
 
    ```bash
    git clone https://github.com/yavordobrev24/furniture-heaven.git
    ```
 
-2. Navigate to the project directory:
+2. Navigate to the project directory and install dependencies:
 
    ```bash
-   cd furniture-heaven
-   ```
-
-3. Install the necessary dependencies:
-
-   ```bash
-   cd client
-   ```
-
-   ```bash
+   cd furniture-heaven/client
    npm install
    ```
 
-4. Start the app:
-
-   ```bash
-   cd client
-   ```
+3. Start the app:
 
    ```bash
    npm run dev
    ```
 
-5. Start the server:
+4. Start the server:
 
    ```bash
-   cd server
-   ```
-
-   ```bash
+   cd ../server
    node server.js
    ```
 
-6. Open your web browser and access `http://localhost:5173` to begin your Furniture Heaven shopping experience.
+5. Open `http://localhost:5173` in your web browser to start exploring Furniture Heaven.
 
 ## Usage
 
-### Test Profiles
+1. Register for an account to access personalized features.
 
-For testing purposes, two pre-existing profiles are available:
+2. Log in using your credentials or explore using the provided test profiles.
 
-1. **Profile 1**
+3. Explore furniture by categories, view details, and add preferred items to the cart.
 
-   - **Email:** peter@gmail.com
-   - **Password:** 123456
+4. Proceed to the cart for checkout to finalize your purchase.
 
-2. **Profile 2**
-   - **Email:** yavor@gmail.com
-   - **Password:** 123456
+### Admin Features
 
-Feel free to use these profiles to explore the functionalities and features of Furniture Heaven.
+1. Access admin functionalities using admin credentials.
 
-### Register
-
-1. Begin by registering for an account on the registration page.
-
-2. Fill in your details, including your email and password.
-
-### Log In
-
-Log in using your credentials or utilize the provided test profiles.
-
-### Explore Furniture
-
-1. Browse through our furniture collection by selecting various categories.
-
-2. Click on a furniture item to view its details, including images, pricing, and descriptions.
-
-### Add to Cart
-
-1. When you find a cherished item, click the "Buy" button.
-
-2. It will appear in your shopping cart.
-
-### Checkout
-
-To finalize your purchase, proceed to your shopping cart and click "Checkout."
+2. Manage the furniture inventory through the admin dashboard.
 
 ## Technologies Used
 
-- **React.js:** A leading JavaScript library for crafting user interfaces.
-- **Vite.js:** An advanced build tool streamlining modern development environments.
+- **React.js:** JavaScript library for crafting user interfaces.
+- **Vite.js:** Advanced build tool for modern development environments.
 
 ## Credits
 
-- Furniture icons and images utilized in this application are sourced from diverse artists on [Flaticon](https://www.flaticon.com/).
+- Furniture icons and images sourced from diverse artists on [Flaticon](https://www.flaticon.com/).

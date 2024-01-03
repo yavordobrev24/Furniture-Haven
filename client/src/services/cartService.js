@@ -1,7 +1,7 @@
 import * as request from "../lib/request.js";
 import { getSingleProduct } from "./furnitureService.js";
 
-const baseUrl = "http://localhost:3030/data/carts";
+const baseUrl = `${import.meta.env.VITE_API_URL}/data/carts`;
 
 const getAllCarts = async () => {
   const result = await request.get(`${baseUrl}`);
