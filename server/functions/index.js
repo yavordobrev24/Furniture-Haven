@@ -1,10 +1,15 @@
 const server = require("./server");
-const functions = require("firebase-functions");
+
+const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 
-// Cloud Function handling HTTP requests and emitting them to the server
-exports.api = functions
-  .runWith({ maxInstances: 10 }) // Set the maximum instances to 10
-  .https.onRequest((req, res) => {
-    server.emit("request", req, res);
-  });
+exports.api = onRequest((req, res) => {
+  server.emit("request", req, res);
+});
+// Create and deploy your first functions
+// https://firebase.google.com/docs/functions/get-started
+
+// exports.helloWorld = onRequest((request, response) => {
+//   logger.info("Hello logs!", {structuredData: true});
+//   response.send("Hello from Firebase!");
+// });
