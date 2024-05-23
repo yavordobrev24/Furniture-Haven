@@ -3,8 +3,6 @@
 Welcome to Furniture Heaven, the ultimate online destination for exquisite furniture shopping. Our platform offers a seamless and sophisticated user experience through a Single Page Application (SPA) crafted with React.js and empowered by Vite.js for an efficient build toolchain. Explore a diverse collection, manage your selections in the shopping cart, and benefit from a user-centric interface.
 Try the app on [Furniture Heaven](https://furniture-heaven-606df.web.app).
 
-![screenshot of home page](./preview.png)
-
 ## Features
 
 🛋 **Explore:** Discover a diverse collection of exquisite furniture items with comprehensive descriptions.
