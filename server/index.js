@@ -94,7 +94,10 @@
 
       let status = 200;
       let headers = {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "http://localhost:5173",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true",
         "Content-Type": "application/json",
       };
       let result = "";
@@ -103,9 +106,8 @@
       // NOTE: the OPTIONS method results in undefined result and also it never processes plugins - keep this in mind
       if (method == "OPTIONS") {
         Object.assign(headers, {
-          "Access-Control-Allow-Methods":
-            "GET, POST, PUT, DELETE, OPTIONS, PATCH",
-          "Access-Control-Allow-Credentials": false,
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Credentials": true,
           "Access-Control-Max-Age": "86400",
           "Access-Control-Allow-Headers":
             "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, X-Authorization, X-Admin",
@@ -207,7 +209,7 @@
         (p, [k, v]) => Object.assign(p, { [k]: decodeURIComponent(v) }),
         {}
       );
-    const body = req.body;
+    const body = await parseBody(req);
 
     return {
       serviceName,
@@ -502,10 +504,10 @@
 
   function validateRequest(context, tokens, query) {
     /*
-      if (context.params.collection == undefined) {
-          throw new RequestError('Please, specify collection name');
-      }
-      */
+        if (context.params.collection == undefined) {
+            throw new RequestError('Please, specify collection name');
+        }
+        */
     if (tokens.length > 1) {
       throw new RequestError$1();
     }
@@ -1209,8 +1211,6 @@
             const session = saveSession(result._id);
             result.accessToken = session.accessToken;
 
-            console.log(result);
-
             return result;
           } else {
             throw new CredentialError$1("Login or password don't match");
@@ -1668,6 +1668,12 @@
 
   const server = http__default["default"].createServer(
     requestHandler(plugins, services)
+  );
+
+  const port = 3030;
+  server.listen(port);
+  console.log(
+    `Server started on port ${port}. You can make requests to http://localhost:${port}/`
   );
 
   return server;

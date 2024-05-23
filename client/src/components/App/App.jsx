@@ -9,7 +9,6 @@ import Login from "../Login/Login.jsx";
 import Register from "../Register/Register.jsx";
 import Home from "../Home/Home.jsx";
 import Header from "../Header/Header.jsx";
-import Footer from "../Footer/Footer.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import ProductList from "../ProductList/ProductList.jsx";
 import About from "../About/About.jsx";
@@ -73,7 +72,6 @@ function App() {
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
       </div>
     </AuthProvider>
   );

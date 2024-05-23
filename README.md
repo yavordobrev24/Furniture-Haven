@@ -43,7 +43,7 @@ Welcome to Furniture Heaven, the ultimate online destination for exquisite furni
 
    ```bash
    cd ../server
-   node server.js
+   node index.js
    ```
 
 5. Open `http://localhost:5173` in your web browser to start exploring Furniture Heaven.

@@ -1,5 +1,5 @@
 import { del, get, put, post } from "../lib/request";
-const baseUrl = `${import.meta.env.VITE_API_URL}/data/furniture`;
+const baseUrl = `http://localhost:3030/data/furniture`;
 console.log(baseUrl);
 export const getAllProducts = async () => {
   const result = await get(baseUrl);
