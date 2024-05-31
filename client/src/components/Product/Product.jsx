@@ -1,75 +1,77 @@
+import { useParams, Link } from "react-router-dom";
+
 import { useContext, useEffect, useState } from "react";
-import "./Product.css";
-import { Link, useNavigate } from "react-router-dom";
+import { getSingleProduct } from "../../services/furnitureService";
+import ReviewList from "../ReviewList/ReviewList";
 import AuthContext from "../../contexts/authContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { getProductReviews } from "../../services/reviewService";
+import { deleteReview } from "../../services/reviewService";
 
 export default function Product(props) {
-  const { onBuy, isAuthenticated, cart, isAdmin } = useContext(AuthContext);
+  const { id } = useParams();
+  const { isAuthenticated, userId, onBuy, cart } = useContext(AuthContext);
+  const [furnitureData, setFurnitureData] = useState({});
+  const [hasReviewed, setHasReviewed] = useState(true);
+  const [reviews, setReviews] = useState({});
   const [hasBought, setHasBought] = useState(false);
-  const navigate = useNavigate();
-  useEffect(() => {
-    const isBought = cart?.cartItems.find((i) => i._id === props._id);
+  const fetchProduct = async (id) => {
+    const data = await getSingleProduct(id);
+    setFurnitureData(data);
+    const isBought = cart?.cartItems.find((i) => i._id == id);
     setHasBought(isBought);
-  }, [props]);
+  };
+  const fetchReviews = async (id) => {
+    const data = await getProductReviews(id);
+    if (isAuthenticated) {
+      if (data.find((r) => r._ownerId === userId)) {
+        setHasReviewed(false);
+      } else {
+        setHasReviewed(true);
+      }
+    }
+    setReviews(data);
+  };
+  useEffect(() => {
+    fetchProduct(id);
+    fetchReviews(id);
+  }, [id]);
 
+  const deleteHandler = async (e) => {
+    await deleteReview(e.target.id);
+    setReviews((oldState) => oldState.filter((x) => x._id !== e.target.id));
+    setHasReviewed(true);
+  };
   return (
-    <Link
-      to={`/products/${props._id}`}
-      className="product-link"
-      style={{ textDecoration: "none" }}
-    >
-      <div className="product">
-        {isAuthenticated && isAdmin && (
-          <div className="product-icons" id={props._id}>
-            <span
-              className="edit-icon"
-              role="img"
-              aria-label="Edit"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                navigate(`/edit-product/${props._id}`);
-              }}
-            >
-              <FontAwesomeIcon icon={faPen} />
-            </span>
-            <span
-              className="delete-icon"
-              role="img"
-              aria-label="Delete"
-              onClick={(e) => {
-                e.preventDefault();
-                props.deleteProductHandler(e);
-              }}
-            >
-              <FontAwesomeIcon icon={faTrash} />
-            </span>
-          </div>
-        )}
-        <img src={props.imageUrl} alt={props.name} />
-        <div className="info">
-          <h3>{props.name}</h3>
-          <p className="description">{props.description}</p>
-          <p className="price">${props.price}</p>
-          {isAuthenticated && !hasBought && (
-            <div className="product-buttons">
+    <div className="furniture-details-page">
+      <div className="details-info">
+        <div className="furniture-image">
+          <img src={furnitureData.imageUrl} alt={furnitureData.name} />
+        </div>
+        <div className="furniture-details">
+          <h1>{furnitureData.name}</h1>
+          <p className="price">${furnitureData.price}</p>
+          <p className="description">{furnitureData.description}</p>
+          <div className="furniture-buttons">
+            {isAuthenticated && !hasBought && (
               <button
-                className="buy"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
+                className="buy-button"
+                onClick={() => {
                   setHasBought(true);
-                  return onBuy(props._id);
+                  return onBuy(furnitureData._id);
                 }}
               >
                 <i className="fas fa-shopping-bag"></i> Buy
               </button>
-            </div>
-          )}
+            )}
+            {isAuthenticated && hasReviewed && (
+              <Link to={`/product/${id}/add-review`}>
+                <button className="add-review-button">Add Review</button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
-    </Link>
+      <ReviewList reviews={reviews} deleteHandler={deleteHandler} />
+    </div>
   );
 }

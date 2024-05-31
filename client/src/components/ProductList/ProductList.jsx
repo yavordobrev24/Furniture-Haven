@@ -78,7 +78,7 @@ export default function ProductList(props) {
           <h2>No products matching the criteria.</h2>
         ) : (
           filteredProducts.map((x) => (
-            <Product
+            <ProductCard
               key={x._id}
               deleteProductHandler={deleteProductHandler}
               {...x}

@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import { AuthProvider } from "../../contexts/authContext.jsx";
+import Product from "../Product/Product.jsx";
 import Path from "../../path.js";
 import Footer from "../Footer/Footer.jsx";
 import Logout from "../Logout/Logout.jsx";
@@ -12,7 +13,6 @@ import Header from "../Header/Header.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import CategoryPage from "../CategoryPage/CategoryPage.jsx";
 import ShoppingCart from "../ShoppingCart/ShoppingCart.jsx";
-import Details from "../Details/Details.jsx";
 import AddReviewPage from "../AddReview/AddReviewPage.jsx";
 import Profile from "../Profile/Profile.jsx";
 import EditReviewPage from "../EditReview/EditReviewPage.jsx";
@@ -30,7 +30,7 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/categories/:category" element={<CategoryPage />} />
-          <Route path="details/:id" element={<Details />} />
+          <Route path="/product/:id" element={<Product />} />
 
           <Route element={<GuestOnlyGuard />}>
             <Route path={Path.Register} element={<Register />} />
