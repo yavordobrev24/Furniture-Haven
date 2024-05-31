@@ -3,15 +3,14 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { AuthProvider } from "../../contexts/authContext.jsx";
 import Path from "../../path.js";
-
+import Footer from "../Footer/Footer.jsx";
 import Logout from "../Logout/Logout.jsx";
 import Login from "../Login/Login.jsx";
 import Register from "../Register/Register.jsx";
 import Home from "../Home/Home.jsx";
 import Header from "../Header/Header.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
-import ProductList from "../ProductList/ProductList.jsx";
-import About from "../About/About.jsx";
+import CategoryPage from "../CategoryPage/CategoryPage.jsx";
 import ShoppingCart from "../ShoppingCart/ShoppingCart.jsx";
 import Details from "../Details/Details.jsx";
 import AddReviewPage from "../AddReview/AddReviewPage.jsx";
@@ -30,21 +29,8 @@ function App() {
         <Header />
         <Routes>
           <Route index element={<Home />} />
-          <Route path={Path.Products} element={<ProductList category="" />} />
-          <Route path={Path.About} element={<About />} />
-          <Route
-            path={`${Path.Products}/kitchen`}
-            element={<ProductList category="kitchen" />}
-          />
-          <Route
-            path={`${Path.Products}/bedroom`}
-            element={<ProductList category="bedroom" />}
-          />
-          <Route
-            path={`${Path.Products}/living-room`}
-            element={<ProductList category="living-room" />}
-          />
-          <Route path={`${Path.Products}/:id`} element={<Details />} />
+          <Route path="/categories/:category" element={<CategoryPage />} />
+          <Route path="details/:id" element={<Details />} />
 
           <Route element={<GuestOnlyGuard />}>
             <Route path={Path.Register} element={<Register />} />
@@ -72,6 +58,7 @@ function App() {
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </div>
     </AuthProvider>
   );

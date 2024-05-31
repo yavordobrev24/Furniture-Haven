@@ -13,15 +13,6 @@ export default function Header(props) {
         </div>
         <ul className="nav-links">
           <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/products"> Products</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
             {isAuthenticated && isAdmin && (
               <Link to="/add-product">Add Product</Link>
             )}

@@ -1,0 +1,17 @@
+.footer {
+  margin-top: auto;
+  background-color: black;
+  width: 100vw;
+  color: white;
+  padding: 2rem;
+}
+.footer nav {
+  max-width: 1200px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 2rem;
+}
+.footer nav a:hover {
+  text-decoration: underline;
+}

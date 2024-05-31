@@ -24,14 +24,15 @@ export default function ProductList(props) {
     );
   };
 
-  async function fetchProducts() {
+  async function fetchProducts(category) {
     const data = await getAllProducts();
+
     setProducts(data);
   }
   useEffect(() => {
-    fetchProducts();
-    setCategory(props.category);
-  }, [props.category]);
+    console.log(props.category);
+    fetchProducts(props.category);
+  }, [props]);
 
   const filteredProducts = useMemo(() => {
     let result = products;
@@ -71,7 +72,6 @@ export default function ProductList(props) {
         setSearchTerm={setSearchTerm}
         setMinPrice={setMinPrice}
         setMaxPrice={setMaxPrice}
-        setCategory={setCategory}
       />
       <section className="product-list">
         {filteredProducts.length === 0 ? (

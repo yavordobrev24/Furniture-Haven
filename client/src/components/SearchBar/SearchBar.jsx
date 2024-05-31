@@ -24,20 +24,7 @@ export default function SearchBar(props) {
           }}
         />
       </div>
-      <div className="category-div">
-        <h2>Category</h2>
-        <select
-          id="category"
-          name="category"
-          value={props.category}
-          onChange={onSelect}
-        >
-          <option value="">All</option>
-          <option value="kitchen">Kitchen</option>
-          <option value="bedroom">Bedroom</option>
-          <option value="living-room">Living room</option>
-        </select>
-      </div>
+
       <div className="price-div">
         <h2>Price</h2>
         <div>
