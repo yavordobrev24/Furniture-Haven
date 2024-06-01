@@ -58,6 +58,7 @@ export default function Login() {
               name={LoginFormKeys.Email}
               value={values[LoginFormKeys.Email]}
               onChange={onChange}
+              placeholder="Demo: yavor@gmail.com"
             />
           </div>
           <div className={styles.input}>
@@ -68,6 +69,7 @@ export default function Login() {
               name={LoginFormKeys.Password}
               value={values[LoginFormKeys.Password]}
               onChange={onChange}
+              placeholder="Demo: 123456"
             />
           </div>
           <button type="submit">Login</button>

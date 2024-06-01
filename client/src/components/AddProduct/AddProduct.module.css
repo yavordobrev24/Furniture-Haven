@@ -1,10 +1,10 @@
-.login {
+.add-product {
+  margin-block: 3rem;
+  margin-inline: auto;
   max-width: 400px;
   font-size: 1.4rem;
-  margin-block: 3rem;
-  padding: 1rem;
 }
-.login h3 {
+.add-product h3 {
   text-align: center;
   font-size: 2.4rem;
 }
@@ -14,7 +14,9 @@
   justify-content: center;
   margin-bottom: 1rem;
 }
-.input input {
+.input input,
+.input select,
+.input textarea {
   padding: 0.5rem;
   font-size: 1.2rem;
 }
@@ -36,15 +38,4 @@
 .form button:focus {
   background-color: white;
   color: rgb(45, 44, 44);
-}
-.errors {
-  display: flex;
-  flex-direction: column;
-}
-.error {
-  color: rgb(177, 64, 64);
-  font-style: italic;
-}
-.demo {
-  font-size: 1rem;
 }

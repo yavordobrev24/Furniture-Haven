@@ -65,24 +65,20 @@ export default function Product(props) {
           <p className={styles.description}>{product.description}</p>
           <p className={styles.price}>${product.price}</p>
           {isAuthenticated ? (
-            !isAdded ? (
-              <div className={styles.btns}>
+            <div className={styles.btns}>
+              {!isAdded ? (
                 <button onClick={(e) => addToCart(e)}>ADD TO CART</button>
-                {hasReviewed ? (
-                  <button onClick={(e) => goToReview()}>LEAVE A REVIEW</button>
-                ) : (
-                  ""
-                )}
-              </div>
-            ) : (
-              <p className={styles.added}>
-                Already added to{" "}
-                <Link to="/shopping-cart" className={styles.link}>
-                  cart
+              ) : (
+                <Link to="/shopping-cart" className={styles.added}>
+                  ALREADY ADDED TO <span className={styles.link}>CART</span>.
                 </Link>
-                .
-              </p>
-            )
+              )}
+              {hasReviewed ? (
+                <button onClick={(e) => goToReview()}>LEAVE A REVIEW</button>
+              ) : (
+                ""
+              )}
+            </div>
           ) : (
             <p className={styles.login}>
               <Link to="/login" className={styles.link}>

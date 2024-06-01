@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./AddProduct.css";
+import styles from "./AddProduct.module.css";
 import { createProduct } from "../../services/furnitureService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function AddProduct(props) {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ export default function AddProduct(props) {
     imageUrl: "",
     description: "",
     category: "kitchen",
-    price: "",
+    price: "0.01",
   });
 
   const onChangeHandler = (e) => {
@@ -26,7 +26,7 @@ export default function AddProduct(props) {
     console.log("Product Data:", productData);
 
     await createProduct(productData);
-    navigate("/products");
+    navigate("/");
     setProductData({
       name: "",
       imageUrl: "",
@@ -37,12 +37,12 @@ export default function AddProduct(props) {
   };
 
   return (
-    <div className="add-product-page">
-      <div className="add-product-form">
-        <h2>Add a New Product</h2>
+    <div className={styles["add-product"]}>
+      <div className={styles.form}>
+        <h3>Add Product</h3>
         <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <label htmlFor="productName">Product Name:</label>
+          <div className={styles.input}>
+            <label htmlFor="productName">Product Name</label>
             <input
               type="text"
               id="productName"
@@ -52,8 +52,8 @@ export default function AddProduct(props) {
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="imageUrl">Image URL:</label>
+          <div className={styles.input}>
+            <label htmlFor="imageUrl">Image URL</label>
             <input
               type="text"
               id="imageUrl"
@@ -63,8 +63,8 @@ export default function AddProduct(props) {
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="description">Description:</label>
+          <div className={styles.input}>
+            <label htmlFor="description">Description</label>
             <textarea
               id="description"
               name="description"
@@ -75,8 +75,8 @@ export default function AddProduct(props) {
               required
             ></textarea>
           </div>
-          <div className="form-group">
-            <label htmlFor="category">Category:</label>
+          <div className={styles.input}>
+            <label htmlFor="category">Category</label>
             <select
               id="category"
               name="category"
@@ -89,14 +89,15 @@ export default function AddProduct(props) {
               <option value="bedroom">Bedroom</option>
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="price">Price:</label>
+          <div className={styles.input}>
+            <label htmlFor="price">Price</label>
             <input
               type="number"
               id="price"
               name="price"
               value={productData.price}
               onChange={onChangeHandler}
+              min={0.01}
               step="0.01"
               required
             />

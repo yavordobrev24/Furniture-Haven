@@ -30,8 +30,6 @@
   cursor: pointer;
   border: 2px solid rgb(45, 44, 44);
   transition: background-color 300ms, color 200ms;
-}
-.form button {
   font-size: 1.4rem;
 }
 .form button:hover,

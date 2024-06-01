@@ -43,7 +43,7 @@ export default function ProductList(props) {
           />
         ))
       ) : (
-        <h2>No products matching the criteria.</h2>
+        <h3 className={styles.no}>No products matching the criteria.</h3>
       )}
     </div>
   );

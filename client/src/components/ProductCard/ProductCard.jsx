@@ -11,9 +11,9 @@ export default function ProductCard(props) {
   return (
     <Link to={`/product/${props._id}`} className={styles["product-card"]}>
       {isAuthenticated && isAdmin && (
-        <div className="product-icons" id={props._id}>
+        <div className={styles["action-icons"]} id={props._id}>
           <span
-            className="edit-icon"
+            className={styles.edit}
             role="img"
             aria-label="Edit"
             onClick={(e) => {
@@ -25,7 +25,7 @@ export default function ProductCard(props) {
             <FontAwesomeIcon icon={faPen} />
           </span>
           <span
-            className="delete-icon"
+            className={styles.delete}
             role="img"
             aria-label="Delete"
             onClick={(e) => {

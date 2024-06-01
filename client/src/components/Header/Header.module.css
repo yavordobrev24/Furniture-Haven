@@ -7,6 +7,9 @@
   font-size: 1.5rem;
   height: max-content;
 }
+.logo {
+  font-size: 2rem;
+}
 .logo:hover,
 .logo:focus {
   color: rgb(72, 70, 70);
@@ -44,8 +47,6 @@
 .links > *:hover,
 .links > *:focus {
   color: rgb(72, 70, 70);
-}
-.cart {
 }
 .cart a {
   position: relative;

@@ -1,14 +1,14 @@
 # FurnitureHeaven
 
-Single Page Application for furniture crafted with React.js and empowered by Vite.js for an efficient build toolchain.
+Single Page Application for furniture crafted using React.js and empowered by Vite.js for an efficient build toolchain.
 
 ## Usage
 
 1. Register for an account to access personalized features.
 
-2. Log in using your credentials or explore using the provided test profiles.
+2. Log in using your credentials or explore using the provided demo profile on the login page.
 
-3. Explore furniture by categories, view details, and add preferred items to the cart.
+3. Explore furniture by categories, view details and add preferred items to the cart.
 
 4. Proceed to the cart for checkout to finalize your purchase.
 

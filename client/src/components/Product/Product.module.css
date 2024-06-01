@@ -73,3 +73,15 @@
 .login {
   font-size: 1rem;
 }
+@media (max-width: 1000px) {
+  .content {
+    flex-direction: column;
+  }
+  .product-info {
+    align-items: center;
+    width: 100%;
+  }
+  .product-img {
+    width: 100%;
+  }
+}
