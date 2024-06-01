@@ -1,0 +1,12 @@
+.not-found {
+  max-width: max-content;
+  margin-inline: auto;
+  margin-block: 5rem;
+}
+.not-found h1 {
+  font-size: 5rem;
+  text-align: center;
+}
+.not-found p {
+  font-size: 1.5rem;
+}
