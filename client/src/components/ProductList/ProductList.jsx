@@ -1,5 +1,4 @@
 import "./ProductList.css";
-import Product from "../Product/Product.jsx";
 import { useEffect, useMemo, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import {

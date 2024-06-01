@@ -15,12 +15,19 @@ export default function Product(props) {
   const [product, setProduct] = useState({});
   const [hasReviewed, setHasReviewed] = useState(true);
   const [reviews, setReviews] = useState({});
-  const [hasBought, setHasBought] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
+
+  const addToCart = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsAdded(true);
+    return onBuy(product._id);
+  };
   const fetchProduct = async (id) => {
     const data = await getSingleProduct(id);
     setProduct(data);
-    const isBought = cart?.cartItems.find((i) => i._id == id);
-    setHasBought(isBought);
+    const isAdded = cart?.cartItems.find((i) => i._id == id);
+    setIsAdded(isAdded);
   };
   const fetchReviews = async (id) => {
     const data = await getProductReviews(id);
@@ -43,6 +50,7 @@ export default function Product(props) {
     setReviews((oldState) => oldState.filter((x) => x._id !== e.target.id));
     setHasReviewed(true);
   };
+
   return (
     <div className={styles.product}>
       <div className={styles.content}>
@@ -53,6 +61,28 @@ export default function Product(props) {
           <h3 className={styles.name}>{product.name}</h3>
           <p className={styles.description}>{product.description}</p>
           <p className={styles.price}>${product.price}</p>
+          {isAuthenticated ? (
+            !isAdded ? (
+              <button className={styles.btn} onClick={(e) => addToCart(e)}>
+                ADD TO CART
+              </button>
+            ) : (
+              <p className={styles.added}>
+                Already added to{" "}
+                <Link to="/shopping-cart" className={styles.link}>
+                  cart
+                </Link>
+                .
+              </p>
+            )
+          ) : (
+            <p className={styles.login}>
+              <Link to="/login" className={styles.link}>
+                Login
+              </Link>{" "}
+              to add to cart.
+            </p>
+          )}
         </div>
       </div>
       <ReviewList reviews={reviews} deleteHandler={deleteHandler} />

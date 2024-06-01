@@ -4,13 +4,19 @@
   width: max-content;
   gap: 1rem;
 }
+
 .category-card {
   padding: 1rem;
   border: 3px solid rgb(45, 44, 44);
   transition: background-color 300ms, color 200ms;
   cursor: pointer;
 }
+
 .category-card:hover {
+  background-color: rgb(45, 44, 44);
+  color: white;
+}
+.active {
   background-color: rgb(45, 44, 44);
   color: white;
 }

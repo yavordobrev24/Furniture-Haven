@@ -1,18 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./CategoryPage.module.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
+const categories = [
+  {
+    text: "All",
+    url: "all",
+  },
+  { text: "Kitchen", url: "kitchen" },
+  { text: "Living room", url: "living-room" },
+  { text: "Bedroom", url: "bedroom" },
+];
 export default function CategoryPage(props) {
   const params = useParams();
-  console.log(params);
-  const [category, setCategory] = useState("all");
+  const navigate = useNavigate();
+  const [category, setCategory] = useState(params.category || "all");
+
+  useEffect(() => {
+    if (params.category !== category) {
+      navigate(`/categories/${category}`);
+    }
+  }, [category, params.category, navigate]);
+
+  const changeCategory = (category) => {
+    setCategory(category.toLowerCase());
+  };
+
   return (
     <>
       <div className={styles.categories}>
-        <button className={styles["category-card"]}>All</button>
-        <button className={styles["category-card"]}>Kitchen</button>
-        <button className={styles["category-card"]}>Living room</button>
-        <button className={styles["category-card"]}>Bedroom</button>
+        {categories.map((cat) => (
+          <button
+            key={cat.text}
+            className={`${styles["category-card"]} ${
+              cat.url === category ? styles.active : ""
+            }`}
+            onClick={() => changeCategory(cat.url)}
+          >
+            {cat.text}
+          </button>
+        ))}
       </div>
     </>
   );

@@ -6,14 +6,8 @@ import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./ProductCard.module.css";
 
 export default function ProductCard(props) {
-  const { onBuy, isAuthenticated, cart, isAdmin } = useContext(AuthContext);
-  const [hasBought, setHasBought] = useState(false);
+  const { isAuthenticated, isAdmin } = useContext(AuthContext);
   const navigate = useNavigate();
-  useEffect(() => {
-    const isBought = cart?.cartItems.find((i) => i._id === props._id);
-    setHasBought(isBought);
-  }, [props]);
-
   return (
     <Link to={`/product/${props._id}`} className={styles["product-card"]}>
       {isAuthenticated && isAdmin && (
@@ -47,21 +41,6 @@ export default function ProductCard(props) {
       <div>
         <h3>{props.name}</h3>
         <p className="price">${props.price}</p>
-        {isAuthenticated && !hasBought && (
-          <div className="product-buttons">
-            <button
-              className="buy"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                setHasBought(true);
-                return onBuy(props._id);
-              }}
-            >
-              <i className="fas fa-shopping-bag"></i> Buy
-            </button>
-          </div>
-        )}
       </div>
     </Link>
   );
