@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 
 import { useContext, useEffect, useState } from "react";
 import { getSingleProduct } from "../../services/furnitureService";
-import ReviewList from "../ReviewList/ReviewList";
+import Reviews from "../Reviews/Reviews";
 import AuthContext from "../../contexts/authContext";
 import { getProductReviews } from "../../services/reviewService";
 import { deleteReview } from "../../services/reviewService";
@@ -63,9 +63,10 @@ export default function Product(props) {
           <p className={styles.price}>${product.price}</p>
           {isAuthenticated ? (
             !isAdded ? (
-              <button className={styles.btn} onClick={(e) => addToCart(e)}>
-                ADD TO CART
-              </button>
+              <div className={styles.btns}>
+                <button onClick={(e) => addToCart(e)}>ADD TO CART</button>
+                <button onClick={(e) => review(e)}>LEAVE A REVIEW</button>
+              </div>
             ) : (
               <p className={styles.added}>
                 Already added to{" "}
@@ -85,7 +86,7 @@ export default function Product(props) {
           )}
         </div>
       </div>
-      <ReviewList reviews={reviews} deleteHandler={deleteHandler} />
+      <Reviews reviews={reviews} deleteHandler={deleteHandler} />
       <Newest />
     </div>
   );

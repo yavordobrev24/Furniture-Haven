@@ -1,0 +1,35 @@
+.review-card {
+  border: 1px solid rgb(45, 44, 44);
+  padding: 1rem;
+}
+.user {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.btns > * {
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btns > *:nth-child(1) {
+  border: 2px solid rgb(175, 142, 80);
+  color: rgb(175, 142, 80);
+}
+.btns > *:nth-child(1):hover,
+.btns > *:nth-child(1):focus {
+  background-color: rgb(175, 142, 80);
+  color: white;
+}
+.btns > *:nth-child(2) {
+  border: 2px solid rgb(177, 64, 64);
+  color: rgb(177, 64, 64);
+}
+.btns > *:nth-child(2):hover,
+.btns > *:nth-child(2):focus {
+  background-color: rgb(177, 64, 64);
+  color: white;
+}

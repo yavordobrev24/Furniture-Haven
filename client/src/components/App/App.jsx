@@ -29,8 +29,11 @@ function App() {
         <Header />
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/categories/:category" element={<CategoryPage />} />
-          <Route path="/product/:id" element={<Product />} />
+          <Route
+            path={`${Path.Categories}/:category`}
+            element={<CategoryPage />}
+          />
+          <Route path={`${Path.Product}/:id`} element={<Product />} />
 
           <Route element={<GuestOnlyGuard />}>
             <Route path={Path.Register} element={<Register />} />

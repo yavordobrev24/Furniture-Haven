@@ -1,12 +1,11 @@
-import { useContext, useEffect, useState } from "react";
 import ReviewCard from "../ReviewCard/ReviewCard";
 
-import "./ReviewList.css";
-export default function ReviewList(props) {
+import styles from "./Reviews.module.css";
+export default function Reviews(props) {
   return (
-    <div className="reviews">
-      <h2>Reviews</h2>
-      <div className="review-list">
+    <div className={styles["reviews"]}>
+      <h3>Reviews</h3>
+      <div className={styles.list}>
         {props.reviews?.length > 0 ? (
           props.reviews.map((review) => (
             <ReviewCard
@@ -16,7 +15,7 @@ export default function ReviewList(props) {
             />
           ))
         ) : (
-          <p>No reviews yet.</p>
+          <p className={styles.no}>There are no any reviews.</p>
         )}
       </div>
     </div>

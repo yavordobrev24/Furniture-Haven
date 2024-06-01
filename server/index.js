@@ -1433,12 +1433,7 @@
         hashedPassword:
           "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
       },
-      "55554e62-7b13-11ee-b962-0242ac120002": {
-        email: "peter@gmail.com",
-        username: "Peter",
-        hashedPassword:
-          "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
-      },
+
       "11ee342-b962-0242ac12000262-0242ac120002": {
         email: "admin@admin.com",
         username: "Admin",
@@ -1587,14 +1582,6 @@
         username: "Yavor",
         _ownerId: "78854e62-7b13-11ee-b962-0242ac120002",
         _id: "6544311111111ee-b962-0242ac12004",
-      },
-      "2345678911111ee-b962-0242ac12004": {
-        productId: "11b5bb5c-7994-11ee-b962-0242ac120002",
-        rating: 5,
-        text: "Sturdy coffee table, endured a lot of poured out coffee!",
-        username: "Peter",
-        _ownerId: "55554e62-7b13-11ee-b962-0242ac120002",
-        _id: "2345678911111ee-b962-0242ac12004",
       },
     },
     carts: {
