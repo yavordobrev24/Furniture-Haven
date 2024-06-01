@@ -7,6 +7,7 @@ import AuthContext from "../../contexts/authContext";
 import { getProductReviews } from "../../services/reviewService";
 import { deleteReview } from "../../services/reviewService";
 import styles from "./Product.module.css";
+import Newest from "../Newest/Newest";
 
 export default function Product(props) {
   const { id } = useParams();
@@ -49,12 +50,13 @@ export default function Product(props) {
           <img src={product.imageUrl} alt={product.name} />
         </div>
         <div className={styles["product-info"]}>
-          <h3>{product.name}</h3>
-          <p>{product.description}</p>
-          <p>{product.price}</p>
+          <h3 className={styles.name}>{product.name}</h3>
+          <p className={styles.description}>{product.description}</p>
+          <p className={styles.price}>${product.price}</p>
         </div>
       </div>
       <ReviewList reviews={reviews} deleteHandler={deleteHandler} />
+      <Newest />
     </div>
   );
 }
