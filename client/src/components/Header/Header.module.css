@@ -7,6 +7,10 @@
   font-size: 1.5rem;
   height: max-content;
 }
+.logo:hover,
+.logo:focus {
+  color: rgb(72, 70, 70);
+}
 .dropdown {
   position: relative;
 }
@@ -36,4 +40,18 @@
 .links {
   display: flex;
   gap: 2rem;
+}
+.links > *:hover,
+.links > *:focus {
+  color: rgb(72, 70, 70);
+}
+.cart {
+}
+.cart a {
+  position: relative;
+}
+.cart span {
+  position: absolute;
+  right: 30%;
+  top: -50%;
 }
