@@ -1,5 +1,4 @@
-import { useParams, Link } from "react-router-dom";
-
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { getSingleProduct } from "../../services/furnitureService";
 import Reviews from "../Reviews/Reviews";
@@ -16,6 +15,7 @@ export default function Product(props) {
   const [hasReviewed, setHasReviewed] = useState(true);
   const [reviews, setReviews] = useState({});
   const [isAdded, setIsAdded] = useState(false);
+  const navigate = useNavigate();
 
   const addToCart = async (e) => {
     e.preventDefault();
@@ -50,6 +50,9 @@ export default function Product(props) {
     setReviews((oldState) => oldState.filter((x) => x._id !== e.target.id));
     setHasReviewed(true);
   };
+  const goToReview = () => {
+    navigate(`/product/${product._id}/add-review`);
+  };
 
   return (
     <div className={styles.product}>
@@ -65,7 +68,11 @@ export default function Product(props) {
             !isAdded ? (
               <div className={styles.btns}>
                 <button onClick={(e) => addToCart(e)}>ADD TO CART</button>
-                <button onClick={(e) => review(e)}>LEAVE A REVIEW</button>
+                {hasReviewed ? (
+                  <button onClick={(e) => goToReview()}>LEAVE A REVIEW</button>
+                ) : (
+                  ""
+                )}
               </div>
             ) : (
               <p className={styles.added}>

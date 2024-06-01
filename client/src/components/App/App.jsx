@@ -13,9 +13,8 @@ import Header from "../Header/Header.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import CategoryPage from "../CategoryPage/CategoryPage.jsx";
 import ShoppingCart from "../ShoppingCart/ShoppingCart.jsx";
-import AddReviewPage from "../AddReview/AddReviewPage.jsx";
-import Profile from "../Profile/Profile.jsx";
-import EditReviewPage from "../EditReview/EditReviewPage.jsx";
+import AddReview from "../AddReview/AddReview.jsx";
+import EditReview from "../EditReview/EditReview.jsx";
 import AuthGuard from "../guards/AuthGuard.jsx";
 import GuestOnlyGuard from "../guards/GuestOnlyGuard.jsx";
 import AdminOnlyGuard from "../guards/AdminOnlyGuard.jsx";
@@ -48,14 +47,13 @@ function App() {
           </Route>
           <Route element={<AuthGuard />}>
             <Route
-              path={`${Path.Products}/:id/add-review`}
-              element={<AddReviewPage />}
+              path={`${Path.Product}/:id/add-review`}
+              element={<AddReview />}
             />
             <Route
-              path={`${Path.Products}/:id/edit-review/:reviewId`}
-              element={<EditReviewPage />}
+              path={`${Path.Product}/:id/edit-review/:reviewId`}
+              element={<EditReview />}
             />
-            <Route path={Path.Profile} element={<Profile />} />
             <Route path={Path.ShoppingCart} element={<ShoppingCart />} />
             <Route path={Path.Logout} element={<Logout />} />
           </Route>

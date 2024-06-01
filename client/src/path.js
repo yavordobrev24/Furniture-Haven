@@ -3,11 +3,10 @@ const Path = {
   Login: "/login",
   Register: "/register",
   Product: "/product",
-  Profile: "/profile",
   Logout: "/logout",
   ShoppingCart: "/shopping-cart",
-  AddProduct: "/add",
-  EditProduct: "/edit",
+  AddProduct: "/add-product",
+  EditProduct: "/edit-product",
   Categories: "/categories",
 };
 export default Path;

@@ -1,4 +1,5 @@
 # FurnitureHeaven
+
 Single Page Application for furniture crafted with React.js and empowered by Vite.js for an efficient build toolchain.
 
 ## Usage

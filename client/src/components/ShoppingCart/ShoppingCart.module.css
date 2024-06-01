@@ -1,0 +1,100 @@
+.cart {
+  margin-block: 3rem;
+}
+.cart-items {
+  margin-block: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.cart-item {
+  position: relative;
+  width: 300px;
+  padding: 1rem;
+  text-align: center;
+  height: 400px;
+  transition: 300ms;
+  font-size: 1.8rem;
+  border: 1px solid rgb(45, 44, 44);
+}
+.no {
+  font-size: 1.3rem;
+}
+
+.cart-item img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 3rem;
+}
+.cart-item h3 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+.cart-item p {
+  font-size: 1.5rem;
+}
+.remove-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  color: rgb(45, 44, 44);
+  border-top: none;
+  border-right: none;
+  border-left: 1px solid rgb(45, 44, 44);
+  border-bottom: 1px solid rgb(45, 44, 44);
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: 300ms;
+  font-size: 1rem;
+}
+.remove-btn:hover,
+.remove-btn:focus {
+  background-color: rgb(45, 44, 44);
+  color: white;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  font-size: 1.6rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  background-color: rgb(45, 44, 44);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.close {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+.total {
+  font-size: 1.8rem;
+  margin-block: 2rem;
+}
+.checkout {
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 300ms;
+  border: 2px solid rgb(45, 44, 44);
+}
+.checkout:hover,
+.checkout:focus {
+  background-color: rgb(45, 44, 44);
+  color: white;
+}

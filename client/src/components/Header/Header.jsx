@@ -33,12 +33,7 @@ export default function Header(props) {
                   <Link to="/login">Login</Link>
                 </>
               )}
-              {isAuthenticated && (
-                <>
-                  <Link to="/profile">Profile</Link>
-                  <Link to="/logout">Logout</Link>
-                </>
-              )}
+              {isAuthenticated && <Link to="/logout">Logout</Link>}
             </div>
           </div>
         </div>
