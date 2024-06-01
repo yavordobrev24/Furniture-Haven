@@ -6,17 +6,18 @@ import ReviewList from "../ReviewList/ReviewList";
 import AuthContext from "../../contexts/authContext";
 import { getProductReviews } from "../../services/reviewService";
 import { deleteReview } from "../../services/reviewService";
+import styles from "./Product.module.css";
 
 export default function Product(props) {
   const { id } = useParams();
   const { isAuthenticated, userId, onBuy, cart } = useContext(AuthContext);
-  const [furnitureData, setFurnitureData] = useState({});
+  const [product, setProduct] = useState({});
   const [hasReviewed, setHasReviewed] = useState(true);
   const [reviews, setReviews] = useState({});
   const [hasBought, setHasBought] = useState(false);
   const fetchProduct = async (id) => {
     const data = await getSingleProduct(id);
-    setFurnitureData(data);
+    setProduct(data);
     const isBought = cart?.cartItems.find((i) => i._id == id);
     setHasBought(isBought);
   };
@@ -42,33 +43,15 @@ export default function Product(props) {
     setHasReviewed(true);
   };
   return (
-    <div className="furniture-details-page">
-      <div className="details-info">
-        <div className="furniture-image">
-          <img src={furnitureData.imageUrl} alt={furnitureData.name} />
+    <div className={styles.product}>
+      <div className={styles.content}>
+        <div className={styles["product-img"]}>
+          <img src={product.imageUrl} alt={product.name} />
         </div>
-        <div className="furniture-details">
-          <h1>{furnitureData.name}</h1>
-          <p className="price">${furnitureData.price}</p>
-          <p className="description">{furnitureData.description}</p>
-          <div className="furniture-buttons">
-            {isAuthenticated && !hasBought && (
-              <button
-                className="buy-button"
-                onClick={() => {
-                  setHasBought(true);
-                  return onBuy(furnitureData._id);
-                }}
-              >
-                <i className="fas fa-shopping-bag"></i> Buy
-              </button>
-            )}
-            {isAuthenticated && hasReviewed && (
-              <Link to={`/product/${id}/add-review`}>
-                <button className="add-review-button">Add Review</button>
-              </Link>
-            )}
-          </div>
+        <div className={styles["product-info"]}>
+          <h3>{product.name}</h3>
+          <p>{product.description}</p>
+          <p>{product.price}</p>
         </div>
       </div>
       <ReviewList reviews={reviews} deleteHandler={deleteHandler} />
