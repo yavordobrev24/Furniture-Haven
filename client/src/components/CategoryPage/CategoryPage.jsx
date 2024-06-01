@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./CategoryPage.module.css";
+import ProductList from "../ProductList/ProductList";
 import { useNavigate, useParams } from "react-router-dom";
 
 const categories = [
@@ -41,6 +42,7 @@ export default function CategoryPage(props) {
           </button>
         ))}
       </div>
+      <ProductList category={category} />
     </>
   );
 }
