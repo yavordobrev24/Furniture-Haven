@@ -1,4 +1,4 @@
-import "./Login.css";
+import styles from "./Login.module.css";
 import useForm from "../../hooks/useForm";
 import { useContext, useState } from "react";
 import AuthContext from "../../contexts/authContext";
@@ -46,38 +46,38 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-form">
-        <h2>Login</h2>
+    <div className={styles.login}>
+      <div className={styles.form}>
+        <h3>Login</h3>
         <form onSubmit={handleSubmit}>
-          <div className="form-inputs">
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                id="email"
-                name={LoginFormKeys.Email}
-                value={values[LoginFormKeys.Email]}
-                onChange={onChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                name={LoginFormKeys.Password}
-                value={values[LoginFormKeys.Password]}
-                onChange={onChange}
-              />
-            </div>
+          <div className={styles.input}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              name={LoginFormKeys.Email}
+              value={values[LoginFormKeys.Email]}
+              onChange={onChange}
+              placeholder="Demo: yavor@gmail.com"
+            />
+          </div>
+          <div className={styles.input}>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name={LoginFormKeys.Password}
+              value={values[LoginFormKeys.Password]}
+              onChange={onChange}
+              placeholder="Demo: 123456"
+            />
           </div>
           <button type="submit">Login</button>
         </form>
       </div>
-      <div className="error-container">
+      <div className={styles.errors}>
         {Object.keys(errors).map((key) => (
-          <span key={key} className="error-bubble">
+          <span key={key} className={styles.error}>
             {errors[key]}
           </span>
         ))}

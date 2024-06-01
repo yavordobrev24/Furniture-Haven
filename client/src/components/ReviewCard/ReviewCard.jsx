@@ -1,32 +1,35 @@
 import { Link, useParams } from "react-router-dom";
-import "./ReviewCard.css";
+import styles from "./ReviewCard.module.css";
 import { useContext } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import AuthContext from "../../contexts/authContext";
 export default function ReviewCard(props) {
   const { id } = useParams();
   const { userId } = useContext(AuthContext);
+  const stars = Array(props.rating).fill(<FontAwesomeIcon icon={faStar} />);
+
   return (
-    <div className="review">
-      <div className="rating">{"⭐".repeat(props.rating)}</div>
-      <p className="text">{props.text}</p>
-      <p className="user">{props.username}</p>
+    <div className={styles["review-card"]}>
+      <p className={styles.user}>{props.username}</p>
+      <p className={styles.text}>{props.text}</p>
+
+      <div className={styles.rating}>
+        {stars.map((star, index) => (
+          <span key={index}>{star}</span>
+        ))}
+      </div>
       {userId === props._ownerId && (
-        <div className="review-buttons">
-          <Link to={`/products/${id}/edit-review/${props._id}`}>
-            <button className="edit-button">
-              <i className="fas fa-pencil-alt"></i>Edit
-            </button>
+        <div className={styles.btns}>
+          <Link to={`/product/${id}/edit-review/${props._id}`}>
+            <i className="fas fa-pencil-alt"></i> Edit
           </Link>
-          <button
-            className="delete-button"
-            id={props._id}
-            onClick={props.deleteHandler}
-          >
+          <button id={props._id} onClick={props.deleteHandler}>
             <i
               className="fas fa-trash-alt"
               id={props._id}
               onClick={props.deleteHandler}
-            ></i>
+            ></i>{" "}
             Delete
           </button>
         </div>

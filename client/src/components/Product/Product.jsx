@@ -1,75 +1,96 @@
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import "./Product.css";
-import { Link, useNavigate } from "react-router-dom";
+import { getSingleProduct } from "../../services/furnitureService";
+import Reviews from "../Reviews/Reviews";
 import AuthContext from "../../contexts/authContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { getProductReviews } from "../../services/reviewService";
+import { deleteReview } from "../../services/reviewService";
+import styles from "./Product.module.css";
+import Newest from "../Newest/Newest";
 
 export default function Product(props) {
-  const { onBuy, isAuthenticated, cart, isAdmin } = useContext(AuthContext);
-  const [hasBought, setHasBought] = useState(false);
+  const { id } = useParams();
+  const { isAuthenticated, userId, onBuy, cart } = useContext(AuthContext);
+  const [product, setProduct] = useState({});
+  const [hasReviewed, setHasReviewed] = useState(true);
+  const [reviews, setReviews] = useState({});
+  const [isAdded, setIsAdded] = useState(false);
   const navigate = useNavigate();
+
+  const addToCart = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsAdded(true);
+    return onBuy(product._id);
+  };
+  const fetchProduct = async (id) => {
+    const data = await getSingleProduct(id);
+    setProduct(data);
+    const isAdded = cart?.cartItems.find((i) => i._id == id);
+    setIsAdded(isAdded);
+  };
+  const fetchReviews = async (id) => {
+    const data = await getProductReviews(id);
+    if (isAuthenticated) {
+      if (data.find((r) => r._ownerId === userId)) {
+        setHasReviewed(false);
+      } else {
+        setHasReviewed(true);
+      }
+    }
+    setReviews(data);
+  };
   useEffect(() => {
-    const isBought = cart?.cartItems.find((i) => i._id === props._id);
-    setHasBought(isBought);
-  }, [props]);
+    fetchProduct(id);
+    fetchReviews(id);
+  }, [id]);
+
+  const deleteHandler = async (e) => {
+    await deleteReview(e.target.id);
+    setReviews((oldState) => oldState.filter((x) => x._id !== e.target.id));
+    setHasReviewed(true);
+  };
+  const goToReview = () => {
+    navigate(`/product/${product._id}/add-review`);
+  };
 
   return (
-    <Link
-      to={`/products/${props._id}`}
-      className="product-link"
-      style={{ textDecoration: "none" }}
-    >
-      <div className="product">
-        {isAuthenticated && isAdmin && (
-          <div className="product-icons" id={props._id}>
-            <span
-              className="edit-icon"
-              role="img"
-              aria-label="Edit"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                navigate(`/edit-product/${props._id}`);
-              }}
-            >
-              <FontAwesomeIcon icon={faPen} />
-            </span>
-            <span
-              className="delete-icon"
-              role="img"
-              aria-label="Delete"
-              onClick={(e) => {
-                e.preventDefault();
-                props.deleteProductHandler(e);
-              }}
-            >
-              <FontAwesomeIcon icon={faTrash} />
-            </span>
-          </div>
-        )}
-        <img src={props.imageUrl} alt={props.name} />
-        <div className="info">
-          <h3>{props.name}</h3>
-          <p className="description">{props.description}</p>
-          <p className="price">${props.price}</p>
-          {isAuthenticated && !hasBought && (
-            <div className="product-buttons">
-              <button
-                className="buy"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setHasBought(true);
-                  return onBuy(props._id);
-                }}
-              >
-                <i className="fas fa-shopping-bag"></i> Buy
-              </button>
+    <div className={styles.product}>
+      <div className={styles.content}>
+        <div className={styles["product-img"]}>
+          <img src={product.imageUrl} alt={product.name} />
+        </div>
+        <div className={styles["product-info"]}>
+          <h3 className={styles.name}>{product.name}</h3>
+          <p className={styles.description}>{product.description}</p>
+          <p className={styles.price}>${product.price}</p>
+          {isAuthenticated ? (
+            <div className={styles.btns}>
+              {!isAdded ? (
+                <button onClick={(e) => addToCart(e)}>ADD TO CART</button>
+              ) : (
+                <Link to="/shopping-cart" className={styles.added}>
+                  ALREADY ADDED TO <span className={styles.link}>CART</span>.
+                </Link>
+              )}
+              {hasReviewed ? (
+                <button onClick={(e) => goToReview()}>LEAVE A REVIEW</button>
+              ) : (
+                ""
+              )}
             </div>
+          ) : (
+            <p className={styles.login}>
+              <Link to="/login" className={styles.link}>
+                Login
+              </Link>{" "}
+              to add to cart.
+            </p>
           )}
         </div>
       </div>
-    </Link>
+      <Reviews reviews={reviews} deleteHandler={deleteHandler} />
+      <Newest />
+    </div>
   );
 }

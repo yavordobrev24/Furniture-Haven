@@ -1,0 +1,41 @@
+.edit-product {
+  margin-block: 3rem;
+  margin-inline: auto;
+  max-width: 400px;
+  font-size: 1.4rem;
+}
+.edit-product h3 {
+  text-align: center;
+  font-size: 2.4rem;
+}
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.input input,
+.input select,
+.input textarea {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+.form form {
+  display: flex;
+  flex-direction: column;
+  margin-block: 1rem;
+}
+.form button {
+  background-color: rgb(45, 44, 44);
+  color: white;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border: 2px solid rgb(45, 44, 44);
+  transition: background-color 300ms, color 200ms;
+  font-size: 1.4rem;
+}
+.form button:hover,
+.form button:focus {
+  background-color: white;
+  color: rgb(45, 44, 44);
+}

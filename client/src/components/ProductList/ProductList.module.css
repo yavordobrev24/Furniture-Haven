@@ -1,0 +1,11 @@
+.product-list {
+  margin-block: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.no {
+  font-weight: normal;
+  font-size: 1.5rem;
+  margin-inline: auto;
+}

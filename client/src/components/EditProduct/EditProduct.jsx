@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./EditProduct.css";
+import styles from "./EditProduct.module.css";
 import {
   getSingleProduct,
   updateProduct,
@@ -35,16 +35,16 @@ export default function EditProduct(props) {
   const onSubmit = async (e) => {
     e.preventDefault();
     await updateProduct(id, productData);
-    navigate(`/products`);
+    navigate(`/product/${id}`);
   };
 
   return (
-    <div className="edit-product-page">
-      <div className="edit-product-form">
-        <h2>Edit a Product</h2>
+    <div className={styles["edit-product"]}>
+      <div className={styles.form}>
+        <h3>Edit Product</h3>
         <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <label htmlFor="productName">Product Name:</label>
+          <div className={styles.input}>
+            <label htmlFor="productName">Product Name</label>
             <input
               type="text"
               id="productName"
@@ -55,8 +55,8 @@ export default function EditProduct(props) {
               disabled
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="imageUrl">Image URL:</label>
+          <div className={styles.input}>
+            <label htmlFor="imageUrl">Image URL</label>
             <input
               type="text"
               id="imageUrl"
@@ -67,8 +67,8 @@ export default function EditProduct(props) {
               disabled
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="description">Description:</label>
+          <div className={styles.input}>
+            <label htmlFor="description">Description</label>
             <textarea
               id="description"
               name="description"
@@ -79,8 +79,8 @@ export default function EditProduct(props) {
               required
             ></textarea>
           </div>
-          <div className="form-group">
-            <label htmlFor="category">Category:</label>
+          <div className={styles.input}>
+            <label htmlFor="category">Category</label>
             <select
               id="category"
               name="category"
@@ -94,8 +94,8 @@ export default function EditProduct(props) {
               <option value="bedroom">Bedroom</option>
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="price">Price:</label>
+          <div className={styles.input}>
+            <label htmlFor="price">Price</label>
             <input
               type="number"
               id="price"

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import "./ShoppingCart.css";
+import { useContext, useEffect, useState } from "react";
+import styles from "./ShoppingCart.module.css";
 import AuthContext from "../../contexts/authContext";
 
 export default function ShoppingCart() {
@@ -22,45 +22,41 @@ export default function ShoppingCart() {
       return total + Number(item.price);
     }, 0);
   };
-  /*
-  const handleRemoveItem = (itemId) => {
-    const updatedCart = cartItems.filter((item) => item.id !== itemId);
-    setCartItems(updatedCart);
-  };*/
+
   const closeModal = () => {
     setShowModal(false);
   };
 
   return (
-    <div className="cart-page">
+    <div className={styles.cart}>
       <h1>Your Shopping Cart</h1>
-      <div className="cart-items">
-        {cartItems?.length > 0
-          ? cartItems.map((item) => (
-              <div key={item._id} className="cart-item">
-                <div className="item-info">
-                  <div className="top-info">
-                    <img src={item.imageUrl} alt={item.name} />
-                    <p className="item-name">{item.name}</p>
-                    <button
-                      onClick={() => handleRemoveItem(cart._id, cart, item._id)}
-                      className="remove-button"
-                    >
-                      <span className="remove-icon">X</span>
-                    </button>
-                  </div>
-                  <p className="item-price">${item.price}</p>
-                </div>
-              </div>
-            ))
-          : "No items in your shopping cart"}
+      <div className={styles["cart-items"]}>
+        {cartItems?.length > 0 ? (
+          cartItems.map((item) => (
+            <div key={item._id} className={styles["cart-item"]}>
+              <img src={item.imageUrl} alt={item.name} />
+              <h3 className={styles.name}>{item.name}</h3>
+              <p className={styles.price}>${item.price}</p>
+              <button
+                onClick={() => handleRemoveItem(cart._id, cart, item._id)}
+                className={styles["remove-btn"]}
+              >
+                X
+              </button>
+            </div>
+          ))
+        ) : (
+          <p className={styles.no}>There are no any items in your cart.</p>
+        )}
       </div>
-      <div className="cart-total">
-        <p>Total: ${hasCartItems ? calculateTotal().toFixed(2) : 0}</p>
+      <div className={styles.total}>
+        <p>
+          Total: <span>${hasCartItems ? calculateTotal().toFixed(2) : 0}</span>
+        </p>
       </div>
       {hasCartItems ? (
         <button
-          className="checkout-button"
+          className={styles.checkout}
           onClick={() => {
             setShowModal(true);
             handleCheckout(cart._id, cart);
@@ -71,10 +67,10 @@ export default function ShoppingCart() {
       ) : null}
 
       {showModal && (
-        <div className="modal">
-          <div className="modal-content">
+        <div className={styles.modal}>
+          <div className={styles.content}>
             <p>Thank you for your purchase!</p>
-            <button onClick={closeModal} className="close-button">
+            <button onClick={closeModal} className={styles.close}>
               Close
             </button>
           </div>

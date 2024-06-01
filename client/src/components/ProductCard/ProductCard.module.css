@@ -1,0 +1,61 @@
+.product-card {
+  position: relative;
+  width: 300px;
+  padding: 1rem;
+  text-align: center;
+  height: 400px;
+  transition: 300ms;
+  font-size: 1.8rem;
+  border: 2px solid rgb(201, 198, 198);
+}
+
+.product-card:hover {
+  border: 2px solid black;
+}
+
+.product-card img {
+  width: 200px;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 3rem;
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+.product-card p {
+  font-size: 1.5rem;
+}
+.delete {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-left: 2px solid rgb(45, 44, 44);
+  border-bottom: 2px solid rgb(45, 44, 44);
+  color: rgb(45, 44, 44);
+  width: 50px;
+  height: 50px;
+  transition: 300ms;
+}
+.edit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-right: 2px solid rgb(45, 44, 44);
+  border-bottom: 2px solid rgb(45, 44, 44);
+  width: 50px;
+  height: 50px;
+  color: rgb(45, 44, 44);
+  transition: 300ms;
+}
+.edit:hover,
+.delete:hover,
+.edit:focus,
+.delete:focus {
+  background-color: rgb(45, 44, 44);
+  color: white;
+}

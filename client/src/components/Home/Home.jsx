@@ -1,29 +1,22 @@
 import { Link } from "react-router-dom";
-import "./Home.css";
+import styles from "./Home.module.css";
+import Newest from "../Newest/Newest";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <div className="home-page">
-      <Link to="/products/kitchen" className="card">
-        <img src="./images/kitchen.png" alt="Kitchen" />
-        <div className="card-content">
-          <h2>Kitchen</h2>
-        </div>
-      </Link>
-
-      <Link to="/products/living-room" className="card">
-        <img src="./images/livingRoom.avif" alt="Living Room" />
-        <div className="card-content">
-          <h2>Living Room</h2>
-        </div>
-      </Link>
-
-      <Link to="/products/bedroom" className="card">
-        <img src="./images/bedroom.jpg" alt="Bedroom" />
-        <div className="card-content">
-          <h2>Bedroom</h2>
-        </div>
-      </Link>
+    <div className={styles.home}>
+      <div className={styles.categories}>
+        <Link className={styles["category-card"]} to="/categories/kitchen">
+          <span>Kitchen</span>
+        </Link>
+        <Link className={styles["category-card"]} to="/categories/living-room">
+          <span>Living room</span>
+        </Link>
+        <Link className={styles["category-card"]} to="/categories/bedroom">
+          <span>Bedroom</span>
+        </Link>
+      </div>
+      <Newest />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import "./Register.css";
+import styles from "./Register.module.css";
 import useForm from "../../hooks/useForm";
 import { useContext, useState } from "react";
 import AuthContext from "../../contexts/authContext";
@@ -60,58 +60,56 @@ export default function Register(props) {
   };
 
   return (
-    <div className="register-container">
-      <div className="register-form">
-        <h2>Register</h2>
+    <div className={styles.register}>
+      <div className={styles.form}>
+        <h3>Register</h3>
         <form onSubmit={handleSubmit}>
-          <div className="form-inputs">
-            <div>
-              <label htmlFor="username">Username</label>
-              <input
-                type="text"
-                id="username"
-                name={RegisterFormKeys.Username}
-                value={values[RegisterFormKeys.Username]}
-                onChange={onChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                id="email"
-                name={RegisterFormKeys.Email}
-                value={values[RegisterFormKeys.Email]}
-                onChange={onChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                name={RegisterFormKeys.Password}
-                value={values[RegisterFormKeys.Password]}
-                onChange={onChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Confirm Password</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                name={RegisterFormKeys.ConfirmPassword}
-                value={values[RegisterFormKeys.ConfirmPassword]}
-                onChange={onChange}
-              />
-            </div>
+          <div className={styles.input}>
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name={RegisterFormKeys.Username}
+              value={values[RegisterFormKeys.Username]}
+              onChange={onChange}
+            />
+          </div>
+          <div className={styles.input}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              name={RegisterFormKeys.Email}
+              value={values[RegisterFormKeys.Email]}
+              onChange={onChange}
+            />
+          </div>
+          <div className={styles.input}>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name={RegisterFormKeys.Password}
+              value={values[RegisterFormKeys.Password]}
+              onChange={onChange}
+            />
+          </div>
+          <div className={styles.input}>
+            <label htmlFor="password">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name={RegisterFormKeys.ConfirmPassword}
+              value={values[RegisterFormKeys.ConfirmPassword]}
+              onChange={onChange}
+            />
           </div>
           <button type="submit">Register</button>
         </form>
       </div>
-      <div className="error-container">
+      <div className={styles.errors}>
         {Object.keys(errors).map((key) => (
-          <span key={key} className="error-bubble">
+          <span key={key} className={styles.error}>
             {errors[key]}
           </span>
         ))}

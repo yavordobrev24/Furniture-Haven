@@ -1,23 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import "./AddReviewPage.css";
+import styles from "./EditReview.module.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { createReview, getProductReviews } from "../../services/reviewService";
+import { editReview, getSingleReview } from "../../services/reviewService";
 import AuthContext from "../../contexts/authContext";
-export default function AddReviewPage(props) {
+
+export default function EditReviewPage(props) {
   const { userId, username } = useContext(AuthContext);
-  const { id } = useParams();
+  const { id, reviewId } = useParams();
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
   const navigate = useNavigate();
-  const checkCorrectUser = async () => {
-    const productReviews = await getProductReviews(id);
-    if (productReviews.find((x) => x._ownerId === userId)) {
-      return navigate("/");
-    }
-  };
-  useEffect(() => {
-    checkCorrectUser();
-  });
   const handleRatingChange = (e) => {
     setRating(Number(e.target.value));
   };
@@ -25,6 +17,17 @@ export default function AddReviewPage(props) {
   const handleReviewTextChange = (e) => {
     setReviewText(e.target.value);
   };
+  const getReview = async (reviewId) => {
+    const result = await getSingleReview(reviewId);
+    if (result._ownerId != userId) {
+      return navigate("/");
+    }
+    setRating(result.rating);
+    setReviewText(result.text);
+  };
+  useEffect(() => {
+    getReview(reviewId);
+  }, []);
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();
@@ -35,36 +38,35 @@ export default function AddReviewPage(props) {
         rating: rating,
         text: reviewText.trim(),
         username: username,
+        _id: reviewId,
       };
 
-      await createReview(data);
-
-      navigate(`/products/${id}`);
+      await editReview(reviewId, data);
+      navigate(`/product/${id}`);
     }
   };
 
   return (
-    <div className="add-review-page">
-      <h1>Add Your Review</h1>
+    <div className={styles["edit-review"]}>
+      <h1>Edit Your Review</h1>
       <form onSubmit={handleSubmitReview}>
-        <label htmlFor="rating">Rating:</label>
+        <label htmlFor="rating">Rating</label>
         <select id="rating" value={rating} onChange={handleRatingChange}>
-          <option value="1">⭐</option>
-          <option value="2">⭐⭐</option>
-          <option value="3">⭐⭐⭐</option>
-          <option value="4">⭐⭐⭐⭐</option>
-          <option value="5">⭐⭐⭐⭐⭐</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
 
-        <label htmlFor="reviewText">Review Text:</label>
+        <label htmlFor="reviewText">Review</label>
         <textarea
           id="reviewText"
           value={reviewText}
           onChange={handleReviewTextChange}
           rows="4"
         />
-
-        <button type="submit" className="submit-review-button">
+        <button type="submit" className={styles.leave}>
           Submit Review
         </button>
       </form>

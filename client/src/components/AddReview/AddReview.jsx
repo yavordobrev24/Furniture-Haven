@@ -1,15 +1,23 @@
 import { useContext, useEffect, useState } from "react";
-import "./EditReviewPage.css";
+import styles from "./AddReview.module.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { editReview, getSingleReview } from "../../services/reviewService";
+import { createReview, getProductReviews } from "../../services/reviewService";
 import AuthContext from "../../contexts/authContext";
-
-export default function EditReviewPage(props) {
+export default function AddReviewPage(props) {
   const { userId, username } = useContext(AuthContext);
-  const { id, reviewId } = useParams();
+  const { id } = useParams();
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
   const navigate = useNavigate();
+  const checkCorrectUser = async () => {
+    const productReviews = await getProductReviews(id);
+    if (productReviews.find((x) => x._ownerId === userId)) {
+      return navigate("/");
+    }
+  };
+  useEffect(() => {
+    checkCorrectUser();
+  });
   const handleRatingChange = (e) => {
     setRating(Number(e.target.value));
   };
@@ -17,17 +25,6 @@ export default function EditReviewPage(props) {
   const handleReviewTextChange = (e) => {
     setReviewText(e.target.value);
   };
-  const getReview = async (reviewId) => {
-    const result = await getSingleReview(reviewId);
-    if (result._ownerId != userId) {
-      return navigate("/");
-    }
-    setRating(result.rating);
-    setReviewText(result.text);
-  };
-  useEffect(() => {
-    getReview(reviewId);
-  }, []);
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();
@@ -38,28 +35,28 @@ export default function EditReviewPage(props) {
         rating: rating,
         text: reviewText.trim(),
         username: username,
-        _id: reviewId,
       };
 
-      await editReview(reviewId, data);
-      navigate(`/products/${id}`);
+      await createReview(data);
+
+      navigate(`/product/${id}`);
     }
   };
 
   return (
-    <div className="edit-review-page">
-      <h1>Edit Your Review</h1>
+    <div className={styles["add-review"]}>
+      <h1>Add Your Review</h1>
       <form onSubmit={handleSubmitReview}>
-        <label htmlFor="rating">Rating:</label>
+        <label htmlFor="rating">Rating</label>
         <select id="rating" value={rating} onChange={handleRatingChange}>
-          <option value="1">⭐</option>
-          <option value="2">⭐⭐</option>
-          <option value="3">⭐⭐⭐</option>
-          <option value="4">⭐⭐⭐⭐</option>
-          <option value="5">⭐⭐⭐⭐⭐</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
 
-        <label htmlFor="reviewText">Review Text:</label>
+        <label htmlFor="reviewText">Review</label>
         <textarea
           id="reviewText"
           value={reviewText}
@@ -67,8 +64,8 @@ export default function EditReviewPage(props) {
           rows="4"
         />
 
-        <button type="submit" className="submit-review-button">
-          Submit Review
+        <button type="submit" className={styles["leave"]}>
+          Leave Review
         </button>
       </form>
     </div>
