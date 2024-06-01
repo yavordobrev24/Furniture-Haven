@@ -16,7 +16,7 @@ export default function ReviewList(props) {
             />
           ))
         ) : (
-          <h3>No reviews yet</h3>
+          <p>No reviews yet.</p>
         )}
       </div>
     </div>

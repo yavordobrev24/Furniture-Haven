@@ -1,46 +1,45 @@
 import { useContext } from "react";
-import "./Header.css";
+import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/authContext";
 
 export default function Header(props) {
   const { isAuthenticated, cart, isAdmin } = useContext(AuthContext);
   return (
-    <header>
+    <header className={styles.header}>
       <nav>
-        <div className="logo">
+        <div className={styles.logo}>
           <Link to="/">Furniture Heaven</Link>
         </div>
-        <ul className="nav-links">
-          <li>
-            {isAuthenticated && isAdmin && (
-              <Link to="/add-product">Add Product</Link>
-            )}
-          </li>
-        </ul>
-        {isAuthenticated && (
-          <div className="cart">
-            <Link to="/shopping-cart">
-              {cart?.cartItems ? cart.cartItems.length : 0}
-              <i className="fas fa-shopping-cart"></i>
-            </Link>
-          </div>
-        )}
-        <div className="profile-dropdown">
-          <i className="fas fa-user"></i>
-          <div className="dropdown-content">
-            {!isAuthenticated && (
-              <>
-                <Link to="/register">Register</Link>
-                <Link to="/login">Login</Link>
-              </>
-            )}
-            {isAuthenticated && (
-              <>
-                <Link to="/logout">Logout</Link>
-                <Link to="/profile">Profile</Link>
-              </>
-            )}
+        <div className={styles.links}>
+          {isAuthenticated && isAdmin && (
+            <Link to="/add-product">Add Product</Link>
+          )}
+
+          {isAuthenticated && (
+            <div className={styles.cart}>
+              <Link to="/shopping-cart">
+                {cart?.cartItems ? cart.cartItems.length : 0}
+                <i className="fas fa-shopping-cart"></i>
+              </Link>
+            </div>
+          )}
+          <div className={styles.dropdown}>
+            <i className="fas fa-user"></i>
+            <div className={styles.menu}>
+              {!isAuthenticated && (
+                <>
+                  <Link to="/register">Register</Link>
+                  <Link to="/login">Login</Link>
+                </>
+              )}
+              {isAuthenticated && (
+                <>
+                  <Link to="/logout">Logout</Link>
+                  <Link to="/profile">Profile</Link>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </nav>

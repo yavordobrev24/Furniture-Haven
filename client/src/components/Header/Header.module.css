@@ -1,0 +1,39 @@
+.header {
+  padding-block: 2rem;
+}
+.header nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  height: max-content;
+}
+.dropdown {
+  position: relative;
+}
+.dropdown i {
+  cursor: pointer;
+}
+.dropdown:hover .menu,
+.dropdown:focus .menu {
+  display: block;
+}
+.menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: rgb(222, 222, 222);
+  padding: 1rem;
+  right: 0;
+}
+.menu > * {
+  display: block;
+  font-size: 1.2rem;
+  padding: 0.2rem;
+}
+.menu > *:hover {
+  text-decoration: underline;
+}
+.links {
+  display: flex;
+  gap: 2rem;
+}

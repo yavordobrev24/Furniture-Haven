@@ -1,6 +1,7 @@
 .content {
-  margin: 4rem;
+  margin-block: 4rem;
   display: flex;
+  justify-content: center;
 }
 .product-img {
   width: 50%;
@@ -13,7 +14,7 @@
 }
 .product-info {
   background-color: rgb(222, 222, 222);
-  width: 50%;
+  width: 35%;
   padding: 2rem;
 }
 .name {
