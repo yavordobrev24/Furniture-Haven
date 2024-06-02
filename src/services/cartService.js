@@ -5,7 +5,6 @@ const baseUrl = `http://localhost:3030/data/carts`;
 
 const getAllCarts = async () => {
   const result = await request.get(`${baseUrl}`);
-
   return result;
 };
 export const addToUserCart = async (furnitureId, cart) => {
