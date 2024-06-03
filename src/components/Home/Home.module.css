@@ -1,0 +1,58 @@
+.categories {
+  margin-block: 4rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.category-card {
+  position: relative;
+  flex: 1;
+  height: 400px;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+}
+.category-card span {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-weight: 600;
+  font-size: 2rem;
+  padding: 0.7rem;
+}
+
+.category-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+  z-index: 1;
+}
+
+.category-card:nth-child(1) {
+  background-image: url("../../../images/kitchen.png");
+  background-position: bottom;
+}
+
+.category-card:nth-child(2) {
+  background-image: url("../../../images/livingRoom.avif");
+  background-position: bottom;
+}
+
+.category-card:nth-child(3) {
+  background-image: url("../../../images/bedroom.jpg");
+  background-position: bottom;
+}
+
+.category-card:hover::before {
+  background: rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 600px) {
+  .categories {
+    flex-direction: column;
+  }
+}
