@@ -19,7 +19,7 @@ export default function Header(props) {
           {isAuthenticated && (
             <div className={styles.cart}>
               <Link to="/shopping-cart">
-                {cart.cartItems.length > 0 ? cart.cartItems.length : ""}
+                {cart.length > 0 ? cart.length : 0}
                 <i className="fas fa-shopping-cart"></i>
               </Link>
             </div>

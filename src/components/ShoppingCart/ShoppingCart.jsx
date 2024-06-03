@@ -1,25 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./ShoppingCart.module.css";
 import AuthContext from "../../contexts/authContext";
+import { deleteCart, getCartItems } from "../../services/cartService";
 
 export default function ShoppingCart() {
-  const { cart, handleCheckout, handleRemoveItem } = useContext(AuthContext);
-  const [cartItems, setCartItems] = useState([]);
+  const { userId, onDeleteCart, onDeleteCartItem } = useContext(AuthContext);
   const [showModal, setShowModal] = useState(false);
-  const [hasCartItems, setHasCartItems] = useState(false);
-  useEffect(() => {
-    if (cart?.cartItems.length > 0) {
-      setCartItems(cart.cartItems);
-      setHasCartItems(true);
-    } else {
-      setCartItems([]);
-      setHasCartItems(false);
-    }
-  }, [cart]);
+  const [cartItems, setCartItems] = useState([]);
 
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      const data = await getCartItems(userId);
+      setCartItems(data);
+    };
+    fetchCartItems();
+  }, [onDeleteCartItem]);
   const calculateTotal = () => {
-    return cart?.cartItems.reduce((total, item) => {
-      return total + Number(item.price);
+    return cartItems?.reduce((total, ci) => {
+      return total + Number(ci.products.price);
     }, 0);
   };
 
@@ -32,13 +30,13 @@ export default function ShoppingCart() {
       <h1>Your Shopping Cart</h1>
       <div className={styles["cart-items"]}>
         {cartItems?.length > 0 ? (
-          cartItems.map((item) => (
-            <div key={item._id} className={styles["cart-item"]}>
-              <img src={item.imageUrl} alt={item.name} />
-              <h3 className={styles.name}>{item.name}</h3>
-              <p className={styles.price}>${item.price}</p>
+          cartItems.map((ci) => (
+            <div key={ci.id} className={styles["cart-item"]}>
+              <img src={ci.products.image_url} alt={ci.products.name} />
+              <h3 className={styles.name}>{ci.products.name}</h3>
+              <p className={styles.price}>${ci.products.price}</p>
               <button
-                onClick={() => handleRemoveItem(cart._id, cart, item._id)}
+                onClick={() => onDeleteCartItem(ci.id)}
                 className={styles["remove-btn"]}
               >
                 X
@@ -51,15 +49,17 @@ export default function ShoppingCart() {
       </div>
       <div className={styles.total}>
         <p>
-          Total: <span>${hasCartItems ? calculateTotal().toFixed(2) : 0}</span>
+          Total:{" "}
+          <span>${cartItems.length > 0 ? calculateTotal().toFixed(2) : 0}</span>
         </p>
       </div>
-      {hasCartItems ? (
+      {cartItems.length > 0 ? (
         <button
           className={styles.checkout}
           onClick={() => {
             setShowModal(true);
-            handleCheckout(cart._id, cart);
+            onDeleteCart(userId);
+            setCartItems([]);
           }}
         >
           Checkout

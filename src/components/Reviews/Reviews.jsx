@@ -9,7 +9,7 @@ export default function Reviews(props) {
         <div className={styles.list}>
           {props.reviews.map((review) => (
             <ReviewCard
-              key={review._id}
+              key={review.id}
               deleteHandler={props.deleteHandler}
               {...review}
             />

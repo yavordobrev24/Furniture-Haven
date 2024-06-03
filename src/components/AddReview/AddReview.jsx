@@ -1,17 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./AddReview.module.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { createReview, getProductReviews } from "../../services/reviewService";
+import { createReview, getReviews } from "../../services/reviewService";
 import AuthContext from "../../contexts/authContext";
 export default function AddReviewPage(props) {
-  const { userId, username } = useContext(AuthContext);
+  const { userId, email } = useContext(AuthContext);
   const { id } = useParams();
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
   const navigate = useNavigate();
   const checkCorrectUser = async () => {
-    const productReviews = await getProductReviews(id);
-    if (productReviews.find((x) => x._ownerId === userId)) {
+    const productReviews = await getReviews(id);
+    if (productReviews.find((x) => x.user_id === userId)) {
       return navigate("/");
     }
   };
@@ -30,11 +30,11 @@ export default function AddReviewPage(props) {
     e.preventDefault();
     if (reviewText.trim()) {
       const data = {
-        productId: id,
-        reviewerId: userId,
+        product_id: id,
+        user_id: userId,
         rating: rating,
         text: reviewText.trim(),
-        username: username,
+        user_email: email,
       };
 
       await createReview(data);

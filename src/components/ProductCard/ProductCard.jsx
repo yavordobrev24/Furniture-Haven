@@ -9,25 +9,21 @@ export default function ProductCard(props) {
   const { isAuthenticated, isAdmin } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
-    <Link to={`/product/${props._id}`} className={styles["product-card"]}>
+    <Link to={`/product/${props.id}`} className={styles["product-card"]}>
       {isAuthenticated && isAdmin && (
-        <div className={styles["action-icons"]} id={props._id}>
+        <div className={styles["action-icons"]} id={props.id}>
           <span
             className={styles.edit}
-            role="img"
-            aria-label="Edit"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              navigate(`/edit-product/${props._id}`);
+              navigate(`/edit-product/${props.id}`);
             }}
           >
             <FontAwesomeIcon icon={faPen} />
           </span>
           <span
             className={styles.delete}
-            role="img"
-            aria-label="Delete"
             onClick={(e) => {
               e.preventDefault();
               props.deleteProductHandler(e);
@@ -37,7 +33,7 @@ export default function ProductCard(props) {
           </span>
         </div>
       )}
-      <img src={props.imageUrl} alt={props.name} />
+      <img src={props.image_url} alt={props.name} />
       <div>
         <h3>{props.name}</h3>
         <p className="price">${props.price}</p>

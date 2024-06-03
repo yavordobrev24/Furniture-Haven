@@ -3,15 +3,13 @@ import useForm from "../../hooks/useForm";
 import { useContext, useState } from "react";
 import AuthContext from "../../contexts/authContext";
 const RegisterFormKeys = {
-  Username: "username",
   Email: "email",
   Password: "password",
   ConfirmPassword: "confirmPassword",
 };
 export default function Register(props) {
-  const { registerSubmitHandler } = useContext(AuthContext);
-  const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
-    [RegisterFormKeys.Username]: "",
+  const { onRegister } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(onRegister, {
     [RegisterFormKeys.Email]: "",
     [RegisterFormKeys.Password]: "",
     [RegisterFormKeys.ConfirmPassword]: "",
@@ -28,17 +26,13 @@ export default function Register(props) {
         await onSubmit(values);
         setErrors({});
       } catch (e) {
-        setErrors({ request: e.message });
+        setErrors({ request: "Email already exists" });
       }
     }
   };
 
   const validate = (values) => {
     const errors = {};
-
-    if (!values.username.trim()) {
-      errors.username = "Username is required";
-    }
 
     if (!values.email.trim()) {
       errors.email = "Email is required";
@@ -64,16 +58,6 @@ export default function Register(props) {
       <div className={styles.form}>
         <h3>Register</h3>
         <form onSubmit={handleSubmit}>
-          <div className={styles.input}>
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name={RegisterFormKeys.Username}
-              value={values[RegisterFormKeys.Username]}
-              onChange={onChange}
-            />
-          </div>
           <div className={styles.input}>
             <label htmlFor="email">Email</label>
             <input

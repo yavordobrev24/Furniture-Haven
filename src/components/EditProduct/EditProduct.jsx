@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./EditProduct.module.css";
-import {
-  getSingleProduct,
-  updateProduct,
-} from "../../services/furnitureService";
+import { getSingleProduct, updateProduct } from "../../services/productService";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditProduct(props) {
@@ -11,14 +8,14 @@ export default function EditProduct(props) {
   const { id } = useParams();
   const [productData, setProductData] = useState({
     name: "",
-    imageUrl: "",
+    image_url: "",
     description: "",
     category: "kitchen",
     price: "",
   });
   const getProduct = async (id) => {
-    const result = await getSingleProduct(id);
-    setProductData(result);
+    const data = await getSingleProduct(id);
+    setProductData(data);
   };
   useEffect(() => {
     getProduct(id);
@@ -52,19 +49,17 @@ export default function EditProduct(props) {
               value={productData.name}
               onChange={onChangeHandler}
               required
-              disabled
             />
           </div>
           <div className={styles.input}>
-            <label htmlFor="imageUrl">Image URL</label>
+            <label htmlFor="image_url">Image URL</label>
             <input
               type="text"
-              id="imageUrl"
-              name="imageUrl"
-              value={productData.imageUrl}
+              id="image_url"
+              name="image_url"
+              value={productData.image_url}
               onChange={onChangeHandler}
               required
-              disabled
             />
           </div>
           <div className={styles.input}>
@@ -87,7 +82,6 @@ export default function EditProduct(props) {
               value={productData.category}
               onChange={onChangeHandler}
               required
-              disabled
             >
               <option value="kitchen">Kitchen</option>
               <option value="living-room">Living Room</option>

@@ -1,43 +1,42 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard.jsx";
-import {
-  deleteProduct,
-  getAllProducts,
-} from "../../services/furnitureService.js";
+import { deleteProduct } from "../../services/productService.js";
 import styles from "./ProductList.module.css";
+import supabase from "../../config/supabaseClient.js";
 
 export default function ProductList(props) {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
 
   const deleteProductHandler = async (e) => {
     await deleteProduct(e.target.parentNode.parentNode.parentNode.id);
     setProducts((oldState) =>
       oldState.filter(
-        (x) => x._id !== e.target.parentNode.parentNode.parentNode.id
+        (x) => x.id !== e.target.parentNode.parentNode.parentNode.id
       )
     );
   };
 
-  async function fetchProducts(category) {
-    const data = await getAllProducts();
-    console.log(category);
-    if (category == "all") {
-      setProducts(data);
-    } else {
-      const filteredData = data.filter((item) => item.category == category);
-      setProducts(filteredData);
+  const fetchProducts = async (category) => {
+    const { data, error } = await supabase.from("products").select();
+    if (data) {
+      if (category == "all") {
+        setProducts(data);
+      } else {
+        const filteredData = data.filter((p) => p.category == category);
+        setProducts(filteredData);
+      }
     }
-  }
+  };
   useEffect(() => {
     fetchProducts(props.category);
   }, [props, setProducts]);
 
   return (
     <div className={styles["product-list"]}>
-      {products.length > 0 ? (
+      {products?.length > 0 ? (
         products.map((product) => (
           <ProductCard
-            key={product._id}
+            key={product.id}
             deleteProductHandler={deleteProductHandler}
             {...product}
           />

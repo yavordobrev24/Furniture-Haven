@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import Newest from "../Newest/Newest";
-import supabase from "../../config/supabaseClient";
 
 export default function Home() {
-  console.log(supabase);
   return (
     <div className={styles.home}>
       <div className={styles.categories}>

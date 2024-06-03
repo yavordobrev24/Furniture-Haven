@@ -7,8 +7,8 @@ const LoginFormKeys = {
   Password: "password",
 };
 export default function Login() {
-  const { loginSubmitHandler } = useContext(AuthContext);
-  const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+  const { onLogin } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(onLogin, {
     [LoginFormKeys.Email]: "",
     [LoginFormKeys.Password]: "",
   });
@@ -24,7 +24,7 @@ export default function Login() {
         await onSubmit(values);
         setErrors({});
       } catch (e) {
-        setErrors({ request: e.message });
+        setErrors({ request: "Invalid email or password" });
       }
     }
   };

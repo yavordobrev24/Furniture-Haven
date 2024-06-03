@@ -1,13 +1,13 @@
 import { useState } from "react";
 import styles from "./AddProduct.module.css";
-import { createProduct } from "../../services/furnitureService";
+import { createProduct } from "../../services/productService";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function AddProduct(props) {
   const navigate = useNavigate();
   const [productData, setProductData] = useState({
     name: "",
-    imageUrl: "",
+    image_url: "",
     description: "",
     category: "kitchen",
     price: "0.01",
@@ -23,13 +23,12 @@ export default function AddProduct(props) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("Product Data:", productData);
 
     await createProduct(productData);
     navigate("/");
     setProductData({
       name: "",
-      imageUrl: "",
+      image_url: "",
       description: "",
       category: "kitchen",
       price: "",
@@ -53,12 +52,12 @@ export default function AddProduct(props) {
             />
           </div>
           <div className={styles.input}>
-            <label htmlFor="imageUrl">Image URL</label>
+            <label htmlFor="image_url">Image URL</label>
             <input
               type="text"
-              id="imageUrl"
-              name="imageUrl"
-              value={productData.imageUrl}
+              id="image_url"
+              name="image_url"
+              value={productData.image_url}
               onChange={onChangeHandler}
               required
             />

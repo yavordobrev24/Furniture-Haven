@@ -34,17 +34,17 @@
 }
 
 .category-card:nth-child(1) {
-  background-image: url("../../../public/images/kitchen.png");
+  background-image: url("../../../images/kitchen.png");
   background-position: bottom;
 }
 
 .category-card:nth-child(2) {
-  background-image: url("../../../public/images/livingRoom.avif");
+  background-image: url("../../../images/livingRoom.avif");
   background-position: bottom;
 }
 
 .category-card:nth-child(3) {
-  background-image: url("../../../public/images/bedroom.jpg");
+  background-image: url("../../../images/bedroom.jpg");
   background-position: bottom;
 }
 

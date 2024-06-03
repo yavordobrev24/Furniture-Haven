@@ -5,7 +5,7 @@ import { editReview, getSingleReview } from "../../services/reviewService";
 import AuthContext from "../../contexts/authContext";
 
 export default function EditReviewPage(props) {
-  const { userId, username } = useContext(AuthContext);
+  const { userId } = useContext(AuthContext);
   const { id, reviewId } = useParams();
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
@@ -18,12 +18,13 @@ export default function EditReviewPage(props) {
     setReviewText(e.target.value);
   };
   const getReview = async (reviewId) => {
-    const result = await getSingleReview(reviewId);
-    if (result._ownerId != userId) {
+    const data = await getSingleReview(reviewId);
+
+    if (data.user_id != userId) {
       return navigate("/");
     }
-    setRating(result.rating);
-    setReviewText(result.text);
+    setRating(data.rating);
+    setReviewText(data.text);
   };
   useEffect(() => {
     getReview(reviewId);
@@ -33,12 +34,8 @@ export default function EditReviewPage(props) {
     e.preventDefault();
     if (reviewText.trim()) {
       const data = {
-        productId: id,
-        reviewerId: userId,
         rating: rating,
         text: reviewText.trim(),
-        username: username,
-        _id: reviewId,
       };
 
       await editReview(reviewId, data);

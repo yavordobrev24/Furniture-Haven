@@ -11,7 +11,7 @@ export default function ReviewCard(props) {
 
   return (
     <div className={styles["review-card"]}>
-      <p className={styles.user}>{props.username}</p>
+      <p className={styles.user}>{props.user_email}</p>
       <p className={styles.text}>{props.text}</p>
 
       <div className={styles.rating}>
@@ -19,17 +19,17 @@ export default function ReviewCard(props) {
           <span key={index}>{star}</span>
         ))}
       </div>
-      {userId === props._ownerId && (
+      {userId === props.user_id && (
         <div className={styles.btns}>
-          <Link to={`/product/${id}/edit-review/${props._id}`}>
+          <Link to={`/product/${id}/edit-review/${props.id}`}>
             <i className="fas fa-pencil-alt"></i> Edit
           </Link>
-          <button id={props._id} onClick={props.deleteHandler}>
+          <button id={props.id} onClick={props.deleteHandler}>
             <i
               className="fas fa-trash-alt"
-              id={props._id}
+              id={props.id}
               onClick={props.deleteHandler}
-            ></i>{" "}
+            ></i>
             Delete
           </button>
         </div>

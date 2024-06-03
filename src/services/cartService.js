@@ -1,46 +1,31 @@
-import * as request from "../lib/request.js";
-import { getSingleProduct } from "./furnitureService.js";
+import supabase from "../config/supabaseClient";
 
-const baseUrl = `http://localhost:3030/data/carts`;
-
-const getAllCarts = async () => {
-  const result = await request.get(`${baseUrl}`);
-  return result;
+export const createCartItem = async (product_id, user_id) => {
+  const { data } = await supabase
+    .from("cart_item")
+    .insert({ product_id, user_id })
+    .select()
+    .single();
+  return data;
 };
-export const addToUserCart = async (furnitureId, cart) => {
-  const furniture = await getSingleProduct(furnitureId);
-
-  cart?.cartItems.push(furniture);
-  const result = await request.put(`${baseUrl}/${cart._id}`, cart);
-  return result;
-};
-export const createUserCart = async () => {
-  const data = {
-    cartItems: [],
-  };
-  const result = await request.post(baseUrl, data);
-
-  return result;
-};
-export const removeCartItem = async (cartId, cartData, itemId) => {
-  const filteredItems = cartData.cartItems.filter((i) => i._id !== itemId);
-  cartData.cartItems = filteredItems;
-
-  const result = await request.put(`${baseUrl}/${cartId}`, cartData);
-  return result;
+export const deleteCartItem = async (cart_id) => {
+  const { data } = await supabase.from("cart_item").delete().eq("id", cart_id);
+  return data;
 };
 
-export const getUserCart = async (userId) => {
-  const result = await getAllCarts();
+export const getCartItems = async (userId) => {
+  const { data } = await supabase
+    .from("cart_item")
+    .select("*, products (*)")
+    .eq("user_id", userId);
 
-  const r = result.find((c) => c._ownerId == userId);
-
-  return r;
+  return data;
 };
-export const clearUserCart = async (cartId, cartData) => {
-  cartData.cartItems = [];
+export const deleteCart = async (user_id) => {
+  const { data } = await supabase
+    .from("cart_item")
+    .delete()
+    .eq("user_id", user_id);
 
-  const result = await request.put(`${baseUrl}/${cartId}`, cartData);
-
-  return result;
+  return data;
 };

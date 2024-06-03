@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { getAllProducts, deleteProduct } from "../../services/furnitureService";
+import { deleteProduct } from "../../services/productService";
 import ProductCard from "../ProductCard/ProductCard.jsx";
 import styles from "./Newest.module.css";
 import supabase from "../../config/supabaseClient.js";
 
 export default function Newest() {
   const [products, setProducts] = useState(null);
-  const [error, setError] = useState(null);
   const fetchNewest = async () => {
-    const { data, error } = await supabase.from("products").select();
-    if (error) {
-      console.log(error);
-    }
+    const { data } = await supabase.from("products").select();
+
     if (data) {
-      console.log(data);
-      setProducts(data);
+      setProducts(data.slice(-4));
     }
   };
   const deleteProductHandler = async (id) => {
