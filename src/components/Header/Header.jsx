@@ -9,7 +9,7 @@ export default function Header(props) {
     <header className={styles.header}>
       <nav>
         <div className={styles.logo}>
-          <Link to="/">Furniture Heaven</Link>
+          <Link to="/">FurnitureHeaven</Link>
         </div>
         <div className={styles.links}>
           {isAuthenticated && isAdmin && (
