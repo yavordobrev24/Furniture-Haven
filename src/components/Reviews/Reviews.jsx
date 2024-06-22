@@ -16,7 +16,7 @@ export default function Reviews(props) {
           ))}
         </div>
       ) : (
-        <p className={styles.no}>There are no any reviews.</p>
+        <p className={styles.no}>There are no reviews.</p>
       )}
     </div>
   );
