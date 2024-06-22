@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./CategoryPage.module.css";
 import ProductList from "../ProductList/ProductList";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 const categories = [
   {
@@ -12,20 +12,26 @@ const categories = [
   { text: "Living room", url: "living-room" },
   { text: "Bedroom", url: "bedroom" },
 ];
-export default function CategoryPage(props) {
-  const params = useParams();
-  const navigate = useNavigate();
-  const [category, setCategory] = useState(params.category || "all");
-
+export default function CategoryPage() {
+  const location = useLocation()
+  const params = useParams()
+  const navigate = useNavigate()
+  
+  const [category, setCategory] = useState(params.category || "all")
   useEffect(() => {
-    if (params.category !== category) {
-      navigate(`/categories/${category}`);
+    if(location.state){
+      console.log(location.state.category)
+      changeCategory(location.state.category)
     }
-  }, [category, params.category, navigate]);
+    if (params.category !== category) {
+      
+      navigate(`/categories/${category}`)
+    }
+  }, [category, params.category, navigate])
 
   const changeCategory = (category) => {
     setCategory(category.toLowerCase());
-  };
+  }
 
   return (
     <>
@@ -44,5 +50,5 @@ export default function CategoryPage(props) {
       </div>
       <ProductList category={category} />
     </>
-  );
+  )
 }
