@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import Path from "../path.js";
 
-import * as cartService from "../services/cartService.js";
 import supabase from "../config/supabaseClient.js";
 
 const AuthContext = createContext();
@@ -23,42 +22,58 @@ export const AuthProvider = ({ children }) => {
   const [email, setEmail] = useState(JSON.parse(localStorage.getItem("email")));
   const navigate = useNavigate();
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart) || "[]");
-    localStorage.setItem("isAdmin", JSON.stringify(isAdmin) || "false");
+    localStorage.setItem("cart", JSON.stringify(cart || []));
+    localStorage.setItem("isAdmin", JSON.stringify(isAdmin || false));
     localStorage.setItem(
       "isAuthenticated",
-      JSON.stringify(isAuthenticated) || "false"
+      JSON.stringify(isAuthenticated || false)
     );
-    localStorage.setItem("userId", JSON.stringify(userId) || "null");
-    localStorage.setItem("email", JSON.stringify(email) || "null");
+    localStorage.setItem("userId", JSON.stringify(userId || null));
+    localStorage.setItem("email", JSON.stringify(email || null));
   }, [cart, isAdmin, isAuthenticated, userId, email]);
-  const onCreateCartItem = async (product_id) => {
-    const data = await cartService.createCartItem(product_id, userId);
-    setCart((oldState) => [...oldState, data]);
+  const addToCart = async (cartItem) => {
+    setCart((oldState) => {
+      const item = oldState?.find((item) => item.id == cartItem.id);
+      if (item) {
+        const filteredState = oldState.filter((item) => item.id != cartItem.id);
+        item.quantity++;
+        return [...filteredState, item];
+      } else {
+        cartItem.quantity = 1;
+        return [...oldState, cartItem];
+      }
+    });
   };
 
-  const onDeleteCart = async () => {
-    await cartService.deleteCart(userId);
+  const emptyCart = async () => {
     setCart([]);
   };
 
-  const onDeleteCartItem = async (cartItem_id) => {
-    await cartService.deleteCartItem(cartItem_id);
-    setCart((oldState) => oldState.filter((ci) => ci.id != cartItem_id));
+  const removeFromCart = async (cartItem_id) => {
+    setCart((oldState) => oldState.filter((item) => item.id != cartItem_id));
   };
-
+  const changeQuantity = (cartItem, quantity) => {
+    setCart((oldState) =>
+      oldState.map((item) => {
+        if (item.id == cartItem.id) {
+          item.quantity = quantity;
+        }
+        return item;
+      })
+    );
+  };
   const onLogin = async (values) => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email: values.email,
       password: values.password,
     });
     if (data) {
-      if (data.user.email == "admin@admin.com") {
+      if (data.user.email == import.meta.env.VITE_ADMIN_EMAIL) {
         setIsAdmin(true);
       } else {
         setIsAdmin(false);
       }
-      const cartItems = await cartService.getCartItems(data.user.id);
+      const cartItems = JSON.parse(localStorage.getItem("cart"));
       setUserId(data.user.id);
       setEmail(data.user.email);
       setIsAuthenticated(true);
@@ -97,16 +112,16 @@ export const AuthProvider = ({ children }) => {
     setEmail(null);
     setIsAdmin(false);
     setIsAuthenticated(false);
-    setCart([]);
     navigate(Path.Login);
   };
   const value = {
     onLogin,
     onRegister,
     onLogout,
-    onDeleteCart,
-    onDeleteCartItem,
-    onCreateCartItem,
+    emptyCart,
+    addToCart,
+    removeFromCart,
+    changeQuantity,
     cart,
     userId,
     email,
