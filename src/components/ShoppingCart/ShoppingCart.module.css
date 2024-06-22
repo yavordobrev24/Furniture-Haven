@@ -1,8 +1,11 @@
 .cart {
   margin-block: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .cart-items {
-  margin-block: 4rem;
+  margin-block: 3rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -12,7 +15,7 @@
   width: 300px;
   padding: 1rem;
   text-align: center;
-  height: 400px;
+  height: fit-content;
   transition: 300ms;
   font-size: 1.8rem;
   border: 1px solid rgb(45, 44, 44);
@@ -30,10 +33,11 @@
 .cart-item h3 {
   font-size: 1.2rem;
   font-weight: normal;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 .cart-item p {
   font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 .remove-btn {
   position: absolute;
@@ -98,4 +102,15 @@
 .checkout:focus {
   background-color: rgb(45, 44, 44);
   color: white;
+}
+.unauthenticated {
+  font-size: 1.5rem;
+}
+.unauthenticated {
+  background: #000;
+  padding: 1rem 2rem;
+  color: white;
+}
+.unauthenticated:hover {
+  text-decoration: underline;
 }
