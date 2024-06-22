@@ -33,7 +33,7 @@ function App() {
             element={<CategoryPage />}
           />
           <Route path={`${Path.Product}/:id`} element={<Product />} />
-
+          <Route path={Path.ShoppingCart} element={<ShoppingCart />} />
           <Route element={<GuestOnlyGuard />}>
             <Route path={Path.Register} element={<Register />} />
             <Route path={Path.Login} element={<Login />} />
@@ -54,7 +54,6 @@ function App() {
               path={`${Path.Product}/:id/edit-review/:reviewId`}
               element={<EditReview />}
             />
-            <Route path={Path.ShoppingCart} element={<ShoppingCart />} />
             <Route path={Path.Logout} element={<Logout />} />
           </Route>
           <Route path="*" element={<NotFound />} />
