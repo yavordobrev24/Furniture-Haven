@@ -1,9 +1,7 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { getSingleProduct } from "../../services/productService";
 import Reviews from "../Reviews/Reviews";
 import AuthContext from "../../contexts/authContext";
-import { getReviews } from "../../services/reviewService";
 import { deleteReview } from "../../services/reviewService";
 import styles from "./Product.module.css";
 import Newest from "../Newest/Newest";
@@ -11,19 +9,17 @@ import supabase from "../../config/supabaseClient";
 
 export default function Product(props) {
   const { id } = useParams();
-  const { isAuthenticated, userId, onCreateCartItem, cart } =
-    useContext(AuthContext);
+  const { isAuthenticated, userId, addToCart, cart } = useContext(AuthContext);
   const [product, setProduct] = useState({});
   const [hasReviewed, setHasReviewed] = useState(true);
   const [reviews, setReviews] = useState({});
-  const [isAdded, setIsAdded] = useState(false);
   const navigate = useNavigate();
 
-  const addToCart = async (e) => {
+  const onAdd = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsAdded(true);
-    return onCreateCartItem(product.id);
+
+    return addToCart(product);
   };
   const fetchProduct = async (id) => {
     const { data, error } = await supabase
@@ -33,8 +29,6 @@ export default function Product(props) {
       .single();
     if (data) {
       setProduct(data);
-      const isAdded = cart?.find((ci) => ci.product_id == id);
-      setIsAdded(isAdded);
     }
   };
   const fetchReviews = async (id) => {
@@ -57,6 +51,11 @@ export default function Product(props) {
   useEffect(() => {
     fetchProduct(id);
     fetchReviews(id);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   }, [id]);
 
   const deleteHandler = async (e) => {
@@ -78,29 +77,15 @@ export default function Product(props) {
           <h3 className={styles.name}>{product.name}</h3>
           <p className={styles.description}>{product.description}</p>
           <p className={styles.price}>${product.price}</p>
-          {isAuthenticated ? (
-            <div className={styles.btns}>
-              {!isAdded ? (
-                <button onClick={(e) => addToCart(e)}>ADD TO CART</button>
-              ) : (
-                <Link to="/shopping-cart" className={styles.added}>
-                  ALREADY ADDED TO <span className={styles.link}>CART</span>.
-                </Link>
-              )}
-              {!hasReviewed ? (
-                <button onClick={(e) => goToReview()}>LEAVE A REVIEW</button>
-              ) : (
-                ""
-              )}
-            </div>
-          ) : (
-            <p className={styles.login}>
-              <Link to="/login" className={styles.link}>
-                Login
-              </Link>{" "}
-              to add to cart.
-            </p>
-          )}
+
+          <div className={styles.btns}>
+            <button onClick={(e) => onAdd(e)}>Add to cart</button>
+            {isAuthenticated && !hasReviewed ? (
+              <button onClick={() => goToReview()}>Leave a review</button>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
       <Reviews reviews={reviews} deleteHandler={deleteHandler} />
