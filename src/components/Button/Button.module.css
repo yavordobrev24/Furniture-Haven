@@ -1,0 +1,14 @@
+.button {
+  background-color: rgb(45, 44, 44);
+  color: white;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border: 2px solid rgb(45, 44, 44);
+  transition: background-color 300ms, color 200ms;
+  font-size: 1.4rem;
+}
+.button:hover,
+.button:focus {
+  background-color: white;
+  color: rgb(45, 44, 44);
+}
