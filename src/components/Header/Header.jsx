@@ -15,15 +15,14 @@ export default function Header(props) {
           {isAuthenticated && isAdmin && (
             <Link to="/add-product">Add Product</Link>
           )}
-
-          {isAuthenticated && (
+          
             <div className={styles.cart}>
               <Link to="/shopping-cart">
-                {cart.length > 0 ? cart.length : 0}
+                {cart?.length > 0 ? cart.length : 0}
                 <i className="fas fa-shopping-cart"></i>
               </Link>
             </div>
-          )}
+          
           <div className={styles.dropdown}>
             <i className="fas fa-user"></i>
             <div className={styles.menu}>
