@@ -1,6 +1,8 @@
 import styles from "./Login.module.css";
 import useForm from "../../hooks/useForm";
 import { useContext, useState } from "react";
+import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/authContext";
 const LoginFormKeys = {
   Email: "email",
@@ -72,8 +74,9 @@ export default function Login() {
               placeholder="Demo: 123456"
             />
           </div>
-          <button type="submit">Login</button>
+          <Button>Login</Button>
         </form>
+        <p>Don't have an account? <Link to="/register" className={styles.register}>Register</Link></p>
       </div>
       <div className={styles.errors}>
         {Object.keys(errors).map((key) => (
