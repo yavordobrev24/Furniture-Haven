@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styles from "./AddProduct.module.css";
 import { createProduct } from "../../services/productService";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Button from "../Button/Button";
 
 export default function AddProduct(props) {
   const navigate = useNavigate();
@@ -101,7 +102,7 @@ export default function AddProduct(props) {
               required
             />
           </div>
-          <button type="submit">Add Product</button>
+          <Button>Add product</Button>
         </form>
       </div>
     </div>
