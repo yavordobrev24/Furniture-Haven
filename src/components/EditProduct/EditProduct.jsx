@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./EditProduct.module.css";
 import { getSingleProduct, updateProduct } from "../../services/productService";
 import { useNavigate, useParams } from "react-router-dom";
+import Button from "../Button/Button";
 
 export default function EditProduct(props) {
   const navigate = useNavigate();
@@ -100,7 +101,7 @@ export default function EditProduct(props) {
               required
             />
           </div>
-          <button type="submit">Edit Product</button>
+          <Button>Edit product</Button>
         </form>
       </div>
     </div>
