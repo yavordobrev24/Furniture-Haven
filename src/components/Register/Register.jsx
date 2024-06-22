@@ -1,7 +1,9 @@
 import styles from "./Register.module.css";
 import useForm from "../../hooks/useForm";
+import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import AuthContext from "../../contexts/authContext";
+import Button from "../Button/Button";
 const RegisterFormKeys = {
   Email: "email",
   Password: "password",
@@ -63,6 +65,7 @@ export default function Register(props) {
             <input
               type="text"
               id="email"
+              placeholder="Email"
               name={RegisterFormKeys.Email}
               value={values[RegisterFormKeys.Email]}
               onChange={onChange}
@@ -73,6 +76,7 @@ export default function Register(props) {
             <input
               type="password"
               id="password"
+              placeholder="Password"
               name={RegisterFormKeys.Password}
               value={values[RegisterFormKeys.Password]}
               onChange={onChange}
@@ -83,13 +87,17 @@ export default function Register(props) {
             <input
               type="password"
               id="confirmPassword"
+              placeholder="Confirm Password"
               name={RegisterFormKeys.ConfirmPassword}
               value={values[RegisterFormKeys.ConfirmPassword]}
               onChange={onChange}
             />
           </div>
-          <button type="submit">Register</button>
+         <Button>Register</Button>
         </form>
+        <p>
+          Already have an account? <Link to="/login" className={styles.login}>Login</Link>
+        </p>
       </div>
       <div className={styles.errors}>
         {Object.keys(errors).map((key) => (
