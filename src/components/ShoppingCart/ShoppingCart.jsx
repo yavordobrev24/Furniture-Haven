@@ -47,10 +47,10 @@ export default function ShoppingCart() {
       <div className={styles.total}>
         <p>
           Total:{" "}
-          <span>${cart.length > 0 ? calculateTotal().toFixed(2) : 0}</span>
+          <span>${cart?.length > 0 ? calculateTotal().toFixed(2) : 0}</span>
         </p>
       </div>
-      {cart.length > 0 ? (
+      {cart?.length > 0 ? (
         isAuthenticated ? (
           <button
             className={styles.checkout}

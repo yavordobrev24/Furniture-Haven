@@ -40,7 +40,11 @@ export const AuthProvider = ({ children }) => {
         return [...filteredState, item];
       } else {
         cartItem.quantity = 1;
-        return [...oldState, cartItem];
+        if (oldState) {
+          return [...oldState, cartItem];
+        } else {
+          return [cartItem];
+        }
       }
     });
   };
