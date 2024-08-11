@@ -1,13 +1,10 @@
 # FurnitureHeaven
 
-A visually appealing Single Page Application for furniture, crafted with React.js and powered by Vite.js for an efficient build process, also integrated with Supabase BaaS.
+An e-commerce furniture web application built with React.js and powered by Vite.js for an efficient build process, seamlessly integrated with Supabase BaaS and PostgreSQL for backend services and data management.
 
 ## Usage
 
-1. Register for an account to access personalized features.
-
-2. Log in using your credentials or explore using the provided demo profile on the login page.
-
-3. Explore furniture by categories, view details and add preferred items to the cart.
-
-4. Proceed to the cart for checkout to finalize your purchase.
+1. **Register:** Create an account to access personalized features.
+2. **Log In:** Use your credentials or explore the site with the demo profile available on the login page.
+3. **Browse:** Explore furniture by categories, view details, and add preferred items to your cart.
+4. **Checkout:** Proceed to your cart and finalize your purchase.
